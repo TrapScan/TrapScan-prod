@@ -40,4 +40,16 @@ class UserController extends Controller
             'all_data' => $data
         ]);
     }
+
+    public function projects(Request $request){
+            return Inertia::render('UserProjects',[
+                'projects'=> $request->user()->projectsAll()
+            ]);
+    }
+
+    public function settings(Request $request){
+            return Inertia::render('UserSettings',[
+                'projects'=> ''
+            ]);
+    }
 }

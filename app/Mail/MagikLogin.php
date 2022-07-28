@@ -30,6 +30,6 @@ class MagikLogin extends Mailable
     public function build()
     {
         $subject = "TrapScan Email link to log in ✨";
-        return $this->from('problems@trapscan.app')->subject($subject)->markdown('emails.magik_login' ,[ 'url' => $this->url]);
+        return $this->from('login@trapscan.app')->subject($subject)->markdown('emails.magik_login' ,[ 'url' => $this->url]);
     }
 }

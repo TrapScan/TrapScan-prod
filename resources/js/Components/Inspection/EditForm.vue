@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Bait type</label>
+            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Species caught</label>
             <select v-model="form.species_caught" id="large" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option v-for="st in species" :key="st" :value="st">{{st}}</option>
                 <option v-for="st in extraSpecies" :key="st" :value="st">{{st}}</option>

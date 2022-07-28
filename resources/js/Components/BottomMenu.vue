@@ -52,10 +52,10 @@
 
                 <!-- Item #4 -->
                 <div class="flex group ">
-                    <a href="#" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('projects'), 'text-bali-hai-500 font-bold': !route().current('projects')}">
+                    <Link :href="route('user.projects')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('user.projects'), 'text-bali-hai-500 font-bold': !route().current('user.projects')}">
 							<span class="flex flex-col items-center">
 								<!-- Icon -->
-                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('projects'),'text-bali-hai-500 hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('projects')}" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('user.projects'),'text-bali-hai-500 hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('user.projects')}" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 5.64801C16 2.52547 13.5171 0 10.4472 0C7.37729 0 4.8944 2.52547 4.8944 5.64801C4.89339 6.98156 5.35764 8.27221 6.20451 9.29022C7.05139 10.3082 8.22593 10.9876 9.51909 11.2073V14.3863H3.17303V11.9657H3.96629V8.73828C3.96629 8.2945 3.60932 7.93142 3.17303 7.93142H0.793257C0.356966 7.93142 0 8.2945 0 8.73828V11.9657H0.793257V16H13.4854V14.3863H11.1056V11.2557C12.4546 11.0918 13.6978 10.4306 14.5997 9.3972C15.5017 8.36379 15.9999 7.0299 16 5.64801ZM1.98314 7.12456C2.64155 7.12456 3.17303 6.58396 3.17303 5.91427C3.17303 5.24458 2.64155 4.70398 1.98314 4.70398C1.32474 4.70398 0.793257 5.24458 0.793257 5.91427C0.793257 6.58396 1.32474 7.12456 1.98314 7.12456Z" fill="#849DAE"/>
                                 </svg>
 
@@ -64,15 +64,15 @@
 									Project
 								</span>
 							</span>
-                    </a>
+                    </Link>
                 </div>
 
                 <!-- Item #5 -->
                 <div class="flex group">
-                    <a href="#" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('settings'), 'text-bali-hai-500 font-bold': !route().current('settings')}">
+                    <Link :href="route('user.settings')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('user.settings'), 'text-bali-hai-500 font-bold': !route().current('user.settings')}">
 							<span class="flex flex-col items-center">
 								<!-- Icon -->
-                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('settings'),'text-bali-hai-500 font-bold hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('settings')}"  width="24" height="24" viewBox="0 0 19 10" color="#000" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('user.settings'),'text-bali-hai-500 font-bold hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('user.settings')}"  width="24" height="24" viewBox="0 0 19 10" color="#000" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1.95334 7.855L1.86234 5.853L6.63334 0.899999H8.53134L4.56634 5.112L3.63034 6.139L1.95334 7.855ZM0.44534 10V0.899999H2.13534V10H0.44534ZM6.78934 10L3.30534 5.853L4.42334 4.618L8.76534 10H6.78934ZM10.566 10V0.899999H14.31C15.116 0.899999 15.805 1.03 16.377 1.29C16.9577 1.55 17.404 1.92267 17.716 2.408C18.028 2.89333 18.184 3.46967 18.184 4.137C18.184 4.80433 18.028 5.38067 17.716 5.866C17.404 6.35133 16.9577 6.724 16.377 6.984C15.805 7.244 15.116 7.374 14.31 7.374H11.502L12.256 6.581V10H10.566ZM12.256 6.763L11.502 5.944H14.232C14.9774 5.944 15.5364 5.788 15.909 5.476C16.2904 5.15533 16.481 4.709 16.481 4.137C16.481 3.55633 16.2904 3.11 15.909 2.798C15.5364 2.486 14.9774 2.33 14.232 2.33H11.502L12.256 1.498V6.763Z"/>
                                 </svg>
 
@@ -81,7 +81,7 @@
 									Settings
 								</span>
 							</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
