@@ -23,7 +23,7 @@ class InspectionController extends Controller
             session()->flash('message','Trap not found');
             return back();
         }
-
+    Log::debug('test');
         $unmapped = false;
         if($qr->trap_id) {
             $trap = Trap::find($qr->trap_id);
@@ -142,7 +142,7 @@ class InspectionController extends Controller
             }
 
             if($inspection->upload_to_nz) {
-                //UploadToTrapNZ::dispatch($inspection);
+                UploadToTrapNZ::dispatch($inspection);
             }
 
             if($inspection->trap_condition === 'Needs maintenance') {
