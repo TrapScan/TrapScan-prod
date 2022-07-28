@@ -17,6 +17,19 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
+                'caribbean-green': {
+                    DEFAULT: '#0ED9A3',
+                    '50': '#A5F9E3',
+                    '100': '#92F8DD',
+                    '200': '#6CF6D1',
+                    '300': '#46F3C5',
+                    '400': '#1FF1B9',
+                    '500': '#0ED9A3',
+                    '600': '#0BA47B',
+                    '700': '#077054',
+                    '800': '#043B2C',
+                    '900': '#000605'
+                },
                 'spring-wood': {
                     DEFAULT: '#FAF9F6',
                     '50': '#FFFFFF',

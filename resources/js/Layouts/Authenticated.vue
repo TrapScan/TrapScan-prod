@@ -90,9 +90,9 @@ export default {
                         </svg>
 
                     </button>
-                    <Link :href="route('logout')" method="post" as="button">
-                        Log Out
-                    </Link>
+<!--                    <Link :href="route('logout')" method="post" as="button">-->
+<!--                        Log Out-->
+<!--                    </Link>-->
                 </div>
             </div>
 

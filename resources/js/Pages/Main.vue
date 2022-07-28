@@ -50,7 +50,7 @@ export default {
                     <div class="px-4 py-5 flex-auto">
                         <div class="tab-content tab-space">
                             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-                                <div v-if="$page.props.flash.message" class="alert">
+                                <div v-if="$page.props.flash.message" class="alert mb-3">
                                        <el-alert :title="$page.props.flash.message" effect="dark"  type="error" />
                                 </div>
                                 <Camera/>

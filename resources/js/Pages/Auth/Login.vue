@@ -183,7 +183,7 @@ const submit_magic = () => {
                         </div>
                         <div class="flex">
                             <div class="flex w-full mx-auto">
-                                <button type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-2xl py-3 w-full transition duration-150 ease-in">
+                                <button type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-3 w-full transition duration-150 ease-in">
                                     <span class="mr-2 uppercase">Log in</span>
                                 </button>
                             </div>
@@ -232,7 +232,7 @@ const submit_magic = () => {
                         </div>
                         <div class="flex">
                             <div class="flex w-full mx-auto">
-                                <button type="submit" :class="{ 'opacity-25': form_magic.processing }" :disabled="form_magic.processing" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-2xl py-3 w-full transition duration-150 ease-in">
+                                <button type="submit" :class="{ 'opacity-25': form_magic.processing }" :disabled="form_magic.processing" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-3 w-full transition duration-150 ease-in">
                                     <span class="mr-2 uppercase">SEND log in LINK </span>
                                 </button>
                             </div>

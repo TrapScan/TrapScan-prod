@@ -19,9 +19,10 @@
         @vite('resources/js/app.js')
         @inertiaHead
         <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+        <script src="https://unpkg.com/flowbite@1.5.1/dist/datepicker.js"></script>
 
     </head>
-    <body class="font-sans antialiased bg-spring-wood-500">
+    <body class="font-sans antialiased bg-spring-wood-500 overflow-auto">
         @inertia
     </body>
 </html>

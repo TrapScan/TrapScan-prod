@@ -95,8 +95,6 @@ class InspectionController extends Controller
             'QR_ID' => 'required',
             'code' => 'required',
             'date_format' => 'required',
-            'recorded_by' => 'nullable|integer',
-            'strikes' => 'required',
             'species_caught' => 'required',
             'status' => 'required',
             'bait_type'=>'nullable|string',
@@ -104,7 +102,6 @@ class InspectionController extends Controller
             'trap_condition' => 'required',
             'notes' => 'nullable|string',
             'words' => 'required',
-            'trap_last_checked' => 'nullable|date',
             'upload_to_nz' => 'required',
         ]);
         $trap = Trap::where('qr_id', $validated_data['QR_ID'])->first();
@@ -129,7 +126,7 @@ class InspectionController extends Controller
                 'date' => date('Y-m-d h:i:s', strtotime($validated_data['date_format'])) ?? Carbon::now(),
                 'trap_id' => $trap->id,
                 'recorded_by' => $request->user()->id,
-                'strikes' => $validated_data['strikes'],
+                'strikes' => 1,
                 'species_caught' => $validated_data['species_caught'],
                 'status' => $validated_data['status'],
                 'rebaited' => $validated_data['rebaited'] === 'Yes' || $validated_data['rebaited'] === 'yes',

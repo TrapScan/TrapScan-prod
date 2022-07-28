@@ -1,14 +1,5 @@
 <template>
     <div class="mx-auto px-14">
-        <div class="flex w-full mb-3">
-            <div class="flex w-6/12 mx-auto">
-                <button @click="read = !read"  class="flex mt-2 items-center justify-center focus:outline-none text-bay-of-many-500 dark:text-mystic-100 dark:border-mystic-100 font-bold text-sm sm:text-base border-2 border-bay-of-many-500 hover:bg-bay-of-many-500 hover:text-white rounded-2xl py-2 w-full transition duration-150 ease-in">
-                    <span class="uppercase">{{read ? 'Stop Scanning' : 'Start Scanning'}}</span>
-                </button>
-            </div>
-        </div>
-
-<!--        <button @click="torch=!torch">TURN ON/OFF FLASHLIGHT</button>-->
         <qrcode-stream @init="onInit" @decode="onDecode" :torch="torch" v-if="read">
             <div class="loading-indicator" v-if="loading">
                 <div class="flex w-full mb-3" >
@@ -21,6 +12,19 @@
                     </div>
                 </div>
             </div>
+            <div class="flex w-full mb-3 flex-row-reverse mr-3 p-3 self-end">
+                    <button @click="torch=!torch" >
+                        <svg width="23" height="50" viewBox="0 0 23 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.523052 3.03152C0.990274 2.79403 1.55841 2.98655 1.79202 3.46153L5.10772 10.203C5.34133 10.678 5.15195 11.2556 4.68473 11.4931C4.2175 11.7305 3.64937 11.538 3.41576 11.063L0.100062 4.32156C-0.133549 3.84658 0.0558298 3.26901 0.523052 3.03152Z" fill="#E3E9EE"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M22.4769 3.03152C22.0097 2.79403 21.4416 2.98655 21.208 3.46153L17.8923 10.203C17.6587 10.678 17.848 11.2556 18.3153 11.4931C18.7825 11.7305 19.3506 11.538 19.5842 11.063L22.8999 4.32156C23.1335 3.84658 22.9442 3.26901 22.4769 3.03152Z" fill="#E3E9EE"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4054 0C11.9278 2.7338e-09 12.3513 0.430495 12.3513 0.961538V8.65385C12.3513 9.18489 11.9278 9.61539 11.4054 9.61539C10.883 9.61539 10.4596 9.18489 10.4596 8.65385V0.961538C10.4596 0.430495 10.883 -2.73362e-09 11.4054 0Z" fill="#E3E9EE"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21.4313 20.3846H1.37956V15.9615C1.37956 14.7932 2.31118 13.8462 3.4604 13.8462H19.3504C20.4996 13.8462 21.4313 14.7932 21.4313 15.9615V20.3846ZM3.4604 15.7692C3.35593 15.7692 3.27123 15.8553 3.27123 15.9615V18.4615H19.5396V15.9615C19.5396 15.8553 19.4549 15.7692 19.3504 15.7692H3.4604Z" fill="#E3E9EE"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8913 29.8077H5.91957V47.8846C5.91957 49.0529 6.85119 50 8.00041 50H14.8104C15.9596 50 16.8913 49.0529 16.8913 47.8846V29.8077ZM8.00041 48.0769C7.89594 48.0769 7.81124 47.9908 7.81124 47.8846V31.7308H14.9996V47.8846C14.9996 47.9908 14.9149 48.0769 14.8104 48.0769H8.00041Z" fill="#E3E9EE"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.2558 20.3846H3.74415L7.81124 29.8077H14.9996L19.2558 20.3846ZM1.37956 20.3846L5.91957 30.8654H16.8913L21.4313 20.3846H1.37956Z" fill="#E3E9EE"/>
+                        </svg>
+                    </button>
+            </div>
+
         </qrcode-stream>
         <div class="flex w-full mb-3" v-else>
             <div class="flex w-6/12 mx-auto">
@@ -33,13 +37,15 @@
         </div>
 
         <div class="flex">
-            <div class="flex w-5/12 mx-auto">
-                <button @click="visible = true" type="submit" class="flex mt-5 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-2xl py-2 w-full transition duration-150 ease-in">
-                    <span class="uppercase">Manual Entry</span>
+            <div class="flex w-full mx-auto">
+                <button @click="visible = true" type="submit" class="flex mt-5 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
+                    <span class="uppercase">enter QR ID</span>
                 </button>
             </div>
         </div>
-
+        <div class="flex mt-5 justify-center flex-wrap ">
+            <h6 class="ubuntu text-sm w-full text-center text-gray-400">Scan the QR code or enter the QR ID </h6>
+        </div>
         <modal-window :showing="visible">
             <template #header>
                 <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
@@ -58,12 +64,12 @@
                 </div>
                 <div class="flex">
                     <div class="flex w-5/12 mx-auto">
-                        <button  :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-2xl py-2 w-full transition duration-150 ease-in">
+                        <button  :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-2 w-full transition duration-150 ease-in">
                             <span class="mr-2 uppercase">Check Code</span>
                         </button>
                     </div>
                     <div class="flex w-5/12 mx-auto">
-                        <button  @click="visible = false" class="flex mt-2 items-center justify-center focus:outline-none text-bay-of-many-500 dark:text-mystic-100 dark:border-mystic-100 font-bold text-sm sm:text-base border-2 border-bay-of-many-500 hover:bg-bay-of-many-500 hover:text-white rounded-2xl py-2 w-full transition duration-150 ease-in">
+                        <button  @click="visible = false" class="flex mt-2 items-center justify-center focus:outline-none text-bay-of-many-500 dark:text-mystic-100 dark:border-mystic-100 font-bold text-sm sm:text-base border-2 border-bay-of-many-500 hover:bg-bay-of-many-500 hover:text-white rounded-full py-2 w-full transition duration-150 ease-in">
                             <span class="mr-2 uppercase">Cancel</span>
                         </button>
                     </div>
@@ -139,6 +145,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.qrcode-stream-camera{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    height: 350px !important;
+}
 </style>

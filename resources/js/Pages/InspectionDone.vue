@@ -12,15 +12,16 @@
                 </Link>
             </div>
         </template>
-        <div class="py-16 flex justify-center w-full bg-limeade-500">
-            <svg class="stroke-green-800" width="60" height="60" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 24.5155C14.3073 25.4706 15.5461 26.4724 16.673 27.5889C17.297 28.2072 17.9924 28.7561 18.6398 29.3539C18.7594 29.4643 19.1408 29.9861 19.346 29.9998C19.4349 30.0057 19.4458 29.8702 19.4787 29.7982C19.7224 29.2651 19.622 29.4595 19.9858 28.745C21.5815 25.6107 23.3733 22.5504 25.3886 19.6031C26.8349 17.488 27.9316 15.5423 29.5 13.5C29.8643 13.0256 30.5 12 31 11.5"  stroke-width="3" stroke-linecap="round"/>
+        <div class="py-16 flex justify-center w-full bg-caribbean-green">
+            <svg class="stroke-caribbean-green" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect y="64" width="11.5194" height="44.4319" transform="rotate(-45 0 64)" fill="#0AB587"/>
+                <rect x="87.2725" y="23.2727" width="11.5194" height="90.5094" transform="rotate(45 87.2725 23.2727)" fill="#0AB587"/>
             </svg>
         </div>
         <div class="flex justify-center flex-col w-full mt-6">
-            <h1 class="text-3xl font-bold text-black dark:text-white ubuntu text-center">Success</h1>
+            <h1 class="text-3xl font-bold text-black dark:text-white montserrat text-center">Success</h1>
             <h4 class="font-bold text-black dark:text-white ubuntu text-center mt-2">Your inspection has been recorded</h4>
-            <div class="mt-6 p-4">
+            <div class="mt-6 ml-8 px-4 text-lg text-gray-600 border-l-4 border-l-gray-300">
                 <p v-if="trap?.last_checked && trap?.last_checked_by" class="ubuntu mb-3">
                     This trap was last checked
                     <b>{{ trap.last_checked }}</b> by
@@ -30,8 +31,14 @@
                     The trap last caught a
                     <b>{{ trap.last_caught }}</b>
                 </p>
-                <p class="ubuntu mb-3">Total catches on this before this: {{ trap.total_catches ?? 0 }}</p>
+                <p class="ubuntu mb-3">There have been <span class="font-bold">{{ trap.total_catches ?? 0 }}</span> catches in this trap before now</p>
             </div>
+        </div>
+        <div class="flex mt-20 justify-center flex-wrap ">
+            <h6 class="ubuntu text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
+            <Link class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in" :href="route('register')">
+                <span class="uppercase">finish</span>
+            </Link>
         </div>
     </Show>
 </template>

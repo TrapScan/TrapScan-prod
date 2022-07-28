@@ -1,13 +1,13 @@
 <template>
     <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-24">
-        <textarea v-model="val" placeholder="Inspection Note" cols="90" rows="6" class="px-3 py-3 placeholder-slate-500 text-xl text-slate-600 relative bg-white bg-white rounded-xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
+        <textarea v-model="val" placeholder="Inspection Note" cols="90" rows="6" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
 
-        <div class="flex w-full mx-auto">
-            <button @click='selected(0)' class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-2xl py-3 w-full transition duration-150 ease-in">
+        <div class="flex w-full mx-auto mt-4">
+            <button @click='selected(0)' class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
                 <span class="mr-2 uppercase">Yes, submit inspection</span>
             </button>
         </div>
-        <div @click='selected(8)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click='selected(8)' class="mt-4 flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><pen/></template> Edit Inspection</text-val>
             <arrow-next/>
         </div>
