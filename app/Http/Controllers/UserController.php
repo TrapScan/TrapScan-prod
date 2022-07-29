@@ -43,13 +43,13 @@ class UserController extends Controller
 
     public function projects(Request $request){
             return Inertia::render('UserProjects',[
-                'projects'=> $request->user()->projectsAll()
+                'projects' => $request->user()->projectsAll()->get()
             ]);
     }
 
     public function settings(Request $request){
             return Inertia::render('UserSettings',[
-                'projects'=> ''
+                'projects' => ''
             ]);
     }
 }
