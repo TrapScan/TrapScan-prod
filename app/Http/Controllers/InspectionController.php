@@ -85,9 +85,8 @@ class InspectionController extends Controller
                 'anon' => true
             ]);
         }
-        return Inertia::render('Inspection',[
-            'message'=>'Inspection  added',
-        ]);
+
+        return redirect(route('anon_success'));
     }
     public function save(Request $request)
     {

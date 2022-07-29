@@ -26,6 +26,10 @@ Route::get('/anon', function () {
     return Inertia::render('Anonscan');
 })->name('anon_form');
 
+Route::get('/anon_success', function () {
+    return Inertia::render('AnonscanDone');
+})->name('anon_success');
+
 Route::post('/anon', [InspectionController::class, 'createAnon'])->name('anon_form.store');
 
 Route::get('/scan', function () {

@@ -35,7 +35,6 @@
             </div>
         </div>
         <div class="flex mt-20 justify-center flex-wrap ">
-            <h6 class="ubuntu text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
             <Link class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in" :href="route('register')">
                 <span class="uppercase">finish</span>
             </Link>

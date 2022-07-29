@@ -1,13 +1,12 @@
 <script setup>
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/inertia-vue3';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 
 const form = useForm({
     QR_ID:null,
     species_caught:null
 })
-
 const species = [
     'Rat', 'Mouse', 'Stoat', 'Weasel', 'Hedgehog','Rat - Kiore',
     'Rat - Norway', 'Unspecified', 'Bird', 'Rat - Ship', 'Cat',
@@ -15,9 +14,7 @@ const species = [
     'Pig', 'Possum', 'Rabbit', 'Turkey'
 ];
 const submit = () => {
-    form.post(route('anon_form.store'), {
-        onFinish: () => {},
-    });
+    form.post(route('anon_form.store'),);
 };
 </script>
 
@@ -34,6 +31,7 @@ const submit = () => {
                         <div v-if="$page.props.flash.message" class="alert w-full my-5">
                             <el-alert :title="$page.props.flash.message" type="warning" show-icon />
                         </div>
+
                         <BreezeValidationErrors class="mb-4" />
 
                         <form @submit.prevent="submit" class="flex flex-wrap justify-start w-full">

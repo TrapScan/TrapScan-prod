@@ -25,7 +25,6 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
                                     </button>
                                 </Link>
                             </div>
-
                         </div>
                         <div class="w-full bg-white dark:bg-mirage-400 rounded-xl dark:text-white p-6 flex flex-col mt-6 mb-20">
                             <div class="flex flex-wrap justify-start w-full mb-3">
