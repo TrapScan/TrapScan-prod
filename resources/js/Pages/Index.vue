@@ -19,11 +19,11 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
                                 <p class="text-gray-500 mt-3 montserrat dark:text-white ">
                                     Let us know what it caught so that trappers in the area can get onto it!
                                 </p>
-                                <div class="flex w-full mx-auto mt-4">
+                                <Link :href="route('anon_form')" class="flex w-full mx-auto mt-4">
                                     <button class="flex mt-4 items-center justify-center focus:outline-none text-white text-lg bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
                                         <span class="uppercase montserrat font-bold ">report a catch</span>
                                     </button>
-                                </div>
+                                </Link>
                             </div>
 
                         </div>

@@ -60,7 +60,7 @@ class InspectionController extends Controller
         $trap = Trap::where('qr_id', $validated_data['QR_ID'])->first();
         if(! $trap) {
             session()->flash('message', 'Error: Trap ' . $validated_data['QR_ID'] . ' does not exist');
-            return redirect(route('scan'));
+            return back();
         }
 
         $oneHourAgo = Carbon::now()->subMinutes(10);
