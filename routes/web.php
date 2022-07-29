@@ -19,12 +19,20 @@ use \App\Http\Controllers\UserController;
 Route::post('/magic-login', [OtherAuthController::class, 'sendLoginLink'])->name('magic_login');
 
 Route::get('/', function () {
+    return Inertia::render('Index');
+})->name('index');
+
+Route::get('/scan', function () {
     return Inertia::render('Main');
 })->middleware(['auth', 'verified'])->name('scan');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->middleware(['auth', 'verified'])->name('about');
 
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'inspection'],function() {
     Route::get('/inspect/{qr_id?}',[InspectionController::class,'index'])->name('inspection.index');
