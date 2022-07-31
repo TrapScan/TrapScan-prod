@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use \App\Http\Controllers\InspectionController;
 use \App\Http\Controllers\OtherAuthController;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +56,26 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function()
     Route::get('projects',[UserController::class, 'projects'])->name('user.projects');
 
     Route::get('settings',[UserController::class, 'settings'])->name('user.settings');
+});
+
+Route::group(['middleware'=>['auth', 'verified','role:admin'], 'prefix'=>'admin'],  function() {
+    Route::get('/',[AdminController::class, 'index'])->name('admin.index');
+    //QR
+    Route::post('/generate_qr',[AdminController::class, 'generate_qr'])->name('admin.save');
+    Route::get('/unmapped_codes',[AdminController::class, 'unmapped_codes'])->name('admin.unmapped_codes');
+
+
+    Route::get('/unmapped_traps',[AdminController::class, 'unmapped_traps'])->name('admin.unmapped_traps');
+    Route::post('/map_trap',[AdminController::class, 'map_trap'])->name('admin.map_trap');
+    Route::get('/all_traps',[AdminController::class, 'all_traps'])->name('admin.all_traps');
+
+    Route::get('/users',[AdminController::class, 'users'])->name('admin.users');
+
+    Route::get('/scrape_data',function () {
+        return Inertia::render('Admin/Scrap');
+    })->name('admin.scrape_data');
+
+    Route::get('start_scrap', [AdminController::class, 'start_scrap'])->name('admin.start_scrap');
 });
 
 

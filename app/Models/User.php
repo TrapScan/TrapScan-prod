@@ -49,6 +49,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime:Y-m-d H:m',
         'settings' => 'array'
     ];
 
@@ -166,5 +167,15 @@ class User extends Authenticatable
         }
         $this->projects()->updateExistingPivot($project, ['catch_filter' => $validated_catch_entices]);
         return true;
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? null, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%');
+                $query->orWhere('email', 'like', '%'.$search.'%');
+            });
+        });
     }
 }

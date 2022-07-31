@@ -70,4 +70,13 @@ class Trap extends Model
     public function scopeUnmappedInProject($query) {
         return $query->whereNull('nz_trap_id')->whereNull('trap_line_id')->whereNull('user_id');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? null, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%');
+            });
+        });
+    }
 }
