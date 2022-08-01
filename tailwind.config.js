@@ -30,6 +30,19 @@ module.exports = {
                     '800': '#043B2C',
                     '900': '#000605'
                 },
+                'tree-poppy': {
+                    DEFAULT: '#F99621',
+                    '50': '#FEEBD4',
+                    '100': '#FDE1C0',
+                    '200': '#FCCE98',
+                    '300': '#FBBC70',
+                    '400': '#FAA949',
+                    '500': '#F99621',
+                    '600': '#DC7A06',
+                    '700': '#A55C04',
+                    '800': '#6F3D03',
+                    '900': '#381F02'
+                },
                 'spring-wood': {
                     DEFAULT: '#FAF9F6',
                     '50': '#FFFFFF',
@@ -135,6 +148,7 @@ module.exports = {
                     '800': '#011610',
                     '900': '#000000'
                 },
+
                 'mystic': {
                     DEFAULT: '#E3E9EE',
                     '50': '#FFFFFF',
@@ -147,7 +161,8 @@ module.exports = {
                     '700': '#9DB2C4',
                     '800': '#7A97AE',
                     '900': '#5B7B96'
-                },
+                }, //Light Form bg
+
                 'bali-hai': {
                     DEFAULT: '#849DAE',
                     '50': '#F3F5F7',
@@ -174,6 +189,21 @@ module.exports = {
                     '800': '#164B00',
                     '900': '#0D2D00'
                 },
+                'selago': {
+                    DEFAULT: '#F1F8FD',
+                    '50': '#FFFFFF',
+                    '100': '#FFFFFF',
+                    '200': '#FFFFFF',
+                    '300': '#FFFFFF',
+                    '400': '#FFFFFF',
+                    '500': '#F1F8FD',
+                    '600': '#C0DFF6',
+                    '700': '#8FC7EF',
+                    '800': '#5EAEE8',
+                    '900': '#2D96E1'
+                },
+
+
             }
         },
     },

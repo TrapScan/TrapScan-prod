@@ -2,15 +2,15 @@
     <span class="px-4 pt-10 pb-5 text-4xl font-bold text-lg ">Is this correct?</span>
     <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-24">
         <div class="flex w-full mx-auto mt-4 mb-6">
-            <button @click='selected(0)' class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
+            <button @click='selected(0)' class="flex items-center mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
                 <span class="uppercase">Yes, submit inspection</span>
             </button>
         </div>
-        <div @click='selected(7)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click='selected(7)' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><edit/></template> Add note first</text-val>
             <arrow-next/>
         </div>
-        <div @click='selected(8)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click='selected(8)' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><no class="mt-1"/></template> No, let me edit</text-val>
             <arrow-next/>
         </div>

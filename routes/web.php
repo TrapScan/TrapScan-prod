@@ -7,6 +7,7 @@ use \App\Http\Controllers\InspectionController;
 use \App\Http\Controllers\OtherAuthController;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\AdminController;
+use \App\Http\Controllers\ProjectsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,7 +54,8 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'inspection'],functi
 
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function() {
     Route::get('/stat/',[UserController::class,'userStat'])->name('user.index');
-    Route::get('projects',[UserController::class, 'projects'])->name('user.projects');
+    Route::get('projects',[ProjectsController::class, 'projects'])->name('user.projects');
+    Route::get('projects/view/{id}',[ProjectsController::class, 'view'])->name('user.projects.view');
 
     Route::get('settings',[UserController::class, 'settings'])->name('user.settings');
 });

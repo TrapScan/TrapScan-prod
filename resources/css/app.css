@@ -23,3 +23,7 @@
 .montserrat {
     font-family: 'Montserrat', sans-serif !important;
 }
+
+.test{
+    background:  rgba(34, 46, 125, 0.03);
+}

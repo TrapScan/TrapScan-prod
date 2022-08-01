@@ -18,7 +18,7 @@
             </div>
         </template>
 
-        <index v-if="step === 1" :list="projects"/>
+        <index :list="projects" :projects_all="projects_all"/>
 
     </Show>
 </template>
@@ -36,10 +36,10 @@ export default {
     name: "UserProjects",
     props:{
         projects:Object,
+        projects_all:Object,
     },
     data() {
         return {
-            step:1
         }
     },
     mounted() {

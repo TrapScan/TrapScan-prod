@@ -1,14 +1,14 @@
 <template>
     <div class="flex flex-col h-full gap-y-3 mt-24 px-4 mb-5">
-        <div @click='selected(0)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click='selected(0)' class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><repair/></template> Needs repair or replacing</text-val>
             <arrow-next/>
         </div>
-        <div @click='selected(1)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click='selected(1)' class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><empty-svg/></template> Trap is missing</text-val>
             <arrow-next/>
         </div>
-        <div @click='selected(2)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click='selected(2)' class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><wrong-qr class="-mt-1"/></template> QR code needs fixing</text-val>
             <arrow-next/>
         </div>

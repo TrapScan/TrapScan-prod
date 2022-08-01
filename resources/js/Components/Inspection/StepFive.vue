@@ -38,11 +38,11 @@
         </div>
     </div>
     <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-5">
-        <div @click="selected({rebaited: 'No', words: `and the bait was still good so I didn't rebait it.`, step:6  })" class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click="selected({rebaited: 'No', words: `and the bait was still good so I didn't rebait it.`, step:6  })" class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><good/></template> Bait is still good</text-val>
             <arrow-next/>
         </div>
-        <div @click="selected({rebaited: 'No', bait_type: 'None', words: 'and I\'m just letting you know.', upload_to_nz: false, step:6  })" class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click="selected({rebaited: 'No', bait_type: 'None', words: 'and I\'m just letting you know.', upload_to_nz: false, step:6  })" class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><man-wit-box class="-mt-1"/></template>
                 Just letting you know
                 <p class="text-sm font-normal font-weight-light ">that the trap caught something and/or it needs rebaiting.</p>

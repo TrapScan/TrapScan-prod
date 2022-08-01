@@ -19,7 +19,7 @@
     </div>
     <div class="flex flex-col h-full gap-y-3 mt-4 px-4 mb-5" v-if="show_all">
         <div v-for="(sp, index) in extraSpecies" :key="index" @click='selected({ species_caught: sp, words: `${sp} `, step: 5})'
-            class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+            class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val>
                 <template #icon>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 rotate-180 text-jelly-bean-500 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

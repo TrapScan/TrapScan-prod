@@ -46,4 +46,5 @@ class Project extends Model
     public function inspections() {
         return $this->hasManyThrough(Inspection::class, Trap::class);
     }
+
 }
