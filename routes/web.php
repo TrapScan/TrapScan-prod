@@ -55,9 +55,11 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'inspection'],functi
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function() {
     Route::get('/stat/',[UserController::class,'userStat'])->name('user.index');
     Route::get('projects',[ProjectsController::class, 'projects'])->name('user.projects');
-    Route::get('projects/view/{id}',[ProjectsController::class, 'view'])->name('user.projects.view');
-
+    Route::get('project/view/{id}',[ProjectsController::class, 'view'])->name('user.projects.view');
     Route::get('settings',[UserController::class, 'settings'])->name('user.settings');
+
+    Route::post('project/leave',[ProjectsController::class, 'leave'])->name('user.projects.leave');
+    Route::post('project/enter',[ProjectsController::class, 'enter'])->name('user.projects.enter');
 });
 
 Route::group(['middleware'=>['auth', 'verified','role:admin'], 'prefix'=>'admin'],  function() {

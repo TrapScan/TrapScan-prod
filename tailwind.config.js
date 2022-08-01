@@ -17,6 +17,19 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
+                'valencia': {
+                    DEFAULT: '#D44944',
+                    '50': '#F6DAD9',
+                    '100': '#F3CAC9',
+                    '200': '#EBAAA8',
+                    '300': '#E38A86',
+                    '400': '#DC6965',
+                    '500': '#D44944',
+                    '600': '#B62F2A',
+                    '700': '#88231F',
+                    '800': '#5B1715',
+                    '900': '#2D0C0A'
+                },
                 'caribbean-green': {
                     DEFAULT: '#0ED9A3',
                     '50': '#A5F9E3',

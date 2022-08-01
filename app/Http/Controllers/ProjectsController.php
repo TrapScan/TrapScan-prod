@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\User;
 use http\Url;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -24,5 +25,29 @@ class ProjectsController extends Controller
             'user_in_pr_data'=>$user_pr->where('id',$request->id)->first(),
             'coordinator'=>($user_pr->where('id',$request->id)->first() != null ? \Auth::user()->isCoordinatorOf($user_pr->where('id',$request->id)->first()) : false)
         ]);
+    }
+
+    public function leave(Request $request){
+        $validated_data = $request->validate([
+            'projectId' => 'required'
+        ]);
+
+        $project = Project::find($validated_data['projectId']);
+        $user = User::find(auth()->id());
+        $user->projects()->detach($project);
+
+        return redirect(route('user.projects'));
+    }
+
+    public function enter(Request $request){
+        $validated_data = $request->validate([
+            'projectId' => 'required'
+        ]);
+
+        $project = Project::find($validated_data['projectId']);
+        $user = User::find(auth()->id());
+        $user->projects()->attach($project);
+
+        return redirect(route('user.projects'));
     }
 }

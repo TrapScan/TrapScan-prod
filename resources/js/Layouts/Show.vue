@@ -23,7 +23,7 @@ export default {
 
 <template>
     <div class="min-h-screen h-full bg-mystic-500 dark:bg-mirage-500 dark:text-gray-300 ">
-        <nav class="bg-niagara-500 h-[64px] shadow-2xl">
+        <nav class="bg-niagara-500 min-h-[64px] h-auto shadow-2xl">
             <!-- Primary Navigation Menu -->
             <div class="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 py-5">
