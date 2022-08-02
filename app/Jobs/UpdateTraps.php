@@ -17,17 +17,18 @@ class UpdateTraps implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $project_id;
-    public $project_title;
+    public $project_nz_id;
     public User $user;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($project_id, User $user)
+    public function __construct($project_nz_id,$project_id, User $user)
     {
         $this->user = $user;
         $this->project_id = $project_id;
+        $this->project_nz_id = $project_nz_id;
     }
 
     /**
@@ -37,10 +38,9 @@ class UpdateTraps implements ShouldQueue
      */
     public function handle()
     {
-        $this->user->notify(new \App\Notifications\RealTimeNotification('Sync trap.nz traps'));
+        $this->user->notify(new \App\Notifications\RealTimeNotification('Sync trap.nz traps START'));
         try {
-            \Log::alert($this->project_id);
-            $data = file_get_contents("https://io.trap.nz/geo/trapnz-projects/wfs/O2ZNGAUpOJ5cHNZPx7wF6RaNort9J72jzlnCNLvOQGQ/'.$this->project_id.'?service=WFS&version=1.0.0&request=GetFeature&typeName=trapnz-projects:default-project-trap-records&outputFormat=json");
+            $data = file_get_contents("https://io.trap.nz/geo/trapnz-projects/wfs/O2ZNGAUpOJ5cHNZPx7wF6RaNort9J72jzlnCNLvOQGQ/".$this->project_nz_id."?service=WFS&version=1.0.0&request=GetFeature&typeName=trapnz-projects:default-project-trap-records&outputFormat=json");
             \Log::alert($data);
             $json = json_decode($data, true);
             \Log::alert($json);
@@ -63,7 +63,7 @@ class UpdateTraps implements ShouldQueue
                     if(!Trap::where('nz_trap_id',$item->trap_id)->exists()){
                         Trap::Create([
                             'nz_trap_id' => $item->trap_id,
-                            'project_id' => $item->project_id,
+                            'project_id' => $this->project_id,
                             'name' => $item->trap_code,
                             'coordinates' => $item->coordinates
                         ]);

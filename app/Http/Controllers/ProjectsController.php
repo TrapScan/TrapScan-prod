@@ -57,7 +57,8 @@ class ProjectsController extends Controller
     {
         $user = $request->user();
         $pr_id = $request->get('projectId');
-        UpdateTraps::dispatch($pr_id,$user);
+        $prject = Project::find($pr_id);
+        UpdateTraps::dispatch($prject->nz_id, $pr_id, $user);
 
         return back();
     }

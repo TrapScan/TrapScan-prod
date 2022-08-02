@@ -1,5 +1,5 @@
 <script>
-import {ElMessage} from "element-plus";
+import { ElNotification} from "element-plus";
 
 export default {
     components:{
@@ -20,21 +20,23 @@ export default {
             document.documentElement.classList.remove('dark')
         }
         Echo.channel('messages')
-            .listen('.newMessage', (message) => {
+            .listen('.newMessage', (message) => {console.log(message)
                 this.messages.push(message);
-                ElMessage({
-                    showClose: true,
+                ElNotification({
+                    title: 'Sync trap.nz',
                     message: message,
+                    duration: 0,
                     type: 'success',
-                });
+                })
             });
         Echo.private('App.Models.User.' + this.$page.props.auth.user.id ?? 0)
             .notification((notification) => {
-                ElMessage({
-                    showClose: true,
+                ElNotification({
+                    title: 'Sync trap.nz',
                     message: notification.message,
+                    duration: 0,
                     type: 'success',
-                });
+                })
             });
     },
 }
