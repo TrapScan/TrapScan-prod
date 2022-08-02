@@ -10,7 +10,11 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class UserProject extends Pivot
 {
     protected $casts = [
-        'catch_filter' => 'array'
+        'catch_filter' => 'array',
+        'coordinator' => 'boolean',
+        'notify_catches' => 'boolean',
+        'notify_inspections' => 'boolean',
+        'notify_problems' => 'boolean',
     ];
 
     public function hasCatchFilter() {

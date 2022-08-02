@@ -39,8 +39,8 @@
         <div class="flex justify-between items-center border-b-2 border-gray-400 py-3 w-full">
             <div class="montserrat font-bold text-md text-gray-900 dark:text-white">Catches</div>
             <div>
-                <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
-                    <input type="checkbox" v-model="notify_catches" id="checked-toggle" class="sr-only peer" >
+                <label for="checked-toggle1" class="inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" @change="update('notify_catches',notify_catches)" v-model="notify_catches" id="checked-toggle1" class="sr-only peer" >
                     <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
             </div>
@@ -48,8 +48,8 @@
         <div class="flex justify-between items-center border-b-2 border-gray-400 py-3 w-full mt-2">
             <div class="montserrat font-bold text-md text-gray-900 dark:text-white">Species filter</div>
             <div>
-                <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
-                    <input type="checkbox" v-model="notify_inspections" id="checked-toggle" class="sr-only peer" >
+                <label for="checked-toggle2" class="inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" @change="update('notify_inspections',notify_inspections)" v-model="notify_inspections" id="checked-toggle2" class="sr-only peer" >
                     <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
             </div>
@@ -57,8 +57,8 @@
         <div class="flex justify-between items-center py-3 w-full mt-2">
             <div class="montserrat font-bold text-md text-gray-900 dark:text-white">Trap Issues</div>
             <div>
-                <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
-                    <input type="checkbox" v-model="notify_problems" id="checked-toggle" class="sr-only peer" >
+                <label for="checked-toggle3" class="inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" @change="update('notify_problems',notify_problems)" v-model="notify_problems" id="checked-toggle3" class="sr-only peer" >
                     <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
             </div>
@@ -124,6 +124,11 @@ export default {
             form:useForm({
                 projectId:null
             }),
+            updateUserSettings: useForm({
+                projectId:null,
+                value:null,
+                key:null,
+            }),
         }
     },
     methods: {
@@ -138,6 +143,15 @@ export default {
         syncPr(){
             this.form.projectId = this.project.id;
             this.form.post(route('user.projects.sync'))
+        },
+        update(key, value){
+            this.updateUserSettings.projectId = this.project.id
+            this.updateUserSettings.value = value
+            this.updateUserSettings.key = key
+            this.updateUserSettings.put(route('user.projects.update_user'),{
+                preserveScroll:true,
+                preserveState:true
+            })
         }
     }
 }

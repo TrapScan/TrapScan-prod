@@ -129,6 +129,48 @@ class AdminController extends Controller
         ]);
     }
 
+    public function add_to_pr(Request $request){
+        $validated_data = $request->validate([
+            'userId' => 'required',
+            'projectId' => 'required'
+        ]);
+
+        $project = Project::find($validated_data['projectId']);
+        $user = User::find($validated_data['userId']);
+        $user->projects()->detach($project);
+        $user->projects()->attach($project);
+        return back();
+    }
+    public function remove_from_pr(Request $request){
+        $validated_data = $request->validate([
+            'userId' => 'required',
+            'projectId' => 'required'
+        ]);
+
+        $project = Project::find($validated_data['projectId']);
+        $user = User::find($validated_data['userId']);
+        $user->projects()->detach($project);
+        return back();
+    }
+
+    public function updateProjectUser(Request $request){
+        $validated_data = $request->validate([
+            'userId' => 'required',
+            'projectId' => 'required',
+            'value' => 'required',
+            'key' => 'required'
+        ]);
+
+        $project = Project::find($validated_data['projectId']);
+        $user = User::find($validated_data['userId']);
+
+        $user->projects()->updateExistingPivot($project->id, [
+            $validated_data['key'] => $validated_data['value']
+        ]);
+
+        return back();
+    }
+
     public function start_scrap(Request $request) {
         $loginNeeded = false;
         $client = new Client();

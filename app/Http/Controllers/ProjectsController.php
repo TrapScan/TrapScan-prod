@@ -62,4 +62,21 @@ class ProjectsController extends Controller
 
         return back();
     }
+
+    public function updateUserSettings(Request $request){
+        $validated_data = $request->validate([
+            'projectId' => 'required',
+            'value' => 'required',
+            'key' => 'required'
+        ]);
+
+        $project = Project::find($validated_data['projectId']);
+        $user = User::find(auth()->id());
+
+        $user->projects()->updateExistingPivot($project->id, [
+            $validated_data['key'] => $validated_data['value']
+        ]);
+
+        return back();
+    }
 }

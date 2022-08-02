@@ -48,9 +48,9 @@
             :project="project"
             :user_data="user_in_pr"
             v-if="coordinator"
-            :notify_catches="user_in_pr_data.pivot.notify_catches === 1"
-            :notify_inspections="user_in_pr_data.pivot.notify_inspections=== 1"
-            :notify_problems="user_in_pr_data.pivot.notify_problems === 1"
+            :notify_catches="user_in_pr_data.pivot.notify_catches"
+            :notify_inspections="user_in_pr_data.pivot.notify_inspections"
+            :notify_problems="user_in_pr_data.pivot.notify_problems"
         />
         <modal-window :showing="visible">
             <h1 class="mb-3 text-xl montserrat text-bay-of-many-500 font-bold">Are you sure you want to leave Predator Free Island Bay?</h1>

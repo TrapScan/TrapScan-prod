@@ -62,6 +62,7 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function()
 
     Route::post('project/leave',[ProjectsController::class, 'leave'])->name('user.projects.leave');
     Route::post('project/enter',[ProjectsController::class, 'enter'])->name('user.projects.enter');
+    Route::put('project/update_user',[ProjectsController::class, 'updateUserSettings'])->name('user.projects.update_user');
 
     Route::post('project/sync',[ProjectsController::class, 'updateProjectTraps'])->name('user.projects.sync');
 
@@ -79,6 +80,11 @@ Route::group(['middleware'=>['auth', 'verified','role:admin'], 'prefix'=>'admin'
     Route::get('/all_traps',[AdminController::class, 'all_traps'])->name('admin.all_traps');
 
     Route::get('/users',[AdminController::class, 'users'])->name('admin.users');
+    Route::post('/remove_from_pr',[AdminController::class, 'remove_from_pr'])->name('admin.remove_from_pr');
+    Route::post('/add_to_pr',[AdminController::class, 'add_to_pr'])->name('admin.add_to_pr');
+    Route::put('/update_user_pr_settingsr',[AdminController::class, 'updateProjectUser'])->name('admin.update_user_pr_settingsr');
+
+
 
     Route::get('/scrape_data',function () {
         return Inertia::render('Admin/Scrap');
