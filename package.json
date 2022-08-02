@@ -24,8 +24,10 @@
     "dependencies": {
         "element-plus": "^2.2.10",
         "flowbite": "^1.5.1",
+        "laravel-echo": "^1.13.0",
         "prettier": "^2.7.1",
         "prettier-plugin-tailwindcss": "^0.1.13",
+        "pusher-js": "^7.3.0",
         "qr-scanner": "^1.4.1",
         "vue-barcode-reader": "^1.0.2",
         "vue3-qrcode-reader": "^0.0.1"

@@ -1,4 +1,6 @@
 <script>
+import {ElMessage} from "element-plus";
+
 export default {
     components:{
 
@@ -17,6 +19,23 @@ export default {
         } else {
             document.documentElement.classList.remove('dark')
         }
+        Echo.channel('messages')
+            .listen('.newMessage', (message) => {
+                this.messages.push(message);
+                ElMessage({
+                    showClose: true,
+                    message: message,
+                    type: 'success',
+                });
+            });
+        Echo.private('App.Models.User.' + this.$page.props.auth.user.id ?? 0)
+            .notification((notification) => {
+                ElMessage({
+                    showClose: true,
+                    message: notification.message,
+                    type: 'success',
+                });
+            });
     },
 }
 </script>

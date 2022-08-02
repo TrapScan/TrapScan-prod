@@ -9,7 +9,7 @@
 <!--            </h6>-->
 <!--        </div>-->
         <div class="w-full px-8 mt-5">
-            <button type="button" class="flex montserrat items-center font-bold justify-center focus:outline-none text-white text-md sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-3 w-full transition duration-150 ease-in">
+            <button @click="syncPr" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="button" class="flex montserrat items-center font-bold justify-center focus:outline-none text-white text-md sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-3 w-full transition duration-150 ease-in">
                 <span class="uppercase">sync trap.nz traps</span>
             </button>
         </div>
@@ -134,6 +134,10 @@ export default {
         leave(){
             this.form.projectId = this.project.id;
             this.form.post(route('user.projects.leave'))
+        },
+        syncPr(){
+            this.form.projectId = this.project.id;
+            this.form.post(route('user.projects.sync'))
         }
     }
 }

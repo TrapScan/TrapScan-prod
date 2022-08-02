@@ -18,6 +18,7 @@
         "marvinlabs/laravel-discord-logger": "^1.2",
         "matanyadaev/laravel-eloquent-spatial": "^2.1",
         "psr/simple-cache": "^1.0",
+        "pusher/pusher-php-server": "^7.0",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "socialiteproviders/apple": "^5.3",
         "socialiteproviders/facebook": "^4.1",

@@ -8,6 +8,8 @@ use \App\Http\Controllers\OtherAuthController;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\ProjectsController;
+use MatanYadaev\EloquentSpatial\Objects\Point;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +62,9 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function()
 
     Route::post('project/leave',[ProjectsController::class, 'leave'])->name('user.projects.leave');
     Route::post('project/enter',[ProjectsController::class, 'enter'])->name('user.projects.enter');
+
+    Route::post('project/sync',[ProjectsController::class, 'updateProjectTraps'])->name('user.projects.sync');
+
 });
 
 Route::group(['middleware'=>['auth', 'verified','role:admin'], 'prefix'=>'admin'],  function() {

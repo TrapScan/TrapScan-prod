@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpdateTraps;
 use App\Models\Project;
 use App\Models\User;
-use http\Url;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
+
 class ProjectsController extends Controller
 {
+
     public function projects(Request $request){
         return Inertia::render('UserProjects',[
             'projects' => $request->user()->projectsAll()->get(),
@@ -49,5 +51,14 @@ class ProjectsController extends Controller
         $user->projects()->attach($project);
 
         return redirect(route('user.projects'));
+    }
+
+    public function updateProjectTraps(Request $request)
+    {
+        $user = $request->user();
+        $pr_id = $request->get('projectId');
+        UpdateTraps::dispatch($pr_id,$user);
+
+        return back();
     }
 }
