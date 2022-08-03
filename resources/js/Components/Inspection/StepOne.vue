@@ -12,7 +12,36 @@
             <text-val><template #icon><wrong/></template> Something's wrong</text-val>
             <arrow-next/>
         </div>
+        <div v-if="coordinator" @click='dialogVisible = !dialogVisible' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+            <text-val><template #icon><wrong/></template> Re-map QR</text-val>
+            <arrow-next/>
+        </div>
     </div>
+    <el-dialog
+        v-model="dialogVisible"
+        title="Install QR for Trap"
+        width="90%"
+    >
+        <div class="flex justify-center">
+            <el-select v-model="val" filterable placeholder="Select" class="w-full">
+                <el-option
+                    v-for="item in qrs"
+                    :key="item.qr_code"
+                    :label="item.qr_code"
+                    :value="item.qr_code"
+                />
+            </el-select>
+        </div>
+
+        <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="remap"
+        >Confirm</el-button
+        >
+      </span>
+        </template>
+    </el-dialog>
 </template>
 
 <script>
@@ -21,9 +50,11 @@ import InIt from "@/Components/SVG/InIt.vue";
 import Wrong from "@/Components/SVG/Wrong.vue";
 import ArrowNext from "@/Components/SVG/ArrowNext.vue";
 import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import {ElMessage} from "element-plus";
 export default {
     props:{
-        sel:String
+        qrs:Object,
+        coordinator:Boolean
     },
     name: "StepOne",
     components:{
@@ -35,6 +66,8 @@ export default {
     },
     data() {
         return {
+            dialogVisible: false,
+            val:null,
             values:[
                 {strikes:0,species_caught:"None",trap_condition: "Ok",words: "The trap caught nothing, ", step:2},
                 {
@@ -58,6 +91,10 @@ export default {
     methods:{
         selected (val){
             this.$emit('selected',this.values[val])
+        },
+        remap(){
+            this.$emit('remap',this.val)
+            this.dialogVisible = false
         }
     }
 }

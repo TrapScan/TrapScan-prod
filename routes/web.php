@@ -52,6 +52,7 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'inspection'],functi
     Route::get('/inspect/{qr_id?}',[InspectionController::class,'index'])->name('inspection.index');
     Route::get('/inspection_add',[InspectionController::class,'inspection_add'])->name('inspection.inspection_add');
     Route::post('/save',[InspectionController::class, 'save'])->name('inspection.save');
+    Route::post('/map_trap',[AdminController::class, 'map_trap'])->name('inspection.map_trap');
 });
 
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function() {

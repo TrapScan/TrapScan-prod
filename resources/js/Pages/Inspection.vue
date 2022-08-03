@@ -17,25 +17,41 @@
                 </Link>
             </div>
         </template>
-        <div class="px-4 pt-4 pb-2 w-full border-b-4 border-niagara-500 flex justify-center items-end">
-            <h6 class="font-italic text-gray-500 " v-if="trap_data.last_checked">
-                Last checked <span class="font-bold">{{trap_data.last_checked}}</span>
-            </h6>
-        </div>
-        <div class="p-4 w-full mt-5" v-if="step === 7 || step === 8">
-            <h1 class="text-2xl pl-4 w-full dark:text-white text-black font-bold montserrat">{{step === 7 ? 'Add a note to this inspection' : 'Edit inspection'}}</h1>
-        </div>
-        <div class="p-4 w-full mt-5" v-else>
-            <h1 class="text-2xl pl-4 w-full dark:text-white text-black font-bold montserrat border-l-4 border-mystic-800">{{form.words}}</h1>
-        </div>
-        <step-one @selected="setStepOne" v-if="step === 1"/>
-        <step-two @selected="setStepTwo" v-if="step === 2"/>
-        <step-three @selected="setStepThree" v-if="step === 3"/>
-        <step-four @selected="setStepFour" v-if="step === 4"/>
-        <step-five @selected="setStepFive" v-if="step === 5"/>
-        <step-six @selected="setStepSix" v-if="step === 6"/>
-        <add-note @selected="setNote" :text="form.notes" v-if="step === 7"/>
-        <edit-form @selected="setEdit" :values="form" v-if="step === 8"/>
+        <template v-if="!unmapped">
+            <div class="px-4 pt-4 pb-2 w-full border-b-4 border-niagara-500 flex justify-center items-end">
+                <h6 class="font-italic text-gray-500 " v-if="trap_data.last_checked">
+                    Last checked <span class="font-bold">{{trap_data.last_checked}}</span>
+                </h6>
+            </div>
+            <div class="p-4 w-full mt-5" v-if="step === 7 || step === 8">
+                <h1 class="text-2xl pl-4 w-full dark:text-white text-black font-bold montserrat">{{step === 7 ? 'Add a note to this inspection' : 'Edit inspection'}}</h1>
+            </div>
+            <div class="p-4 w-full mt-5" v-else>
+                <h1 class="text-2xl pl-4 w-full dark:text-white text-black font-bold montserrat border-l-4 border-mystic-800">{{form.words}}</h1>
+            </div>
+            <step-one @selected="setStepOne"  @remap="remap" :qrs="qrs" :coordinator="coordinator" v-if="step === 1"/>
+            <step-two @selected="setStepTwo" v-if="step === 2"/>
+            <step-three @selected="setStepThree" v-if="step === 3"/>
+            <step-four @selected="setStepFour" v-if="step === 4"/>
+            <step-five @selected="setStepFive" v-if="step === 5"/>
+            <step-six @selected="setStepSix" v-if="step === 6"/>
+            <add-note @selected="setNote" :text="form.notes" v-if="step === 7"/>
+            <edit-form @selected="setEdit" :values="form" v-if="step === 8"/>
+        </template>
+        <template v-else>
+            <div class="flex flex-wrap justify-center p-4">
+                <label for="small" class="mt-12 block mb-2 text-2xl font-bold text-gray-900 dark:text-gray-400">Map Code</label>
+                <select v-model="newQR.nz_id" id="small" class=" block p-4 mb-4 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option v-for="item in projects" :value="item.nz_trap_id">
+                           {{ item.name }} - {{ item.project.name }}
+                    </option>
+                </select>
+                <button type="button" @click="submit(1)" class="flex items-center justify-center focus:outline-none text-white text-lg bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
+                    Map QR
+                </button>
+            </div>
+        </template>
+
     </Show>
 </template>
 
@@ -51,6 +67,7 @@ import StepFive from "@/Components/Inspection/StepFive.vue";
 import StepFour from "@/Components/Inspection/StepFour.vue";
 import AddNote from "@/Components/Inspection/AddNote.vue";
 import EditForm from "@/Components/Inspection/EditForm.vue";
+import {ElMessage} from "element-plus";
 const dateOb = new Date()
 
 const day = ('0' + dateOb.getDate()).slice(-2)
@@ -78,11 +95,19 @@ export default {
     name: "Inspection",
     props:{
         trap_data:Object,
-        unmapped: Boolean
+        unmapped: Boolean,
+        coordinator: Boolean,
+        projects: Object,
+        qrs: Object,
     },
     data() {
         return {
             step:1,
+            newQR: useForm({
+                qr_id:null,
+                nz_id:null,
+                type:'redir'
+            }),
             form:useForm({
                 QR_ID: this.trap_data.qr_id,
                 code: 'test',
@@ -164,7 +189,29 @@ export default {
         },
         submitInspection(){
             this.form.post(route('inspection.save'))
-        }
+        },
+        remap(val){
+          this.newQR.qr_id = val
+          this.submit(2)
+        },
+        submit(type) {
+            if (type === 1){
+                this.newQR.qr_id = this.trap_data.qr_id
+            }else{
+                this.newQR.nz_id = this.trap_data.nz_trap_id
+            }
+            this.newQR.post(route('inspection.map_trap'),{
+                preserveScroll: true,
+                preserveState: true,
+                onSuccess:() => {
+                    ElMessage({
+                        message: 'Congrats, trap mapped.',
+                        type: 'success',
+                    })
+
+                }
+            })
+        },
     }
 }
 </script>

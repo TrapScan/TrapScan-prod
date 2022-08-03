@@ -6,6 +6,7 @@ use App\Http\Requests\InspectionQrRequest;
 use App\Jobs\SendCatchNotificationToCoordinators;
 use App\Jobs\SendTrapIssueNotificationToCoordinators;
 use App\Jobs\UploadToTrapNZ;
+use App\Models\Project;
 use App\Models\QR;
 use App\Models\Trap;
 use Carbon\Carbon;
@@ -23,8 +24,8 @@ class InspectionController extends Controller
             session()->flash('message','Trap not found');
             return back();
         }
-
         $unmapped = false;
+        $coordinator = false;
         if($qr->trap_id) {
             $trap = Trap::find($qr->trap_id);
             $last_inspection = $trap->inspections()->latest()->limit(1)->first();
@@ -36,6 +37,9 @@ class InspectionController extends Controller
                 $trap->last_caught = $trap->inspections()->where('species_caught', '!=', 'None')->first()->species_caught;
             }
             $trap->total_catches = $trap->inspections()->where('species_caught', '!=', 'None')->count();
+
+            $project = Project::find($trap->project_id);
+            $coordinator = $request->user()->isCoordinatorOf($project);
         } else {
             // The trap is unmapped, return just the code.
             // Frontend looks for nz_trap_id and will conditionally redirect
@@ -44,9 +48,23 @@ class InspectionController extends Controller
             $unmapped = true;
         }
 
+            $projects = $request->user()->isInProject();
+            $ids = collect();
+            foreach ($projects as $pr){
+                $ids->push($pr->id);
+            }
+            $pr = Trap::select('id', 'project_id', 'nz_trap_id', 'name', 'coordinates', 'qr_id')
+                ->whereIn('project_id',$ids)
+                ->noCode()->with('project')->get();
+
         return Inertia::render('Inspection',[
-            'trap_data'=>$trap,
-            'unmapped'=>$unmapped
+            'trap_data' => $trap,
+            'unmapped' => $unmapped,
+            'projects' => $pr,
+            'coordinator' => $coordinator,
+            'qrs' => QR::whereNull('trap_id')
+                ->orderBy('qr_code')
+                ->get(),
         ]);
 
     }
