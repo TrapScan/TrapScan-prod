@@ -82,7 +82,7 @@ class ProjectsController extends Controller
     }
 
     public function generateQr(Request $request){
-        QrCode::size(420)->format('png')->generate(env('APP_URL') . '/scan/' . $request->qr_code, public_path('/qrcodes/'. $request->qr_code . '.png'));
+        QrCode::size(420)->format('png')->merge(public_path('img.png'), 0.1, true)->generate(env('APP_URL') . '/scan/' . $request->qr_code, public_path('/qrcodes/'. $request->qr_code . '.png'));
         $qr_code = Image::make(public_path('/qrcodes/'. $request->qr_code . '.png'));
         $template = Image::make(public_path('qr_template.png'))
             ->insert($qr_code, 'top-left', 110, 210)
