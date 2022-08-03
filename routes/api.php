@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/qr/print/{qr:qr_code}',[\App\Http\Controllers\ProjectsController::class, 'generateQr'])->name('api.print_code');
+Route::get('/qr/print/{qr_code}',[\App\Http\Controllers\ProjectsController::class, 'generateQr'])->name('api.print_code');
