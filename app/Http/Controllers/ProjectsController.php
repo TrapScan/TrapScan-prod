@@ -91,9 +91,10 @@ class ProjectsController extends Controller
                 $font->size(40);
             })
             ->text(\Carbon\Carbon::now()->format('dmy'), 520, 993, function($font) {
-                $font->file(public_path() . '/Montserrat-Bold.ttf');
+                $font->file(public_path() . '/FiraSans-Regular.ttf');
                 $font->color('#87A0B1');
                 $font->size(22);
+                $font->opacity(25);
             });
         return $template->response('png');
     }
