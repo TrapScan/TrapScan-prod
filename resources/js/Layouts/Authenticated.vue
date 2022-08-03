@@ -2,7 +2,6 @@
 import { Link } from '@inertiajs/inertia-vue3'
 import Menu from "@/Components/BottomMenu.vue";
 import {ElMessage} from "element-plus";
-import { ElNotification } from 'element-plus'
 
 export default {
     components:{
@@ -26,19 +25,17 @@ export default {
         Echo.channel('messages')
             .listen('.newMessage', (message) => {console.log(message)
                 this.messages.push(message);
-                ElNotification({
-                    title: 'Sync trap.nz',
+                ElMessage({
+                    showClose: true,
                     message: message,
-                    duration: 0,
                     type: 'success',
                 })
             });
         Echo.private('App.Models.User.' + this.$page.props.auth.user.id ?? 0)
             .notification((notification) => {
-                ElNotification({
-                    title: 'Sync trap.nz',
+                ElMessage({
+                    showClose: true,
                     message: notification.message,
-                    duration: 0,
                     type: 'success',
                 })
             });

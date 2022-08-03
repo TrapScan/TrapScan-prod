@@ -88,7 +88,7 @@ class ProjectsController extends Controller
             ->insert($qr_code, 'top-left', 110, 210)
             ->text(ucfirst($request->qr_code), 100, 159, function($font) {
                 $font->file(public_path() . '/Montserrat-Bold.ttf');
-                $font->size(40);
+                $font->size(50);
             })
             ->text(\Carbon\Carbon::now()->format('dmy'), 520, 993, function($font) {
                 $font->file(public_path() . '/FiraSans-Regular.ttf');
