@@ -38,7 +38,7 @@
                     </td>
                     <td class="border-t">
                         <div class="flex w-full justify-center">
-                            <button @click="open(trap.nz_trap_id)" class="uppercase p-2 mr-1 rounded-full text-sm text-white font-bold bg-blue-500 hover:bg-blue-800">Print trap</button>
+                            <button @click="print(trap.qr_id)" class="uppercase p-2 mr-1 rounded-full text-sm text-white font-bold bg-blue-500 hover:bg-blue-800">Print trap</button>
                             <button @click="open(trap.nz_trap_id)" class="uppercase p-2 rounded-full text-white text-sm font-bold bg-niagara-500 hover:bg-green-800">Remap trap</button>
 
                         </div>
@@ -140,6 +140,20 @@ export default {
         open(nz_id){
             this.newQR.nz_id = nz_id;
             this.dialogVisible = true;
+        },
+        print (item) {
+            axios({
+                url: route('api.print_code', item),
+                method: 'GET',
+                responseType: 'blob' // important
+            }).then((response) => {
+                const url = window.URL.createObjectURL(new Blob([response.data]))
+                const link = document.createElement('a')
+                link.href = url
+                link.setAttribute('download', 'image.png')
+                document.body.appendChild(link)
+                link.click()
+            })
         }
     }
 }

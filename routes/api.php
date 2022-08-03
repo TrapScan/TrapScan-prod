@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/qr/print/{qr:qr_code}',[\App\Http\Controllers\ProjectsController::class, 'generateQr'])->name('api.print_code');

@@ -7,7 +7,8 @@ use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-
+use Intervention\Image\Facades\Image;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ProjectsController extends Controller
 {
@@ -78,5 +79,22 @@ class ProjectsController extends Controller
         ]);
 
         return back();
+    }
+
+    public function generateQr(Request $request){
+        QrCode::size(420)->format('png')->generate(env('APP_URL') . '/scan/' . $request->qr_code, '../public/qrcodes/' . $request->qr_code . '.png');
+        $qr_code = Image::make(public_path() . '/qrcodes/' . $request->qr_code . '.png');
+        $template = Image::make(public_path() . '/qr_template.png')
+            ->insert($qr_code, 'top-left', 110, 210)
+            ->text(strtoupper($request->qr_code), 100, 159, function($font) {
+                $font->file(public_path() . '/Montserrat-Bold.ttf');
+                $font->size(40);
+            })
+            ->text(\Carbon\Carbon::now()->format('dmy'), 520, 993, function($font) {
+                $font->file(public_path() . '/Montserrat-Bold.ttf');
+                $font->color('#87A0B1');
+                $font->size(22);
+            });
+        return $template->response('png');
     }
 }
