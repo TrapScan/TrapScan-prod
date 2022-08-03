@@ -92,7 +92,7 @@ class ProjectsController extends Controller
             })
             ->text(\Carbon\Carbon::now()->format('dmy'), 520, 993, function($font) {
                 $font->file(public_path() . '/FiraSans-Regular.ttf');
-                $font->color('#87A0B1');
+                $font->color([255, 255, 255, 0.5]);
                 $font->size(22);
             });
         return $template->response('png');
