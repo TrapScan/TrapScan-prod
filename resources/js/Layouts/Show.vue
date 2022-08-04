@@ -20,8 +20,8 @@ export default {
             document.documentElement.classList.remove('dark')
         }
         Echo.channel('messages')
-            .listen('.newMessage', (message) => {console.log(message)
-                this.messages.push(message);
+            .listen('.newMessage', (message) => {
+                console.log(message)
                 ElMessage({
                     showClose: true,
                     message: message,
@@ -30,6 +30,7 @@ export default {
             });
         Echo.private('App.Models.User.' + this.$page.props.auth.user.id ?? 0)
             .notification((notification) => {
+                console.log(message)
                 ElMessage({
                     showClose: true,
                     message: notification.message,
