@@ -30,7 +30,7 @@ export default {
             });
         Echo.private('App.Models.User.' + this.$page.props.auth.user.id ?? 0)
             .notification((notification) => {
-                console.log(message)
+                console.log(notification.message)
                 ElMessage({
                     showClose: true,
                     message: notification.message,
