@@ -70,32 +70,32 @@
                         </td>
                         <td class="border-t">
                                 <span class="flex items-center px-6 py-4">
-                                     <label for="checked-toggle-1" class="inline-flex relative items-center cursor-pointer">
-                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'coordinator',pr.pivot.coordinator)" type="checkbox" v-model="pr.pivot.coordinator" id="checked-toggle-1" class="sr-only peer" >
+                                     <label :for="'checked-toggle-1-'+pr.id" class="inline-flex relative items-center cursor-pointer">
+                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'coordinator',pr.pivot.coordinator)" type="checkbox" v-model="pr.pivot.coordinator" :id="'checked-toggle-1-'+pr.id" class="sr-only peer" >
                                         <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     </label>
                                 </span>
                         </td>
                         <td class="border-t">
                              <span class="flex items-center px-6 py-4">
-                                     <label for="checked-toggle-2" class="inline-flex relative items-center cursor-pointer">
-                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'notify_catches',pr.pivot.notify_catches)" type="checkbox" v-model="pr.pivot.notify_catches" id="checked-toggle-2" class="sr-only peer" >
+                                     <label :for="'checked-toggle-2-'+pr.id" class="inline-flex relative items-center cursor-pointer">
+                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'notify_catches',pr.pivot.notify_catches)" type="checkbox" v-model="pr.pivot.notify_catches" :id="'checked-toggle-2-'+pr.id" class="sr-only peer" >
                                         <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     </label>
                                 </span>
                         </td>
                         <td class="border-t">
                              <span class="flex items-center px-6 py-4">
-                                     <label for="checked-toggle-3" class="inline-flex relative items-center cursor-pointer">
-                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'notify_inspections',pr.pivot.notify_inspections)" type="checkbox" v-model="pr.pivot.notify_inspections" id="checked-toggle-3" class="sr-only peer" >
+                                     <label :for="'checked-toggle-3-'+pr.id" class="inline-flex relative items-center cursor-pointer">
+                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'notify_inspections',pr.pivot.notify_inspections)" type="checkbox" v-model="pr.pivot.notify_inspections" :id="'checked-toggle-3-'+pr.id" class="sr-only peer" >
                                         <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     </label>
                                 </span>
                         </td>
                         <td class="border-t">
                              <span class="flex items-center px-6 py-4">
-                                     <label for="checked-toggle-4" class="inline-flex relative items-center cursor-pointer">
-                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'notify_problems',pr.pivot.notify_problems)" type="checkbox" v-model="pr.pivot.notify_problems" id="checked-toggle-4" class="sr-only peer" >
+                                     <label :for="'checked-toggle-4-'+pr.id" class="inline-flex relative items-center cursor-pointer">
+                                        <input @change="updateCoordinator(pr.id,users.data[projectData].id,'notify_problems',pr.pivot.notify_problems)" type="checkbox" v-model="pr.pivot.notify_problems" :id="'checked-toggle-4-'+pr.id" class="sr-only peer" >
                                         <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     </label>
                                 </span>
