@@ -46,15 +46,15 @@
                 </label>
             </div>
         </div>
-        <div class="flex justify-between items-center border-b-2 border-gray-400 py-3 w-full mt-2">
-            <div class="montserrat font-bold text-md text-gray-900 dark:text-white">Species filter</div>
-            <div>
-                <label for="checked-toggle2" class="inline-flex relative items-center cursor-pointer">
-                    <input type="checkbox" @change="update('notify_inspections',notify_inspections)" v-model="notify_inspections" id="checked-toggle2" class="sr-only peer" >
-                    <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                </label>
-            </div>
-        </div>
+<!--        <div class="flex justify-between items-center border-b-2 border-gray-400 py-3 w-full mt-2">-->
+<!--            <div class="montserrat font-bold text-md text-gray-900 dark:text-white">Species filter</div>-->
+<!--            <div>-->
+<!--                <label for="checked-toggle2" class="inline-flex relative items-center cursor-pointer">-->
+<!--                    <input type="checkbox" @change="update('notify_inspections',notify_inspections)" v-model="notify_inspections" id="checked-toggle2" class="sr-only peer" >-->
+<!--                    <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  dark:border-gray-600 peer-checked:bg-blue-600"></div>-->
+<!--                </label>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="flex justify-between items-center py-3 w-full mt-2">
             <div class="montserrat font-bold text-md text-gray-900 dark:text-white">Trap Issues</div>
             <div>

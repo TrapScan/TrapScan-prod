@@ -112,7 +112,6 @@ export default {
                 QR_ID: this.trap_data.qr_id,
                 code: 'test',
                 date_format: dateS +' ' + timeS,
-                recorded_by: null,
                 strikes: null,
                 species_caught: null,
                 status: null,
@@ -142,7 +141,7 @@ export default {
             this.form.rebaited = data.rebaited ?? null;
             this.form.status = data.status ?? null;
             this.form.bait_type = data.bait_type ?? null;
-            this.form.species_caught = data.species_caught ?? null;
+            this.form.species_caught = data.species_caught ?? 'None';
             this.form.words = this.form.words + data.words ?? null;
             this.step = data.step
         },

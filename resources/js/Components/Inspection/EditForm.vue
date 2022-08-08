@@ -48,7 +48,7 @@
 
         <div class="flex w-full mx-auto">
             <button @click='selected(0)' class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
-                <span class="mr-2 uppercase">Yes, submit inspection</span>
+                <span class="mr-2 uppercase">SUBMIT INSPECTION</span>
             </button>
         </div>
     </div>

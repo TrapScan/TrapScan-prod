@@ -22,7 +22,7 @@ class InspectionController extends Controller
         $qr = QR::where('qr_code', $request->qr_id)->first();
         if(! $qr) {
             session()->flash('message','Trap not found');
-            return back();
+            return redirect(route('scan'));
         }
         $unmapped = false;
         $coordinator = false;
@@ -108,6 +108,8 @@ class InspectionController extends Controller
     }
     public function save(Request $request)
     {
+        dump($request);
+
         $validated_data = $request->validate([
             'QR_ID' => 'required',
             'code' => 'required',
@@ -119,7 +121,7 @@ class InspectionController extends Controller
             'trap_condition' => 'required',
             'notes' => 'nullable|string',
             'words' => 'required',
-            'upload_to_nz' => 'required',
+            'upload_to_nz' => 'required'
         ]);
         $trap = Trap::where('qr_id', $validated_data['QR_ID'])->first();
         if (!$trap) {
@@ -159,7 +161,7 @@ class InspectionController extends Controller
             }
 
             if($inspection->upload_to_nz) {
-                UploadToTrapNZ::dispatch($inspection);
+                //UploadToTrapNZ::dispatch($inspection);
             }
 
             if($inspection->trap_condition === 'Needs maintenance') {
@@ -169,7 +171,7 @@ class InspectionController extends Controller
             session()->flash('trap_id',$trap->id);
             session()->flash('las_inspection',$inspection);
 
-            return redirect(route('scan'));
+            return redirect(route('inspection.inspection_add'));
         }
 
     }

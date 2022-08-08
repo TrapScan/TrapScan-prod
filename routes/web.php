@@ -28,8 +28,8 @@ Route::get('/ui', function () {
     return Inertia::render('UIElements');
 })->name('ui');
 
-Route::get('/anon/scan/{qr_id?}', function () {
-    return Inertia::render('Anonscan');
+Route::get('/anon/scan/{qr_id?}', function ($qr_id) {
+    return Inertia::render('Anonscan',['qr_id'=>$qr_id]);
 })->name('anon_form');
 
 Route::get('/anon_success', function () {
@@ -41,6 +41,7 @@ Route::post('/anon', [InspectionController::class, 'createAnon'])->name('anon_fo
 Route::get('/scan', function () {
     return Inertia::render('Main');
 })->middleware(['auth', 'verified'])->name('scan');
+Route::get('/scan/{qr_id?}',[InspectionController::class,'index'])->middleware(['auth', 'verified'])->name('inspection.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -51,7 +52,6 @@ Route::get('/about', function () {
 })->middleware(['auth', 'verified'])->name('about');
 
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'inspection'],function() {
-    Route::get('/inspect/{qr_id?}',[InspectionController::class,'index'])->name('inspection.index');
     Route::get('/inspection_add',[InspectionController::class,'inspection_add'])->name('inspection.inspection_add');
     Route::post('/save',[InspectionController::class, 'save'])->name('inspection.save');
     Route::post('/map_trap',[AdminController::class, 'map_trap'])->name('inspection.map_trap');
