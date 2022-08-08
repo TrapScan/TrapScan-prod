@@ -27,9 +27,9 @@
             </div>
         </div>
         <div v-if="show" class="w-full bg-white w-full px-4 py-3">
-            <p>
+            <p >
                 If new traps are added to the above Trap.NZ project, pressing this will import them into TrapScan so that QR cards can be mapped to them. This button will also update any traps that have changed in Trap.NZ such as name and location changes.
-                <img class="emoji" alt="warning" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png"> This can only be used once per hour
+                <img class="emoji flex inline-flex" alt="warning" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png"> This can only be used once per hour
             </p>
         </div>
     </div>
@@ -74,7 +74,7 @@
         </button>
     </div>
     <modal-window :showing="visible">
-        <h1 class="mb-3 text-xl montserrat text-bay-of-many-500 font-bold">Are you sure you want to leave Predator Free Island Bay?</h1>
+        <h1 class="mb-3 text-xl montserrat text-bay-of-many-500 font-bold">Are you sure you want to leave {{project.name ?? ''}}?</h1>
         <form @submit.prevent="leave">
             <div class="flex flex-wrap">
                 <div class="flex w-full mx-auto">

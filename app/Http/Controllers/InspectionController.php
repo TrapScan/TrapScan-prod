@@ -169,7 +169,7 @@ class InspectionController extends Controller
             session()->flash('trap_id',$trap->id);
             session()->flash('las_inspection',$inspection);
 
-            return redirect(route('inspection.inspection_add'));
+            return redirect(route('scan'));
         }
 
     }

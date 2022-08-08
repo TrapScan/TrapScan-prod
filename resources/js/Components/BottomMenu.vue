@@ -8,7 +8,7 @@
                 <!-- Item #1 -->
                 <div class="flex group">
 
-                    <Link :href="route('about')" class="p-1 montserrat" :class="{'text-niagara-500  dark:text-niagara-500': route().current('about'), ' text-bali-hai-500 font-bold': !route().current('about')}">
+                    <Link :href="route('about')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('about'), ' text-bali-hai-500 font-bold': !route().current('about')}">
 							<span class="flex flex-col items-center">
 								<!-- Icon -->
 								<svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('projects'),'text-bali-hai-500 hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('projects')}" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" color="#000"><path d="M13 7.5a1 1 0 11-2 0 1 1 0 012 0zm-3 3.75a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v4.25h.75a.75.75 0 010 1.5h-3a.75.75 0 010-1.5h.75V12h-.75a.75.75 0 01-.75-.75z"></path><path fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"></path></svg>
@@ -72,13 +72,21 @@
                     <Link :href="route('user.settings')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('user.settings'), 'text-bali-hai-500 font-bold': !route().current('user.settings')}">
 							<span class="flex flex-col items-center">
 								<!-- Icon -->
-                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('user.settings'),'text-bali-hai-500 font-bold hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('user.settings')}"  width="24" height="24" viewBox="0 0 19 10" color="#000" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.95334 7.855L1.86234 5.853L6.63334 0.899999H8.53134L4.56634 5.112L3.63034 6.139L1.95334 7.855ZM0.44534 10V0.899999H2.13534V10H0.44534ZM6.78934 10L3.30534 5.853L4.42334 4.618L8.76534 10H6.78934ZM10.566 10V0.899999H14.31C15.116 0.899999 15.805 1.03 16.377 1.29C16.9577 1.55 17.404 1.92267 17.716 2.408C18.028 2.89333 18.184 3.46967 18.184 4.137C18.184 4.80433 18.028 5.38067 17.716 5.866C17.404 6.35133 16.9577 6.724 16.377 6.984C15.805 7.244 15.116 7.374 14.31 7.374H11.502L12.256 6.581V10H10.566ZM12.256 6.763L11.502 5.944H14.232C14.9774 5.944 15.5364 5.788 15.909 5.476C16.2904 5.15533 16.481 4.709 16.481 4.137C16.481 3.55633 16.2904 3.11 15.909 2.798C15.5364 2.486 14.9774 2.33 14.232 2.33H11.502L12.256 1.498V6.763Z"/>
+                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('user.settings'),'text-bali-hai-500 font-bold hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('user.settings')}" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_1874_3770)">
+                                    <path d="M15.0369 8.33008C16.0496 8.33008 16.8706 7.50909 16.8706 6.49634C16.8706 5.48359 16.0496 4.6626 15.0369 4.6626C14.0241 4.6626 13.2031 5.48359 13.2031 6.49634C13.2031 7.50909 14.0241 8.33008 15.0369 8.33008Z" fill="#849DAE"/>
+                                    <path d="M18.6028 10.2647C18.2452 9.9071 17.6309 9.24695 16.4389 9.24695H14.1101C11.5887 9.23778 9.53491 7.18399 9.53491 4.6626H7.70117C7.70117 7.55991 9.63577 10.0171 12.2855 10.8148L12.2855 23H14.1193L14.1193 17.4988H15.953V23H17.7867V12.0434L21.4084 15.665L22.7012 14.3723L18.6028 10.2647Z" fill="#849DAE"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_1874_3770">
+                                    <rect width="28" height="28" fill="white" transform="translate(0.701172)"/>
+                                    </clipPath>
+                                    </defs>
                                 </svg>
 
                                 <!-- Text -->
 								<span class="text-xs mb-2 transition-all duration-200">
-									Settings
+									Me
 								</span>
 							</span>
                     </Link>

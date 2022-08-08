@@ -53,7 +53,7 @@
             :notify_problems="user_in_pr_data.pivot.notify_problems"
         />
         <modal-window :showing="visible">
-            <h1 class="mb-3 text-xl montserrat text-bay-of-many-500 font-bold">Are you sure you want to leave Predator Free Island Bay?</h1>
+            <h1 class="mb-3 text-xl montserrat text-bay-of-many-500 font-bold">Are you sure you want to leave {{project.name ?? ''}}?</h1>
             <form @submit.prevent="leave">
                 <div class="flex flex-wrap">
                     <div class="flex w-full mx-auto">

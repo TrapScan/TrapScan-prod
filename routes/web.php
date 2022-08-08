@@ -20,7 +20,7 @@ use \App\Http\Controllers\ProjectsController;
 */
 Route::post('/magic-login', [OtherAuthController::class, 'sendLoginLink'])->name('magic_login');
 
-Route::get('/', function () {
+Route::get('/temp', function () {
     return Inertia::render('Index');
 })->name('index');
 
@@ -28,7 +28,7 @@ Route::get('/ui', function () {
     return Inertia::render('UIElements');
 })->name('ui');
 
-Route::get('/anon', function () {
+Route::get('/anon/scan/{qr_id?}', function () {
     return Inertia::render('Anonscan');
 })->name('anon_form');
 

@@ -18,7 +18,7 @@
             </div>
         </template>
         <template v-if="!unmapped">
-            <div class="px-4 pt-4 pb-2 w-full border-b-4 border-niagara-500 flex justify-center items-end">
+            <div v-if="step === 1" class="px-4 pt-4 pb-2 w-full border-b-4 border-niagara-500 flex justify-center items-end">
                 <h6 class="font-italic text-gray-500 " v-if="trap_data.last_checked">
                     Last checked <span class="font-bold">{{trap_data.last_checked}}</span>
                 </h6>
