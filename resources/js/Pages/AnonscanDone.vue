@@ -35,7 +35,7 @@ import {ref} from "vue";
                     <p class="text-gray-500 mt-3 montserrat dark:text-white ">
                         Joining TrapScan only takes a few seconds, allows you to get up and running quickly, and it’s free.
                     </p>
-                    <Link :href="route('anon_form')" class="flex w-full mx-auto mt-4">
+                    <Link :href="route('login')" class="flex w-full mx-auto mt-4">
                         <button class="flex mt-4 items-center justify-center focus:outline-none text-white text-lg bg-niagara-500 hover:bbg-niagara-600 rounded-full py-4 w-full transition duration-150 ease-in">
                             <span class="uppercase montserrat font-bold ">join trapscan</span>
                         </button>

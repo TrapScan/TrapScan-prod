@@ -26,9 +26,10 @@
                 </div>
             </div>
         </div>
-        <div v-if="show" class="w-full animate__animated bg-white w-full px-4 py-3" :class="{'animate__fadeInLeft': show}">
+        <div v-if="show" class="w-full bg-white w-full px-4 py-3">
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                If new traps are added to the above Trap.NZ project, pressing this will import them into TrapScan so that QR cards can be mapped to them. This button will also update any traps that have changed in Trap.NZ such as name and location changes.
+                <img class="emoji" alt="warning" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png"> This can only be used once per hour
             </p>
         </div>
     </div>

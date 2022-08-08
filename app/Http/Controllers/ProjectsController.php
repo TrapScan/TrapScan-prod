@@ -16,7 +16,7 @@ class ProjectsController extends Controller
     public function projects(Request $request){
         return Inertia::render('UserProjects',[
             'projects' => $request->user()->projectsAll()->get(),
-            'projects_all' => Project::orderBy('name')->get()
+            'projects_all' => Project::orderBy('name')->whereNotIn('id',$request->user()->projectsAll()->pluck('project_id'))->get()
         ]);
     }
     public function view(Request $request){

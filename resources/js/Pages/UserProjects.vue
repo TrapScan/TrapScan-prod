@@ -1,5 +1,5 @@
 <template>
-    <Show>
+    <BreezeAuthenticatedLayout>
         <template #header>
             <div>
                 <Link :href="route('scan')">
@@ -20,18 +20,18 @@
 
         <index :list="projects" :projects_all="projects_all"/>
 
-    </Show>
+    </BreezeAuthenticatedLayout>
 </template>
 
 <script>
-import Show from '@/Layouts/Show.vue';
+import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Link } from '@inertiajs/inertia-vue3'
 import Index from "@/Components/Projects/Index.vue";
 export default {
     components:{
         Index,
         Link,
-        Show
+        BreezeAuthenticatedLayout
     },
     name: "UserProjects",
     props:{

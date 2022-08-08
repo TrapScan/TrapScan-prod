@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use \App\Http\Controllers\InspectionController;
@@ -8,7 +7,6 @@ use \App\Http\Controllers\OtherAuthController;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\ProjectsController;
-use MatanYadaev\EloquentSpatial\Objects\Point;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +23,10 @@ Route::post('/magic-login', [OtherAuthController::class, 'sendLoginLink'])->name
 Route::get('/', function () {
     return Inertia::render('Index');
 })->name('index');
+
+Route::get('/ui', function () {
+    return Inertia::render('UIElements');
+})->name('ui');
 
 Route::get('/anon', function () {
     return Inertia::render('Anonscan');
