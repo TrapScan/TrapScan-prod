@@ -20,7 +20,7 @@ use \App\Http\Controllers\ProjectsController;
 */
 Route::post('/magic-login', [OtherAuthController::class, 'sendLoginLink'])->name('magic_login');
 
-Route::get('/temp', function () {
+Route::get('/anon/scan', function () {
     return Inertia::render('Index');
 })->name('index');
 
@@ -28,9 +28,7 @@ Route::get('/ui', function () {
     return Inertia::render('UIElements');
 })->name('ui');
 
-Route::get('/anon/scan/{qr_id?}', function ($qr_id) {
-    return Inertia::render('Anonscan',['qr_id'=>$qr_id]);
-})->name('anon_form');
+Route::get('/anon/scan/{qr_id?}',[InspectionController::class,'anon_index'])->name('anon_form');
 
 Route::get('/anon_success', function () {
     return Inertia::render('AnonscanDone');
@@ -42,6 +40,7 @@ Route::get('/scan', function () {
     return Inertia::render('Main');
 })->middleware(['auth', 'verified'])->name('scan');
 Route::get('/scan/{qr_id?}',[InspectionController::class,'index'])->middleware(['auth', 'verified'])->name('inspection.index');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

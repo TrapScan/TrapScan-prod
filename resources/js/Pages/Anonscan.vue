@@ -1,62 +1,114 @@
-<script setup>
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import { useForm } from '@inertiajs/inertia-vue3';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+<script>
+import Show from '@/Layouts/Show.vue';
+import { useForm, Link } from '@inertiajs/inertia-vue3';
+import SomthingElse from "@/Components/SVG/SomthingElse.vue";
+import Rat from "@/Components/SVG/Animals/Rat.vue";
+import Mouse from "@/Components/SVG/Animals/Mouse.vue";
+import Stoat from "@/Components/SVG/Animals/Stoat.vue";
+import Weasel from "@/Components/SVG/Animals/Weasel.vue";
+import Hedgehog from "@/Components/SVG/Animals/Hedgehog.vue";
+import ArrowNext from "@/Components/SVG/ArrowNext.vue";
+import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import { ref, reactive } from 'vue'
 
-const form = useForm({
-    QR_ID:null,
-    species_caught:null
-})
-const species = [
-    'Rat', 'Mouse', 'Stoat', 'Weasel', 'Hedgehog','Rat - Kiore',
-    'Rat - Norway', 'Unspecified', 'Bird', 'Rat - Ship', 'Cat',
-    'Deer', 'Dog', 'Ferret', 'Goat', 'Hare', 'Magpie', 'Peafowl',
-    'Pig', 'Possum', 'Rabbit', 'Turkey'
-];
-const submit = () => {
-    form.post(route('anon_form.store'),);
-};
+export default {
+    props: {
+        trap_data: Object
+    },
+    components: {
+        Show, SomthingElse, Rat, Mouse, Stoat, Weasel, Hedgehog, ArrowNext, TextVal, Link
+    },
+    setup(props) {
+        console.log(props)
+        const trap_data = props.trap_data
+        const submit = (val) => {
+            form.QR_ID = trap_data.qr_id
+            form.species_caught = val
+            form.post(route('anon_form.store'));
+        };
+        const form = useForm({
+            QR_ID:null,
+            species_caught:null
+        })
+        const show_all = ref(false)
+
+       const species = ['Rat', 'Mouse', 'Stoat', 'Weasel', 'Hedgehog']
+       const extraSpecies = ['Rat - Kiore', 'Rat - Norway', 'Unspecified', 'Bird', 'Rat - Ship', 'Cat', 'Deer', 'Dog', 'Ferret', 'Goat', 'Hare', 'Magpie', 'Peafowl', 'Pig', 'Possum', 'Rabbit', 'Turkey', 'None']
+
+        return {
+            form,
+            submit,
+            show_all,
+            extraSpecies,
+            species,
+            trap_data
+        }
+    }
+}
 </script>
 
+
 <template>
-    <BreezeGuestLayout>
+    <Show>
+        <template #header>
+            <div >
+                <Link :href="route('index')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </Link>
+            </div>
+            <div>
+                <h1 class="text-xl w-full text-white font-bold montserrat">{{trap_data.qr_id}}</h1>
+            </div>
+            <div>
+                <Link :href="route('index')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </Link>
+            </div>
+        </template>
         <div class="flex flex-wrap overflow-hidden px-4">
             <div class="w-full overflow-hidden">
-                <div class="mb-10 ">
-                    <h1 class="font-black dark:text-white text-3xl montserrat font-bold">Hello 👋</h1>
-                    <p class="text-gray-500 mt-3 montserrat dark:text-white ">
-                        This is a mobile web application designed by conservation volunteers to simplify their record keeping and reporting work.
-                    </p>
-                    <div class="w-full bg-white dark:bg-mirage-400 rounded-xl dark:text-white p-6 flex flex-col mt-6">
-                        <div v-if="$page.props.flash.message" class="alert w-full my-5">
-                            <el-alert :title="$page.props.flash.message" type="warning" show-icon />
-                        </div>
-
-                        <BreezeValidationErrors class="mb-4" />
-
-                        <form @submit.prevent="submit" class="flex flex-wrap justify-start w-full">
-                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                                <label for="first_name" class="block mb-2 text-xl font-medium text-dark dark:text-gray-300">QR ID</label>
-                                <input v-model="form.QR_ID" type="text" id="large-input" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            </div>
-                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                                <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Species caught</label>
-                                <select v-model="form.species_caught" id="large" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option v-for="st in species" :key="st" :value="st">{{st}}</option>
-                                </select>
-                            </div>
-                            <div class="flex w-full mx-auto mt-4">
-                                <button type="submit" class="flex mt-4 items-center justify-center focus:outline-none text-white text-lg bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
-                                    <span class="uppercase montserrat font-bold ">report a catch</span>
-                                </button>
-                            </div>
-                        </form>
-
+                <div class="grid grid-cols-2 gap-3 mt-4 px-4 mb-5" v-if="!show_all">
+                    <div v-for="(sp, index) in species" :key="index" @click='submit(sp)'
+                         class="grid grid-cols-1 col-1 w-full mx-auto border rounded-xl dark:border-white border-gray-900 px-5 py-1.5
+             justify-items-center bg-white dark:bg-mirage-400 ">
+                        <span class="ubuntu text-xl font-bold justify-self-start">{{sp}}</span>
+                        <rat  v-if="sp === 'Rat'"/>
+                        <mouse v-if="sp === 'Mouse'"/>
+                        <stoat v-if="sp === 'Stoat'"/>
+                        <weasel class="mt-8" v-if="sp === 'Weasel'"/>
+                        <hedgehog v-if="sp === 'Hedgehog'"/>
                     </div>
-
+                    <div @click='show_all = true'
+                         class="grid grid-cols-1 gap-3 col-1 w-full mx-auto border rounded-xl dark:border-white border-gray-900 px-5 py-1.5
+             justify-items-center bg-white dark:bg-mirage-400">
+                        <span class="ubuntu text-xl font-bold">Something else</span>
+                        <somthing-else/>
                     </div>
-
+                </div>
+                <div class="flex flex-col h-full gap-y-3 mt-4 px-4 mb-5" v-if="show_all">
+                    <div v-for="(sp, index) in extraSpecies" :key="index" @click='submit(sp)'
+                         class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+                        <text-val>
+                            <template #icon>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 rotate-180 text-jelly-bean-500 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </template>
+                            {{sp}}
+                        </text-val>
+                        <arrow-next/>
+                    </div>
+                    <div class="flex w-6/12 mx-auto">
+                        <button @click="show_all = false"  class="flex mt-2 items-center justify-center focus:outline-none text-bay-of-many-500 dark:text-mystic-100 dark:border-mystic-100 font-bold text-sm sm:text-base border-2 border-bay-of-many-500 hover:bg-bay-of-many-500 hover:text-white rounded-2xl py-2 w-full transition duration-150 ease-in">
+                            <span class="uppercase">Show Less Items</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-    </BreezeGuestLayout>
+        </div>
+    </Show>
 </template>

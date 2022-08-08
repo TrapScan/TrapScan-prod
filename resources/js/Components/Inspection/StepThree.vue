@@ -47,6 +47,7 @@ import Weasel from "@/Components/SVG/Animals/Weasel.vue";
 import Hedgehog from "@/Components/SVG/Animals/Hedgehog.vue";
 import ArrowNext from "@/Components/SVG/ArrowNext.vue";
 import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import { ref, reactive } from 'vue'
 
 export default {
     props:{

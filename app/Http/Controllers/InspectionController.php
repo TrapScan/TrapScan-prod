@@ -18,6 +18,33 @@ use App\Models\Inspection;
 class InspectionController extends Controller
 {
 
+    public function anon_index(Request $request){
+        $qr = QR::where('qr_code', $request->qr_id)->first();
+        if(!$qr) {
+            session()->flash('message','Trap not found');
+            return redirect(route('index'));
+        }
+        if($qr->trap_id) {
+            $trap = Trap::find($qr->trap_id);
+            $last_inspection = $trap->inspections()->latest()->limit(1)->first();
+            if($last_inspection) {
+                $trap->last_checked = $last_inspection->updated_at->diffForHumans();
+                $trap->last_checked_by = $last_inspection->user->name ?? 'Anonymous';
+            }
+            if($trap->inspections()->where('species_caught', '!=', 'None')->exists()) {
+                $trap->last_caught = $trap->inspections()->where('species_caught', '!=', 'None')->first()->species_caught;
+            }
+            $trap->total_catches = $trap->inspections()->where('species_caught', '!=', 'None')->count();
+        } else {
+            session()->flash('message','Trap not found');
+            return redirect(route('index'));
+        }
+
+        return Inertia::render('Anonscan',[
+            'trap_data' => $trap,
+        ]);
+    }
+
     public function index(Request $request){
         $qr = QR::where('qr_code', $request->qr_id)->first();
         if(! $qr) {
@@ -41,9 +68,6 @@ class InspectionController extends Controller
             $project = Project::find($trap->project_id);
             $coordinator = $request->user()->isCoordinatorOf($project);
         } else {
-            // The trap is unmapped, return just the code.
-            // Frontend looks for nz_trap_id and will conditionally redirect
-            // to the installation form or show error if needed
             $trap = ['qr_id' => $qr->qr_code];
             $unmapped = true;
         }
@@ -106,6 +130,7 @@ class InspectionController extends Controller
 
         return redirect(route('anon_success'));
     }
+
     public function save(Request $request)
     {
         dump($request);
@@ -161,7 +186,7 @@ class InspectionController extends Controller
             }
 
             if($inspection->upload_to_nz) {
-                //UploadToTrapNZ::dispatch($inspection);
+                UploadToTrapNZ::dispatch($inspection);
             }
 
             if($inspection->trap_condition === 'Needs maintenance') {

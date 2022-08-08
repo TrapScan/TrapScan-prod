@@ -1,14 +1,12 @@
 <script setup>
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import Show from "@/Layouts/Show.vue";
-import {ref} from "vue";
+import { Link } from '@inertiajs/inertia-vue3';
+
 
 </script>
 
 <template>
-    <Show>
+    <BreezeGuestLayout>
         <template #header>
             <div>
 
@@ -48,5 +46,5 @@ import {ref} from "vue";
                 <span class="uppercase">finish</span>
             </Link>
         </div>
-    </Show>
+    </BreezeGuestLayout>
 </template>
