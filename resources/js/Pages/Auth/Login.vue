@@ -47,7 +47,7 @@ const submit_magic = () => {
                 <div v-if="$page.props.flash.message" class="alert w-full my-5">
                     <el-alert :title="$page.props.flash.message" type="success" show-icon />
                 </div>
-                <Link class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4" :href="route('social_auth','google')">
+                <a class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4" :href="route('social_auth','google')">
                         <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
                             <svg  class="my-auto" width="30" height="30" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="30" height="29" fill="url(#pattern0)"/>
@@ -68,8 +68,8 @@ const submit_magic = () => {
                                 <path d="M1.33333 0.999999L8 6.99106L1.33333 13" stroke="#A9B0B5" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
-                </Link>
-                <div class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4">
+                </a>
+                <a :href="route('social_auth','facebook')" class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4">
                     <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
                         <svg class="my-auto text-blue-700" width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" color="#000"><path fill="none" d="M0 0h24v24H0z"></path><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg>                    </div>
                     <div class="ml-3 py-2 w-8/12">
@@ -80,8 +80,8 @@ const submit_magic = () => {
                             <path d="M1.33333 0.999999L8 6.99106L1.33333 13" stroke="#A9B0B5" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                </div>
-                <div class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4">
+                </a>
+                <a :href="route('social_auth','apple')" class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4">
                     <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
                         <svg  class="my-auto dark:stroke-gray-50 dark:text-white" width="30" height="30" role="img" viewBox="0 0 24 24" fill="currentColor" color="#000" xmlns="http://www.w3.org/2000/svg"><title>Apple icon</title><path d="M7.078 23.55c-.473-.316-.893-.703-1.244-1.15-.383-.463-.738-.95-1.064-1.454-.766-1.12-1.365-2.345-1.78-3.636-.5-1.502-.743-2.94-.743-4.347 0-1.57.34-2.94 1.002-4.09.49-.9 1.22-1.653 2.1-2.182.85-.53 1.84-.82 2.84-.84.35 0 .73.05 1.13.15.29.08.64.21 1.07.37.55.21.85.34.95.37.32.12.59.17.8.17.16 0 .39-.05.645-.13.145-.05.42-.14.81-.31.386-.14.692-.26.935-.35.37-.11.728-.21 1.05-.26.39-.06.777-.08 1.148-.05.71.05 1.36.2 1.94.42 1.02.41 1.843 1.05 2.457 1.96-.26.16-.5.346-.725.55-.487.43-.9.94-1.23 1.505-.43.77-.65 1.64-.644 2.52.015 1.083.29 2.035.84 2.86.387.6.904 1.114 1.534 1.536.31.21.582.355.84.45-.12.375-.252.74-.405 1.1-.347.807-.76 1.58-1.25 2.31-.432.63-.772 1.1-1.03 1.41-.402.48-.79.84-1.18 1.097-.43.285-.935.436-1.452.436-.35.015-.7-.03-1.034-.127-.29-.095-.576-.202-.856-.323-.293-.134-.596-.248-.905-.34-.38-.1-.77-.148-1.164-.147-.4 0-.79.05-1.16.145-.31.088-.61.196-.907.325-.42.175-.695.29-.855.34-.324.096-.656.154-.99.175-.52 0-1.004-.15-1.486-.45zm6.854-18.46c-.68.34-1.326.484-1.973.436-.1-.646 0-1.31.27-2.037.24-.62.56-1.18 1-1.68.46-.52 1.01-.95 1.63-1.26.66-.34 1.29-.52 1.89-.55.08.68 0 1.35-.25 2.07-.228.64-.568 1.23-1 1.76-.435.52-.975.95-1.586 1.26z"></path></svg>
                     </div>
@@ -93,7 +93,7 @@ const submit_magic = () => {
                             <path d="M1.33333 0.999999L8 6.99106L1.33333 13" stroke="#A9B0B5" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                </div>
+                </a>
                 <div class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center  bg-white p-4 border-black flex justify-between rounded-xl mb-4" @click="log_in_via_email = 2">
                     <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
                         <svg class="my-auto "  width="30" height="30" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg">

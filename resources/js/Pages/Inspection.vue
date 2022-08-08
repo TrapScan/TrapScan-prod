@@ -193,6 +193,55 @@ export default {
           this.newQR.qr_id = val
           this.submit(2)
         },
+        generateWords(){
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait OK'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was good so I didn\'t rebait it. '
+            }
+
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait missing'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was missing, '
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait missing' && this.rebaited === 'No' && this.bait_type === 'None'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was missing, and I\'m just letting you know.'
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait missing' && this.rebaited === 'No'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was missing, and the bait was still good so I didn\'t rebait it.'
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait missing' && this.rebaited === 'No' && this.bait_type === 'None'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was missing, and I\'m just letting you know.'
+            }
+
+
+            if (this.form.species_caught === 'None' && this.form.status === 'Sprung'){
+                this.form.words = 'The trap caught nothing, it was sprung, '
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Sprung' && this.rebaited === 'No' && this.bait_type === 'None'){
+                this.form.words = 'The trap caught nothing, it was sprung, and I\'m just letting you know.'
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Sprung' && this.rebaited === 'No'){
+                this.form.words = 'The trap caught nothing, it was sprung, and the bait was still good so I didn\'t rebait it.'
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Sprung' && this.rebaited === 'Yes'){
+                this.form.words = 'The trap caught nothing, it was sprung, so I rebaited it with '+ this.form.bait_type
+            }
+
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait bad'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was bad, '
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait bad' && this.rebaited === 'No' && this.bait_type === 'None'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was bad, and I\'m just letting you know.'
+            }
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait bad' && this.rebaited === 'Yes'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was bad, so I rebaited it with '+ this.form.bait_type
+            }
+
+
+            if (this.form.species_caught === 'None' && this.form.status === 'Still set, bait bad' && this.rebaited === 'Yes'){
+                this.form.words = 'The trap caught nothing, it was still set and the bait was bad, so I rebaited it with '+ this.form.bait_type
+            }
+
+
+        },
         submit(type) {
             if (type === 1){
                 this.newQR.qr_id = this.trap_data.qr_id
