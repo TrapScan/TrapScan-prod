@@ -50,7 +50,6 @@ import InIt from "@/Components/SVG/InIt.vue";
 import Wrong from "@/Components/SVG/Wrong.vue";
 import ArrowNext from "@/Components/SVG/ArrowNext.vue";
 import TextVal from "@/Components/Inspection/Other/TextVal.vue";
-import {ElMessage} from "element-plus";
 export default {
     props:{
         qrs:Object,

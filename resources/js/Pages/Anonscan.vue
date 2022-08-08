@@ -9,14 +9,15 @@ import Weasel from "@/Components/SVG/Animals/Weasel.vue";
 import Hedgehog from "@/Components/SVG/Animals/Hedgehog.vue";
 import ArrowNext from "@/Components/SVG/ArrowNext.vue";
 import TextVal from "@/Components/Inspection/Other/TextVal.vue";
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
+import EmptySvg from "@/Components/SVG/EmptySvg.vue";
 
 export default {
     props: {
         trap_data: Object
     },
     components: {
-        Show, SomthingElse, Rat, Mouse, Stoat, Weasel, Hedgehog, ArrowNext, TextVal, Link
+        Show, SomthingElse, Rat, Mouse, Stoat, Weasel, Hedgehog, ArrowNext, TextVal, Link, EmptySvg
     },
     setup(props) {
         console.log(props)
@@ -70,7 +71,12 @@ export default {
             </div>
         </template>
         <div class="flex flex-wrap overflow-hidden px-4">
-            <div class="w-full overflow-hidden">
+            <div class="w-full overflow-hidden bg">
+                <div class="px-4 pt-4 pb-2 w-full border-b-4 border-niagara-500 flex justify-center items-end">
+                    <h6 class="font-italic text-gray-500 " v-if="trap_data.last_checked">
+                        Last checked <span class="font-bold">{{trap_data.last_checked}}</span>
+                    </h6>
+                </div>
                 <div class="grid grid-cols-2 gap-3 mt-4 px-4 mb-5" v-if="!show_all">
                     <div v-for="(sp, index) in species" :key="index" @click='submit(sp)'
                          class="grid grid-cols-1 col-1 w-full mx-auto border rounded-xl dark:border-white border-gray-900 px-5 py-1.5
@@ -108,7 +114,15 @@ export default {
                         </button>
                     </div>
                 </div>
+                <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-5">
+                    <div @click='submit("None")' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+                        <text-val><template #icon><empty-svg/></template> It was empty</text-val>
+                        <arrow-next/>
+                    </div>
+                </div>
             </div>
+
         </div>
+
     </Show>
 </template>
