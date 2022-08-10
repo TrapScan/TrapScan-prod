@@ -108,6 +108,7 @@ export default {
                 nz_id:null,
                 type:'redir'
             }),
+            prev_step:[1],
             prev_word_1:null,
             prev_word_2:null,
             prev_word_3:null,
@@ -132,7 +133,7 @@ export default {
     },
     methods:{
         back(){
-            this.step = this.step - 1;
+            this.step = this.prev_step.pop();
             if (this.step === 1){
                 this.form.words = this.form.words = 'The trap caught nothing, '
             }
@@ -156,6 +157,7 @@ export default {
             this.form.words = data.words;
             this.form.trap_condition = data.trap_condition ?? 'None';
             this.step = data.step
+            this.prev_step.push(this.step)
             this.prev_word_1 = data.words;
         },
         setStepTwo(data){
@@ -166,6 +168,7 @@ export default {
             this.form.words = this.form.words + data.words ?? null;
             this.step = data.step
             this.prev_word_2 = data.words;
+            this.prev_step.push(this.step)
 
         },
         setStepThree(data){
@@ -173,6 +176,7 @@ export default {
             this.form.species_caught = data.species_caught;
             this.step = data.step
             this.prev_word_3 = data.words;
+            this.prev_step.push(this.step)
 
         },
         setStepFive(data){
@@ -182,6 +186,7 @@ export default {
             this.form.upload_to_nz = data.upload_to_nz ?? true;
             this.step = data.step
             this.prev_word_5 = data.words;
+            this.prev_step.push(this.step)
 
         },
         setStepFour(data){
@@ -190,6 +195,7 @@ export default {
             this.form.trap_condition = data.trap_condition ?? 'None';
             this.step = data.step
             this.prev_word_4 = data.words;
+            this.prev_step.push(this.step)
 
         },
         setStepSix(data){
