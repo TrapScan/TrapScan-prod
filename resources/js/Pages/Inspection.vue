@@ -138,30 +138,18 @@ export default {
                 this.prev_step.push(1)
             }
             if (this.step === 1){
-                this.form.words = this.form.words = 'The trap caught nothing, '
+                this.form.words = this.form.words = 'I checked this trap and...'
             }
             if (this.step === 2){
-                console.log(this.step)
-                console.log(this.prev_word_2)
-                console.log(this.form.words.replace(this.prev_word_3, ''))
                 this.form.words = this.form.words.replace(this.prev_word_2, '')
             }
             if (this.step === 3){
-                console.log(this.step)
-                console.log(this.prev_word_3)
-                console.log(this.form.words.replace(this.prev_word_3, ''))
                 this.form.words = this.form.words.replace(this.prev_word_3, '')
             }
             if (this.step === 4){
-                console.log(this.step)
-                console.log(this.prev_word_4)
-                console.log(this.form.words.replace(this.prev_word_3, ''))
                 this.form.words = this.form.words.replace(this.prev_word_4, '')
             }
             if (this.step === 5){
-                console.log(this.step)
-                console.log(this.prev_word_5)
-                console.log(this.form.words.replace(this.prev_word_3, ''))
                 this.form.words = this.form.words.replace(this.prev_word_5, '')
             }
         },
