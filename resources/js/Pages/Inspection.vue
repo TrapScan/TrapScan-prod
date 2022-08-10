@@ -108,6 +108,7 @@ export default {
                 nz_id:null,
                 type:'redir'
             }),
+            prev_word:null,
             form:useForm({
                 QR_ID: this.trap_data.qr_id,
                 code: 'test',
@@ -128,6 +129,7 @@ export default {
     methods:{
         back(){
             this.step = this.step - 1;
+            this.form.words.replace(this.prev_word, '')
         },
         setStepOne(data) {
             this.form.strikes = data.strikes ?? 0;
@@ -136,6 +138,7 @@ export default {
             this.form.words = data.words;
             this.form.trap_condition = data.trap_condition ?? 'None';
             this.step = data.step
+            this.prev_word = data.words;
         },
         setStepTwo(data){
             this.form.rebaited = data.rebaited ?? null;
@@ -144,11 +147,15 @@ export default {
             this.form.species_caught = data.species_caught ?? 'None';
             this.form.words = this.form.words + data.words ?? null;
             this.step = data.step
+            this.prev_word = data.words;
+
         },
         setStepThree(data){
             this.form.words = this.form.words + data.words;
             this.form.species_caught = data.species_caught;
             this.step = data.step
+            this.prev_word = data.words;
+
         },
         setStepFive(data){
             this.form.rebaited = data.rebaited;
@@ -156,12 +163,16 @@ export default {
             this.form.words = this.form.words + data.words ?? null;
             this.form.upload_to_nz = data.upload_to_nz ?? true;
             this.step = data.step
+            this.prev_word = data.words;
+
         },
         setStepFour(data){
             this.form.status = data.status ?? null;
             this.form.words = data.words;
             this.form.trap_condition = data.trap_condition ?? 'None';
             this.step = data.step
+            this.prev_word = data.words;
+
         },
         setStepSix(data){
             if (data === 0){
