@@ -134,6 +134,9 @@ export default {
     methods:{
         back(){
             this.step = this.prev_step.pop();
+            if (this.prev_step.length === 0){
+                this.prev_step.push(1)
+            }
             if (this.step === 1){
                 this.form.words = this.form.words = 'The trap caught nothing, '
             }
