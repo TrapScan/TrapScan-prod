@@ -134,19 +134,19 @@ export default {
         back(){
             this.step = this.step - 1;
             if (this.step === 1){
-                this.form.words = 'The trap caught nothing, '
+                this.form.words = this.form.words = 'The trap caught nothing, '
             }
             if (this.step === 2){
-                this.form.words.replace(this.prev_word_2, '')
+                this.form.words = this.form.words.replace(this.prev_word_2, '')
             }
             if (this.step === 3){
-                this.form.words.replace(this.prev_word_3, '')
+                this.form.words = this.form.words.replace(this.prev_word_3, '')
             }
             if (this.step === 4){
-                this.form.words.replace(this.prev_word_4, '')
+                this.form.words = this.form.words.replace(this.prev_word_4, '')
             }
             if (this.step === 5){
-                this.form.words.replace(this.prev_word_3, '')
+                this.form.words = this.form.words.replace(this.prev_word_3, '')
             }
         },
         setStepOne(data) {
