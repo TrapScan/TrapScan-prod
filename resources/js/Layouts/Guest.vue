@@ -60,7 +60,7 @@ export default {
                     <div class="flex ">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <Link :href="route('index')">
+                            <Link :href="route('login')">
                                 <svg :key="them" width="27" height="33" viewBox="0 0 27 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8.0856 30.5827V32.9608H0V24.8752H2.3781V30.5827H8.0856Z" fill="black"/>
                                     <path d="M18.5493 2.3781V0H26.6349V8.0856H24.2568V2.3781H18.5493Z" fill="black"/>
