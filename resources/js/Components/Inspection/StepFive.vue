@@ -1,4 +1,5 @@
 <template>
+    <span class="px-4 pt-10 pb-5 text-xl font-bold text-lg ">I rebaited the trap with…</span>
     <div class="grid grid-cols-2 gap-3 mt-4 px-4 mb-5" v-if="!show_all">
         <div v-for="(sp, index) in bait" :key="index" @click="selected({ rebaited: 'Yes', bait_type: sp, words: `so I rebaited it with ${sp}`, step:6 })"
              class="grid grid-cols-1 col-1 w-full mx-auto border rounded-xl dark:border-white border-gray-900 px-5 py-1.5
