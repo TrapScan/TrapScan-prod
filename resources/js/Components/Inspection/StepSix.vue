@@ -1,5 +1,5 @@
 <template>
-    <span class="px-4 pt-10 pb-5 text-4xl font-bold text-lg ">Is this correct?</span>
+    <span class="px-4 pt-10 pb-5 text-xl font-bold text-lg ">Is this correct?</span>
     <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-24">
         <div class="flex w-full mx-auto mt-4 mb-6">
             <button @click='selected(0)' class="flex items-center mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
