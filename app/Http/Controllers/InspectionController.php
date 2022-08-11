@@ -133,8 +133,6 @@ class InspectionController extends Controller
 
     public function save(Request $request)
     {
-        dump($request);
-
         $validated_data = $request->validate([
             'QR_ID' => 'required',
             'code' => 'required',
