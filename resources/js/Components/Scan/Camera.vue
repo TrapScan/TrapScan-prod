@@ -106,7 +106,7 @@ export default {
     },
     methods: {
         submit_form(){
-            this.form.get(route('inspection.index'),{
+            this.$inertia.get(route('inspection.index'), this.form.qr_id, {
                 preserveScroll: true,
                 onSuccess: () => this.form.reset('qr_id'),
                 onError: (e) => { console.log(e)}
