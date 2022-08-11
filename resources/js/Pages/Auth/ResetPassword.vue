@@ -46,16 +46,16 @@ const submit = () => {
                     <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Password</label>
                     <div class="relative flex w-full flex-wrap items-stretch mb-3">
                               <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                              <i class="fas fa-envelope text-gray-500"></i>
+                              <i class="fas fa-lock text-gray-500"></i>
                               </span>
-                        <input placeholder="Email" v-model="form.password" required autofocus autocomplete="username" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+                        <input placeholder="Password" v-model="form.password" required autofocus autocomplete="password" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
                     </div>
                     <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Confirm Password</label>
                     <div class="relative flex w-full flex-wrap items-stretch mb-3">
                               <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                              <i class="fas fa-envelope text-gray-500"></i>
+                              <i class="fas fa-lock text-gray-500"></i>
                               </span>
-                        <input placeholder="Email" v-model="form.password_confirmation" required autofocus autocomplete="username" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+                        <input placeholder="Confirm Password" v-model="form.password_confirmation" required autofocus autocomplete="password" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
                     </div>
                     <div class="flex">
                         <div class="flex w-full mx-auto">
