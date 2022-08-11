@@ -29,29 +29,44 @@ const submit = () => {
     <BreezeGuestLayout>
         <Head title="Reset Password" />
 
-        <BreezeValidationErrors class="mb-4" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <BreezeLabel for="email" value="Email" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
-            </div>
+        <div class="p-3">
+            <div class="mt-2 w-11/12 mx-auto ">
+                <form @submit.prevent="submit">
+                    <div class="flex flex-col mb-5">
+                        <BreezeValidationErrors class="mb-4" />
+                    </div>
+                    <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Your email address</label>
+                    <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                              <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                              <i class="fas fa-envelope text-gray-500"></i>
+                              </span>
+                        <input placeholder="Email" v-model="form.email" required autofocus autocomplete="username" type="text" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+                    </div>
+                    <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Password</label>
+                    <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                              <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                              <i class="fas fa-envelope text-gray-500"></i>
+                              </span>
+                        <input placeholder="Email" v-model="form.password" required autofocus autocomplete="username" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+                    </div>
+                    <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Confirm Password</label>
+                    <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                              <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                              <i class="fas fa-envelope text-gray-500"></i>
+                              </span>
+                        <input placeholder="Email" v-model="form.password_confirmation" required autofocus autocomplete="username" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+                    </div>
+                    <div class="flex">
+                        <div class="flex w-full mx-auto">
+                            <button type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-3 w-full transition duration-150 ease-in">
+                                <span class="mr-2 uppercase">SEND reset LINK</span>
+                            </button>
+                        </div>
+                    </div>
 
-            <div class="mt-4">
-                <BreezeLabel for="password" value="Password" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                </form>
             </div>
-
-            <div class="mt-4">
-                <BreezeLabel for="password_confirmation" value="Confirm Password" />
-                <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset Password
-                </BreezeButton>
-            </div>
-        </form>
+        </div>
     </BreezeGuestLayout>
 </template>
