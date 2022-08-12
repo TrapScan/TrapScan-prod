@@ -14,6 +14,27 @@
             </button>
         </div>
 
+        <modal-window :showing="visible_sync">
+            <h1 class="mb-3 text-xl montserrat text-gray-800 font-bold">Synchronising     ......</h1>
+            <div class="flex w-full mx-auto">
+                <button  @click="visible_sync = false" class="flex mt-2 items-center justify-center focus:outline-none text-bay-of-many-500 dark:text-mystic-100 dark:border-mystic-100 font-bold text-sm sm:text-base border-2 border-bay-of-many-500 hover:bg-bay-of-many-500 hover:text-white rounded-full py-2 w-full transition duration-150 ease-in">
+                    <span class="mr-2 uppercase">Close</span>
+                </button>
+            </div>
+        </modal-window>
+
+        <modal-window :showing="visible_sync_done">
+            <h1 class="mb-3 text-xl montserrat text-green-500 font-bold">Synchronisation complate</h1>
+            <p>
+               {{msg}}
+            </p>
+            <div class="flex w-full mx-auto">
+                <button  @click="visible_sync_done = false" class="flex mt-2 items-center justify-center focus:outline-none text-bay-of-many-500 dark:text-mystic-100 dark:border-mystic-100 font-bold text-sm sm:text-base border-2 border-bay-of-many-500 hover:bg-bay-of-many-500 hover:text-white rounded-full py-2 w-full transition duration-150 ease-in">
+                    <span class="mr-2 uppercase">Finish</span>
+                </button>
+            </div>
+        </modal-window>
+
         <div class="flex flex-wrap bg-white w-full mt-3 px-4 py-3">
             <div @click="show = !show" class="flex justify-between items-center w-full">
                 <div class="montserrat text-bay-of-many-500 text-lg">
@@ -95,6 +116,7 @@
 <script>
 import ModalWindow from "@/Components/ModalWindow.vue";
 import {useForm} from "@inertiajs/inertia-vue3";
+import {ElMessage} from "element-plus";
 
 export default {
     components:{
@@ -116,12 +138,16 @@ export default {
             type: Boolean,
             default: false
         },
+
     },
     name: "InProject",
     data() {
         return {
             show: false,
             visible:false,
+            visible_sync:false,
+            visible_sync_done:false,
+            msg:null,
             form:useForm({
                 projectId:null
             }),
@@ -130,6 +156,17 @@ export default {
                 value:null,
                 key:null,
             }),
+        }
+    },
+    mounted() {
+        if (this.$page.props.auth.user !== null){
+            Echo.private('App.Models.User.' + this.$page.props.auth.user.id ?? 0)
+                .notification((notification) => {
+                    this.msg = notification.message
+                    this.visible_sync = false;
+                    this.visible_sync_done = false;
+                    this.visible_sync_done = true;
+                });
         }
     },
     methods: {
@@ -142,6 +179,7 @@ export default {
             this.form.post(route('user.projects.leave'))
         },
         syncPr(){
+            this.visible_sync = true
             this.form.projectId = this.project.id;
             this.form.post(route('user.projects.sync'))
         },

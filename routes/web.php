@@ -20,8 +20,8 @@ use \App\Http\Controllers\ProjectsController;
 */
 Route::post('/magic-login', [OtherAuthController::class, 'sendLoginLink'])->name('magic_login');
 
-Route::get('/anon/scan', function () {
-    return Inertia::render('Index');
+Route::get('/anon/{qr_id?}', function ($qr_id = null) {
+    return Inertia::render('Index',['qr_id'=>$qr_id]);
 })->name('index');
 
 Route::get('/ui', function () {
@@ -39,8 +39,9 @@ Route::post('/anon', [InspectionController::class, 'createAnon'])->name('anon_fo
 Route::get('/scan', function () {
     return Inertia::render('Main');
 })->middleware(['auth', 'verified'])->name('scan');
-Route::get('/scan/{qr_id?}',[InspectionController::class,'index'])->middleware(['auth', 'verified'])->name('inspection.index');
 
+Route::get('/scan/{qr_id?}',[InspectionController::class,'index'])
+    ->name('inspection.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -67,7 +68,6 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function()
     Route::put('project/update_user',[ProjectsController::class, 'updateUserSettings'])->name('user.projects.update_user');
 
     Route::post('project/sync',[ProjectsController::class, 'updateProjectTraps'])->name('user.projects.sync');
-
 });
 
 Route::group(['middleware'=>['auth', 'verified','role:admin'], 'prefix'=>'admin'],  function() {
@@ -75,7 +75,6 @@ Route::group(['middleware'=>['auth', 'verified','role:admin'], 'prefix'=>'admin'
     //QR
     Route::post('/generate_qr',[AdminController::class, 'generate_qr'])->name('admin.save');
     Route::get('/unmapped_codes',[AdminController::class, 'unmapped_codes'])->name('admin.unmapped_codes');
-
 
     Route::get('/unmapped_traps',[AdminController::class, 'unmapped_traps'])->name('admin.unmapped_traps');
     Route::post('/map_trap',[AdminController::class, 'map_trap'])->name('admin.map_trap');
@@ -86,14 +85,11 @@ Route::group(['middleware'=>['auth', 'verified','role:admin'], 'prefix'=>'admin'
     Route::post('/add_to_pr',[AdminController::class, 'add_to_pr'])->name('admin.add_to_pr');
     Route::put('/update_user_pr_settingsr',[AdminController::class, 'updateProjectUser'])->name('admin.update_user_pr_settingsr');
 
-
-
     Route::get('/scrape_data',function () {
         return Inertia::render('Admin/Scrap');
     })->name('admin.scrape_data');
 
     Route::get('start_scrap', [AdminController::class, 'start_scrap'])->name('admin.start_scrap');
 });
-
 
 require __DIR__.'/auth.php';

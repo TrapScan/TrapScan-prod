@@ -19,27 +19,6 @@ export default {
         } else {
             document.documentElement.classList.remove('dark')
         }
-        if (this.$page.props.auth.user !== null){
-            Echo.channel('messages')
-                .listen('.newMessage', (message) => {
-                    console.log(message)
-                    ElMessage({
-                        showClose: true,
-                        message: message,
-                        type: 'success',
-                    })
-                });
-            Echo.private('App.Models.User.' + this.$page.props.auth.user.id ?? 0)
-                .notification((notification) => {
-                    console.log(notification.message)
-                    ElMessage({
-                        showClose: true,
-                        message: notification.message,
-                        type: 'success',
-                    })
-                });
-        }
-
     },
 }
 </script>

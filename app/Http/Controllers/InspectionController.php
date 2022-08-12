@@ -47,6 +47,12 @@ class InspectionController extends Controller
 
     public function index(Request $request){
         $qr = QR::where('qr_code', $request->qr_id)->first();
+
+        if(auth()->id() == null) {
+            session()->flash('message','Trap not found');
+            return redirect(route('index',$request->qr_id));
+        }
+
         if(! $qr) {
             session()->flash('message','Trap not found');
             return redirect(route('scan'));

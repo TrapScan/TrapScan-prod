@@ -38,7 +38,6 @@ class UpdateTraps implements ShouldQueue
      */
     public function handle()
     {
-        $this->user->notify(new \App\Notifications\RealTimeNotification('Sync trap.nz traps START'));
         try {
             $data = file_get_contents("https://io.trap.nz/geo/trapnz-projects/wfs/O2ZNGAUpOJ5cHNZPx7wF6RaNort9J72jzlnCNLvOQGQ/".$this->project_nz_id."?service=WFS&version=1.0.0&request=GetFeature&typeName=trapnz-projects:default-project-trap-records&outputFormat=json");
             $json = json_decode($data, true);
@@ -75,7 +74,6 @@ class UpdateTraps implements ShouldQueue
             }
 
         }catch (\Exception $e){
-            $this->user->notify(new \App\Notifications\RealTimeNotification('Wops, error!'));
             \Log::alert($e);
         }
     }
