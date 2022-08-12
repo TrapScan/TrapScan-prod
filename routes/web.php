@@ -21,6 +21,9 @@ use \App\Http\Controllers\ProjectsController;
 Route::post('/magic-login', [OtherAuthController::class, 'sendLoginLink'])->name('magic_login');
 
 Route::get('/anon/{qr_id?}', function ($qr_id = null) {
+    if ($qr_id == null){
+        return Inertia::render('Index');
+    }
     return Inertia::render('Index',['qr_id'=>$qr_id]);
 })->name('index');
 
