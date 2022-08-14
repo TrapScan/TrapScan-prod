@@ -12,7 +12,7 @@
             <text-val><template #icon><circle-dash /></template> Bait was taken</text-val>
             <arrow-next/>
         </div>
-        <div @click='selected(2)' class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
+        <div @click='selected(3)' class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
             <text-val><template #icon><lines/></template> Trap was sprung</text-val>
             <arrow-next/>
         </div>

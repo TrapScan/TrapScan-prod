@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-2 gap-3 mt-4 px-4 mb-5" v-if="!show_all">
-        <div v-for="(sp, index) in species" :key="index" @click='selected({ species_caught: sp, words: `${sp} `, step: 5 })'
+        <div v-for="(sp, index) in species" :key="index" @click='selected({ species_caught: sp, words: `${sp}, `, step: 5 })'
              class="grid grid-cols-1 col-1 w-full mx-auto border rounded-xl dark:border-white border-gray-900 px-5 py-1.5
              justify-items-center bg-white dark:bg-mirage-400 ">
             <span class="ubuntu text-xl font-bold justify-self-start">{{sp}}</span>
