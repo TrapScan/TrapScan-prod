@@ -7,7 +7,7 @@
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
         <!-- PWA  -->
         <meta name="theme-color" content="#6777ef"/>
-        <link rel="apple-touch-icon" href="{{ asset('img.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('/Logo.png') }}">
         <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
         <!-- Fonts -->
@@ -32,13 +32,14 @@
     </head>
     <body class="font-sans antialiased bg-spring-wood-500 overflow-auto">
         @inertia
+        <script src="{{ asset('/sw.js') }}"></script>
+        <script>
+            if (!navigator.serviceWorker.controller) {
+                navigator.serviceWorker.register("/sw.js").then(function (reg) {
+                    console.log("Service worker has been registered for scope: " + reg.scope);
+                });
+            }
+        </script>
+
     </body>
 </html>
-<script src="{{ asset('/sw.js') }}"></script>
-<script>
-    if (!navigator.serviceWorker.controller) {
-        navigator.serviceWorker.register("/sw.js").then(function (reg) {
-            console.log("Service worker has been registered for scope: " + reg.scope);
-        });
-    }
-</script>
