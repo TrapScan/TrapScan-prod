@@ -20,7 +20,6 @@ export default {
         Show, SomthingElse, Rat, Mouse, Stoat, Weasel, Hedgehog, ArrowNext, TextVal, Link, EmptySvg
     },
     setup(props) {
-        console.log(props)
         const trap_data = props.trap_data
         const submit = (val) => {
             form.QR_ID = trap_data.qr_id
@@ -33,8 +32,8 @@ export default {
         })
         const show_all = ref(false)
 
-       const species = ['Rat', 'Mouse', 'Stoat', 'Weasel', 'Hedgehog']
-       const extraSpecies = ['Rat - Kiore', 'Rat - Norway', 'Unspecified', 'Bird', 'Rat - Ship', 'Cat', 'Deer', 'Dog', 'Ferret', 'Goat', 'Hare', 'Magpie', 'Peafowl', 'Pig', 'Possum', 'Rabbit', 'Turkey', 'None']
+        const species = ['Rat', 'Mouse', 'Stoat', 'Weasel', 'Hedgehog']
+        const extraSpecies = ['Rat - Kiore', 'Rat - Norway', 'Unspecified', 'Bird', 'Rat - Ship', 'Cat', 'Deer', 'Dog', 'Ferret', 'Goat', 'Hare', 'Magpie', 'Peafowl', 'Pig', 'Possum', 'Rabbit', 'Turkey', 'None']
 
         return {
             form,

@@ -2,10 +2,10 @@
     "name": "TrapScan",
     "short_name": "TS",
     "start_url": "/index.php",
-    "background_color": "#6777ef",
+    "background_color": "#0AB587",
     "description": "TrapScan",
     "display": "fullscreen",
-    "theme_color": "#6777ef",
+    "theme_color": "#0ED9A3",
     "icons": [
         {
             "src": "/Logo.png",

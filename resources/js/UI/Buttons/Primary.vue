@@ -3,7 +3,7 @@
     w-full
     rounded-full
     bg-light_button
-    text-light_text
+    text-text-dark
     dark:bg-dark_button
     py-4
     flex

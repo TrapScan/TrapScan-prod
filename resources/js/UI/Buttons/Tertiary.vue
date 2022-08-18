@@ -5,7 +5,7 @@
     bg-light_tertiary_button
     text-light_button
     dark:bg-dark_tertiary_button
-    dark:text-light_text
+    dark:text-text-dark
     py-4
     flex
     justify-center

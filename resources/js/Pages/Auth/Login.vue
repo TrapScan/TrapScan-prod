@@ -1,7 +1,7 @@
 <script setup>
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import {Link, useForm } from '@inertiajs/inertia-vue3';
 import {ref} from "vue";
 import Button from "@/Components/Button.vue";
 import Input from "@/Components/Input.vue";

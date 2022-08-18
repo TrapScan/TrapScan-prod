@@ -3,7 +3,7 @@
     w-full
     rounded-full
     bg-red
-    text-light_text
+    text-text-dark
     py-4
     flex
     justify-center

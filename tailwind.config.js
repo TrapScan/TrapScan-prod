@@ -17,8 +17,6 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'light_text':'#F1F8FD',
-                'dark_text':'#1B2937',
                 'brand_green':'#0AB587',
                 'light_interface':'#fcfcfc',
                 'dark_interface':'#1B2937',
@@ -41,6 +39,13 @@ module.exports = {
                 'dark_tertiary_button':'#333555',
                 'trapnz_red':'#CF1F27',
                 'light_tertiary_button_inactive':'#CFD7E2',
+                'dark_input_bg':'#202E3C',
+                'text-light':'#1B2937',
+                'text-dark':'#F1F8FD',
+                'sub_text-light':'#5C738A',
+                'sub_text-dark':'#A3B3C2',
+                'dark_heading':'#93C0F4',
+
 
                 'valencia': {
                     DEFAULT: '#D44944',
