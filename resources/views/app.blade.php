@@ -7,7 +7,7 @@
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
         <!-- PWA  -->
         <meta name="theme-color" content="#6777ef"/>
-        <link rel="apple-touch-icon" href="{{ asset('/Logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('/icons/apple-touch-icon.png') }}">
         <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
         <!-- Fonts -->
