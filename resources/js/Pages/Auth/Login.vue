@@ -3,7 +3,6 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import {Link, useForm } from '@inertiajs/inertia-vue3';
 import {ref} from "vue";
-import Button from "@/Components/Button.vue";
 import Input from "@/Components/Input.vue";
 import Primary from "@/UI/Buttons/Primary.vue";
 
@@ -205,14 +204,14 @@ const submit_magic = () => {
                                 </div>
                             </div>
                             <div class="flex mt-10 justify-center flex-wrap ">
-                                <h6 class="font-fira text-xl w-full text-center text-gray-400">Forgot your password?</h6>
-                                <Link class="font-fira underline text-niagara-500" :href="route('password.request')">
+                                <h6 class="font-fira text-xl w-full text-center dark:text-gray-300 text-t_black-800">Forgot your password?</h6>
+                                <Link class="font-fira underline text-t_purple-500 font-bold" :href="route('password.request')">
                                     Reset password
                                 </Link>
                             </div>
                             <div class="flex mt-5 justify-center flex-wrap ">
-                                <h6 class="font-fira text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
-                                <Link class="font-fira text w-full-xl underline text-center text-niagara-500 font-bold" :href="route('register')">
+                                <h6 class="font-fira text-xl w-full text-center dark:text-gray-300 text-t_black-800">Don’t have an account?</h6>
+                                <Link class="font-fira underline text-t_purple-500 font-bold" :href="route('register')">
                                     Register
                                 </Link>
                             </div>
