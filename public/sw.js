@@ -18,7 +18,7 @@ const checkResponse = function (request) {
     return new Promise(function (fulfill, reject) {
         fetch(request).then(function (response) {
             if (response.status !== 404) {
-                fulfill(response);dd
+                fulfill(response);
             } else {
                 reject();
             }
