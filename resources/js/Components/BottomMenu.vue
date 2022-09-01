@@ -1,31 +1,36 @@
 <template>
-    <footer class="h-[70px] w-full mt-3
+    <footer class="w-full
             fixed bottom-0
-            flex justify-center items-center
+            flex
            ">
-        <div class="px-5 pt-3 w-full bg-white w-full dark:bg-mirage-500">
-            <div class="flex flex-row space-x-6 justify-center items-center">
+        <div class="px-3 pt-3 w-full bg-white w-full dark:bg-t_black-900">
+            <div class="flex flex-wrap w-full justify-between items-center">
                 <!-- Item #1 -->
-                <div class="flex group">
-
-                    <Link :href="route('about')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('about'), ' text-bali-hai-500 font-bold': !route().current('about')}">
-							<span class="flex flex-col items-center">
+                    <Link :href="route('about')" class="montserrat w-1/5" :class="{'text-t_green-800 font-bold dark:text-t_green-600': route().current('about'), ' text-t_blue_gray-400 font-bold': !route().current('about')}">
+							<span class="flex flex-col gap-1 items-center ">
 								<!-- Icon -->
-								<svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('projects'),'text-bali-hai-500 hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('projects')}" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" color="#000"><path d="M13 7.5a1 1 0 11-2 0 1 1 0 012 0zm-3 3.75a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v4.25h.75a.75.75 0 010 1.5h-3a.75.75 0 010-1.5h.75V12h-.75a.75.75 0 01-.75-.75z"></path><path fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"></path></svg>
+                                <div :class="{'py-1 px-4 bg-t_white-200 rounded-full dark:bg-t_black-800': route().current('about')}">
+                                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path :class="{'stroke-t_green-800 dark:stroke-t_green-600': route().current('about'), 'stroke-t_blue_gray-400 dark:stroke-t_blue_gray-400': !route().current('about')}"  d="M13.6574 15.4285H12.8002L12.8002 11.9999H11.9431M12.8002 8.57136H12.8088M20.5145 11.9999C20.5145 16.2604 17.0607 19.7142 12.8002 19.7142C8.53974 19.7142 5.08594 16.2604 5.08594 11.9999C5.08594 7.73945 8.53974 4.28564 12.8002 4.28564C17.0607 4.28564 20.5145 7.73945 20.5145 11.9999Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
                                 <!-- Text -->
 								<span class="text-xs mb-2 transition-all duration-200">
-									About
+									Info
 								</span>
 							</span>
                     </Link>
-                </div>
 
                 <!-- Item #2 -->
-                <div class="flex group">
-                    <Link :href="route('user.index')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('user.index'), ' text-bali-hai-500 font-bold': !route().current('user.index')}">
-					    <span class="flex flex-col items-center">
+                    <Link :href="route('user.index')" class="montserrat w-1/5" :class="{'text-t_green-800 font-bold dark:text-t_green-600': route().current('user.index'), 'text-t_blue_gray-400 font-bold': !route().current('user.index')}">
+					    <span class="flex flex-col gap-1 items-center">
 								<!-- Icon -->
-                            <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('user.index'),'text-bali-hai-500 hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('user.index')}" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" color="#000"><path d="M2.5 2.75a.75.75 0 00-1.5 0v18.5c0 .414.336.75.75.75H20a.75.75 0 000-1.5H2.5V2.75z"></path><path d="M22.28 7.78a.75.75 0 00-1.06-1.06l-5.72 5.72-3.72-3.72a.75.75 0 00-1.06 0l-6 6a.75.75 0 101.06 1.06l5.47-5.47 3.72 3.72a.75.75 0 001.06 0l6.25-6.25z"></path></svg>
+
+<div :class="{'py-1 px-4 bg-t_white-200 rounded-full dark:bg-t_black-800': route().current('user.index')}">
+                                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path :class="{'stroke-t_green-800 dark:stroke-t_green-600': route().current('user.index'),'stroke-t_blue_gray-400 dark:stroke-t_blue_gray-400': !route().current('user.index')}" d="M15.8994 8.5L15.8994 15.5M12.3994 11.125L12.3994 15.5M8.89941 13.75L8.89941 15.5M7.14941 19L17.6494 19C18.6159 19 19.3994 18.2165 19.3994 17.25L19.3994 6.75C19.3994 5.7835 18.6159 5 17.6494 5L7.14941 5C6.18292 5 5.39941 5.7835 5.39941 6.75L5.39941 17.25C5.39941 18.2165 6.18292 19 7.14941 19Z" stroke="#7A9EB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                                </div>
                         <!-- Text -->
                             <span class="text-xs mb-2 transition-all duration-200">
                                 Data
@@ -33,64 +38,64 @@
                         </span>
                     </Link>
 
-                </div>
 
                 <!-- Item #3 Active -->
-                <div class="flex group">
-                    <Link :href="route('scan')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('scan'), ' text-bali-hai-500 font-bold': !route().current('scan')}">
-                        		<span class="flex flex-col items-center">
+                    <Link :href="route('scan')" class=" montserrat w-1/5" :class="{'text-t_green-800 font-bold dark:text-t_green-600': route().current('scan'), 'text-t_blue_gray-400 font-bold': !route().current('scan')}">
+                        		<span class="flex flex-col gap-1 items-center">
 								<!-- Icon -->
-								<svg width="24"  :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('scan'),'text-bali-hai-500 hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('scan')}" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" color="#000"><path fill="none" d="M0 0h24v24H0z"></path><path d="M9.5 6.5v3h-3v-3h3M11 5H5v6h6V5zm-1.5 9.5v3h-3v-3h3M11 13H5v6h6v-6zm6.5-6.5v3h-3v-3h3M19 5h-6v6h6V5zm-6 8h1.5v1.5H13V13zm1.5 1.5H16V16h-1.5v-1.5zM16 13h1.5v1.5H16V13zm-3 3h1.5v1.5H13V16zm1.5 1.5H16V19h-1.5v-1.5zM16 16h1.5v1.5H16V16zm1.5-1.5H19V16h-1.5v-1.5zm0 3H19V19h-1.5v-1.5zM22 7h-2V4h-3V2h5v5zm0 15v-5h-2v3h-3v2h5zM2 22h5v-2H4v-3H2v5zM2 2v5h2V4h3V2H2z"></path></svg>
 
+<div :class="{'py-1 px-4 bg-t_white-200 rounded-full dark:bg-t_black-800': route().current('scan')}">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path :class="{'fill-t_green-800 dark:fill-t_green-600': route().current('scan'),'fill-t_blue_gray-400 dark:fill-t_blue_gray-400': !route().current('scan')}"  d="M3.64258 8.3916C3.64258 8.80582 3.97836 9.1416 4.39258 9.1416C4.80679 9.1416 5.14258 8.80582 5.14258 8.3916H3.64258ZM4.39258 4.3916V3.6416H3.64258V4.3916H4.39258ZM8.39258 5.1416C8.80679 5.1416 9.14258 4.80582 9.14258 4.3916C9.14258 3.97739 8.80679 3.6416 8.39258 3.6416V5.1416ZM15.6084 3.6416C15.1942 3.6416 14.8584 3.97739 14.8584 4.3916C14.8584 4.80582 15.1942 5.1416 15.6084 5.1416V3.6416ZM19.6084 4.3916H20.3584V3.6416L19.6084 3.6416V4.3916ZM18.8584 8.3916C18.8584 8.80582 19.1942 9.1416 19.6084 9.1416C20.0226 9.1416 20.3584 8.80582 20.3584 8.3916H18.8584ZM20.3584 15.6074C20.3584 15.1932 20.0226 14.8574 19.6084 14.8574C19.1942 14.8574 18.8584 15.1932 18.8584 15.6074H20.3584ZM19.6084 19.6074V20.3574H20.3584V19.6074H19.6084ZM15.6084 18.8574C15.1942 18.8574 14.8584 19.1932 14.8584 19.6074C14.8584 20.0216 15.1942 20.3574 15.6084 20.3574V18.8574ZM8.39258 20.3574C8.80679 20.3574 9.14258 20.0216 9.14258 19.6074C9.14258 19.1932 8.80679 18.8574 8.39258 18.8574L8.39258 20.3574ZM4.39258 19.6074H3.64258L3.64258 20.3574H4.39258L4.39258 19.6074ZM5.14258 15.6074C5.14258 15.1932 4.80679 14.8574 4.39258 14.8574C3.97837 14.8574 3.64258 15.1932 3.64258 15.6074H5.14258ZM12.7472 7.37105C12.7472 6.95683 12.4114 6.62105 11.9972 6.62105C11.583 6.62105 11.2472 6.95683 11.2472 7.37105H12.7472ZM11.2472 7.9496C11.2472 8.36382 11.583 8.6996 11.9972 8.6996C12.4114 8.6996 12.7472 8.36382 12.7472 7.9496H11.2472ZM15.4685 13.5637C15.0543 13.5637 14.7185 13.8995 14.7185 14.3137C14.7185 14.7279 15.0543 15.0637 15.4685 15.0637V13.5637ZM16.6256 15.0637C17.0398 15.0637 17.3756 14.7279 17.3756 14.3137C17.3756 13.8995 17.0398 13.5637 16.6256 13.5637V15.0637ZM11.9972 14.3137V13.5637C11.583 13.5637 11.2472 13.8995 11.2472 14.3137H11.9972ZM13.1543 15.0637C13.5685 15.0637 13.9043 14.7279 13.9043 14.3137C13.9043 13.8995 13.5685 13.5637 13.1543 13.5637V15.0637ZM11.2472 16.628C11.2472 17.0422 11.583 17.378 11.9972 17.378C12.4114 17.378 12.7472 17.0422 12.7472 16.628H11.2472ZM12.7472 10.2638C12.7472 9.84962 12.4114 9.51383 11.9972 9.51383C11.583 9.51383 11.2472 9.84962 11.2472 10.2638H12.7472ZM11.9972 11.9995H11.2472C11.2472 12.4137 11.583 12.7495 11.9972 12.7495V11.9995ZM14.3114 15.878C13.8972 15.878 13.5614 16.2137 13.5614 16.628C13.5614 17.0422 13.8972 17.378 14.3114 17.378V15.878ZM16.6256 17.378C17.0398 17.378 17.3756 17.0422 17.3756 16.628C17.3756 16.2137 17.0398 15.878 16.6256 15.878V17.378ZM7.36873 11.2495C6.95451 11.2495 6.61873 11.5853 6.61873 11.9995C6.61873 12.4137 6.95451 12.7495 7.36873 12.7495V11.2495ZM9.68295 12.7495C10.0972 12.7495 10.433 12.4137 10.433 11.9995C10.433 11.5853 10.0972 11.2495 9.68295 11.2495V12.7495ZM12.003 12.7495C12.4172 12.7495 12.753 12.4137 12.753 11.9995C12.753 11.5853 12.4172 11.2495 12.003 11.2495V12.7495ZM14.3172 12.7495C14.7314 12.7495 15.0672 12.4137 15.0672 11.9995C15.0672 11.5853 14.7314 11.2495 14.3172 11.2495V12.7495ZM16.6256 11.2495C16.2114 11.2495 15.8756 11.5853 15.8756 11.9995C15.8756 12.4137 16.2114 12.7495 16.6256 12.7495V11.2495ZM16.6314 12.7495C17.0456 12.7495 17.3814 12.4137 17.3814 11.9995C17.3814 11.5853 17.0456 11.2495 16.6314 11.2495V12.7495ZM5.14258 8.3916L5.14258 4.3916H3.64258L3.64258 8.3916H5.14258ZM4.39258 5.1416L8.39258 5.1416V3.6416L4.39258 3.6416V5.1416ZM15.6084 5.1416L19.6084 5.1416V3.6416L15.6084 3.6416V5.1416ZM18.8584 4.3916V8.3916H20.3584V4.3916H18.8584ZM18.8584 15.6074V19.6074H20.3584V15.6074H18.8584ZM19.6084 18.8574H15.6084V20.3574H19.6084V18.8574ZM8.39258 18.8574L4.39258 18.8574L4.39258 20.3574L8.39258 20.3574L8.39258 18.8574ZM5.14258 19.6074L5.14258 15.6074H3.64258L3.64258 19.6074H5.14258ZM7.94728 8.12105L9.1044 8.12105V6.62105L7.94728 6.62105L7.94728 8.12105ZM8.93295 7.9496V9.10672L10.433 9.10672V7.9496H8.93295ZM9.1044 8.93527H7.94728V10.4353H9.1044L9.1044 8.93527ZM8.11873 9.10672L8.11873 7.9496L6.61873 7.9496L6.61873 9.10672H8.11873ZM7.94728 8.93527C8.04197 8.93527 8.11873 9.01203 8.11873 9.10672H6.61873C6.61873 9.84046 7.21354 10.4353 7.94728 10.4353V8.93527ZM8.93295 9.10672C8.93295 9.01203 9.00971 8.93527 9.1044 8.93527L9.1044 10.4353C9.83814 10.4353 10.433 9.84046 10.433 9.10672L8.93295 9.10672ZM9.1044 8.12105C9.00971 8.12105 8.93295 8.04429 8.93295 7.9496H10.433C10.433 7.21586 9.83814 6.62105 9.1044 6.62105V8.12105ZM7.94728 6.62105C7.21354 6.62105 6.61873 7.21586 6.61873 7.9496L8.11873 7.9496C8.11873 8.04429 8.04197 8.12105 7.94728 8.12105L7.94728 6.62105ZM14.89 8.12105H16.0471V6.62105H14.89L14.89 8.12105ZM15.8756 7.9496L15.8756 9.10672H17.3756V7.9496L15.8756 7.9496ZM16.0471 8.93527H14.89V10.4353H16.0471V8.93527ZM15.0614 9.10672L15.0614 7.9496L13.5614 7.9496L13.5614 9.10672H15.0614ZM14.89 8.93527C14.9846 8.93527 15.0614 9.01203 15.0614 9.10672H13.5614C13.5614 9.84046 14.1562 10.4353 14.89 10.4353V8.93527ZM15.8756 9.10672C15.8756 9.01203 15.9524 8.93527 16.0471 8.93527V10.4353C16.7808 10.4353 17.3756 9.84046 17.3756 9.10672H15.8756ZM16.0471 8.12105C15.9524 8.12105 15.8756 8.04429 15.8756 7.9496L17.3756 7.9496C17.3756 7.21586 16.7808 6.62105 16.0471 6.62105V8.12105ZM14.89 6.62105C14.1562 6.62105 13.5614 7.21586 13.5614 7.9496L15.0614 7.9496C15.0614 8.04429 14.9846 8.12105 14.89 8.12105L14.89 6.62105ZM7.94728 15.0637L9.1044 15.0637V13.5637L7.94728 13.5637L7.94728 15.0637ZM8.93295 14.8923V16.0494H10.433V14.8923H8.93295ZM9.1044 15.878L7.94728 15.878L7.94728 17.378H9.1044V15.878ZM8.11873 16.0494V14.8923L6.61873 14.8923V16.0494H8.11873ZM7.94728 15.878C8.04197 15.878 8.11873 15.9547 8.11873 16.0494H6.61873C6.61873 16.7831 7.21354 17.378 7.94728 17.378L7.94728 15.878ZM8.93295 16.0494C8.93295 15.9547 9.00971 15.878 9.1044 15.878V17.378C9.83814 17.378 10.433 16.7831 10.433 16.0494H8.93295ZM9.1044 15.0637C9.00971 15.0637 8.93295 14.987 8.93295 14.8923H10.433C10.433 14.1585 9.83814 13.5637 9.1044 13.5637V15.0637ZM7.94728 13.5637C7.21354 13.5637 6.61873 14.1585 6.61873 14.8923L8.11873 14.8923C8.11873 14.987 8.04197 15.0637 7.94728 15.0637L7.94728 13.5637ZM11.2472 7.37105V7.9496H12.7472V7.37105H11.2472ZM15.4685 15.0637H16.6256V13.5637H15.4685V15.0637ZM11.9972 15.0637H13.1543V13.5637H11.9972V15.0637ZM11.2472 14.3137V16.628H12.7472L12.7472 14.3137H11.2472ZM11.2472 10.2638V11.9995H12.7472V10.2638H11.2472ZM14.3114 17.378L16.6256 17.378V15.878L14.3114 15.878V17.378ZM7.36873 12.7495L9.68295 12.7495V11.2495H7.36873V12.7495ZM11.9972 12.7495H12.003V11.2495H11.9972V12.7495ZM16.6256 12.7495H16.6314V11.2495H16.6256V12.7495ZM11.9972 12.7495H14.3172V11.2495L11.9972 11.2495V12.7495Z" fill="#00A376"/>
+                                </svg>
+                                </div>
                                     <!-- Text -->
 								<span class="text-xs mb-2 transition-all duration-200">
 									Scan
 								</span>
 							</span>
                     </Link>
-                </div>
 
                 <!-- Item #4 -->
-                <div class="flex group ">
-                    <Link :href="route('user.projects')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('user.projects'), 'text-bali-hai-500 font-bold': !route().current('user.projects')}">
-							<span class="flex flex-col items-center">
+                    <Link :href="route('user.projects')" class=" montserrat w-1/5" :class="{'text-t_green-800 font-bold dark:text-t_green-600': route().current('user.projects'), 'text-t_blue_gray-400 font-bold': !route().current('user.projects')}">
+							<span class="flex flex-col gap-1 items-center">
 								<!-- Icon -->
-                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('user.projects'),'text-bali-hai-500 hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('user.projects')}" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 5.64801C16 2.52547 13.5171 0 10.4472 0C7.37729 0 4.8944 2.52547 4.8944 5.64801C4.89339 6.98156 5.35764 8.27221 6.20451 9.29022C7.05139 10.3082 8.22593 10.9876 9.51909 11.2073V14.3863H3.17303V11.9657H3.96629V8.73828C3.96629 8.2945 3.60932 7.93142 3.17303 7.93142H0.793257C0.356966 7.93142 0 8.2945 0 8.73828V11.9657H0.793257V16H13.4854V14.3863H11.1056V11.2557C12.4546 11.0918 13.6978 10.4306 14.5997 9.3972C15.5017 8.36379 15.9999 7.0299 16 5.64801ZM1.98314 7.12456C2.64155 7.12456 3.17303 6.58396 3.17303 5.91427C3.17303 5.24458 2.64155 4.70398 1.98314 4.70398C1.32474 4.70398 0.793257 5.24458 0.793257 5.91427C0.793257 6.58396 1.32474 7.12456 1.98314 7.12456Z" fill="#849DAE"/>
-                                </svg>
 
+<div :class="{'py-1 px-4 bg-t_white-200 rounded-full dark:bg-t_black-800': route().current('user.projects')}">
+                                                                 <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path :class="{'stroke-t_green-800 dark:stroke-t_green-600': route().current('user.projects'),'stroke-t_blue_gray-400 dark:stroke-t_blue_gray-400': !route().current('user.projects')}" d="M7.3584 5.82373C11.3974 8.75586 11.6707 11.5018 11.2808 16.7145" stroke="#7A9EB8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path :class="{'stroke-t_green-800 dark:stroke-t_green-600': route().current('user.projects'),'stroke-t_blue_gray-400 dark:stroke-t_blue_gray-400': !route().current('user.projects')}" d="M13.8413 8.54688C12.4521 9.245 11.4102 10.9903 11.4102 13.0847" stroke="#7A9EB8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path :class="{'stroke-t_green-800 dark:stroke-t_green-600': route().current('user.projects'),'stroke-t_blue_gray-400 dark:stroke-t_blue_gray-400': !route().current('user.projects')}" d="M15.0553 4.55208C13.4342 5.7742 13.9041 8.07825 13.9041 8.07825C13.9041 8.07825 15.4605 9.03202 17.0817 8.21743C18.7029 7.40285 19.5135 4.55161 19.5135 4.55161C19.5135 4.55161 16.6763 3.32995 15.0553 4.55208Z" stroke="#7A9EB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path :class="{'stroke-t_green-800 dark:stroke-t_green-600': route().current('user.projects'),'stroke-t_blue_gray-400 dark:stroke-t_blue_gray-400': !route().current('user.projects')}" d="M9.70221 3.08336C7.68258 0.823004 1.68555 1.33617 1.68555 1.33617C1.68555 1.33617 3.08227 6.84825 5.12126 8.71482C7.16025 10.5814 9.70221 8.32531 9.70221 8.32531C9.70221 8.32531 11.7219 5.34371 9.70221 3.08336Z" stroke="#7A9EB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                </div>
                                 <!-- Text -->
 								<span class="text-xs mb-2 transition-all duration-200">
 									Project
 								</span>
 							</span>
                     </Link>
-                </div>
 
                 <!-- Item #5 -->
-                <div class="flex group">
-                    <Link :href="route('user.settings')" class="p-1 montserrat" :class="{'text-niagara-500 font-bold dark:text-niagara-500': route().current('user.settings'), 'text-bali-hai-500 font-bold': !route().current('user.settings')}">
-							<span class="flex flex-col items-center">
+                    <Link :href="route('user.settings')" class="montserrat w-1/5" :class="{'text-t_green-800 font-bold dark:text-t_green-600': route().current('user.settings'), 'text-t_blue_gray-400 font-bold': !route().current('user.settings')}">
+							<span class="flex flex-col gap-1 items-center">
 								<!-- Icon -->
-                                <svg :class="{'text-niagara-500  dark:text-white dark:bg-niagara-500': route().current('user.settings'),'text-bali-hai-500 font-bold hover:text-niagara-500 dark:hover:text-niagara-500': !route().current('user.settings')}" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_1874_3770)">
-                                    <path d="M15.0369 8.33008C16.0496 8.33008 16.8706 7.50909 16.8706 6.49634C16.8706 5.48359 16.0496 4.6626 15.0369 4.6626C14.0241 4.6626 13.2031 5.48359 13.2031 6.49634C13.2031 7.50909 14.0241 8.33008 15.0369 8.33008Z" fill="#849DAE"/>
-                                    <path d="M18.6028 10.2647C18.2452 9.9071 17.6309 9.24695 16.4389 9.24695H14.1101C11.5887 9.23778 9.53491 7.18399 9.53491 4.6626H7.70117C7.70117 7.55991 9.63577 10.0171 12.2855 10.8148L12.2855 23H14.1193L14.1193 17.4988H15.953V23H17.7867V12.0434L21.4084 15.665L22.7012 14.3723L18.6028 10.2647Z" fill="#849DAE"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_1874_3770">
-                                    <rect width="28" height="28" fill="white" transform="translate(0.701172)"/>
-                                    </clipPath>
-                                    </defs>
-                                </svg>
 
+                                <div :class="{'py-1 px-4 bg-t_white-200 rounded-full dark:bg-t_black-800': route().current('user.settings')}">
+                                                                 <svg :class="{'stroke-t_green-800 dark:stroke-t_green-600': route().current('user.settings'),'stroke-t_blue_gray-400 dark:stroke-t_blue_gray-400': !route().current('user.settings')}" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="path-1-outside-1_2392_2248" maskUnits="userSpaceOnUse" x="-0.491211" y="0.119629" width="23" height="18" fill="black">
+                                    <rect fill="white" x="-0.491211" y="0.119629" width="23" height="18"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2002 6.7686C12.484 6.7686 13.5247 5.72789 13.5247 4.44412C13.5247 3.16034 12.484 2.11963 11.2002 2.11963C9.91641 2.11963 8.8757 3.16034 8.8757 4.44412C8.8757 5.72789 9.91641 6.7686 11.2002 6.7686ZM3.23584 6.75391C3.78975 6.5724 4.38594 6.87429 4.56745 7.4282C5.02136 8.81339 5.89053 9.90134 7.13036 10.6042C8.37957 11.3123 10.0732 11.6664 12.2148 11.4446C14.272 11.2316 16.789 9.85837 17.9037 7.75617C18.1768 7.24119 18.8156 7.04508 19.3306 7.31815C19.8456 7.59121 20.0417 8.23004 19.7686 8.74502C18.6172 10.9165 16.464 12.4177 14.341 13.1235C14.344 13.1455 14.3462 13.1677 14.3474 13.1903L14.4982 15.8811L8.04144 15.8811L7.88397 13.2843C7.88219 13.2549 7.882 13.2258 7.88333 13.197C7.2415 13.0068 6.64218 12.7538 6.08941 12.4405C4.37098 11.4664 3.1713 9.94626 2.56155 8.08552C2.38004 7.5316 2.68193 6.93542 3.23584 6.75391Z"/>
+                                    </mask>
+                                    <path d="M4.56745 7.4282L2.66689 8.051H2.66689L4.56745 7.4282ZM3.23584 6.75391L2.61305 4.85335L2.61304 4.85335L3.23584 6.75391ZM7.13036 10.6042L8.11665 8.86427L7.13036 10.6042ZM12.2148 11.4446L12.4208 13.434L12.2148 11.4446ZM17.9037 7.75617L16.1367 6.81925V6.81925L17.9037 7.75617ZM19.3306 7.31815L18.3937 9.08511L18.3937 9.08511L19.3306 7.31815ZM19.7686 8.74502L18.0016 7.8081V7.8081L19.7686 8.74502ZM14.341 13.1235L13.71 11.2257L12.1311 11.7506L12.36 13.3987L14.341 13.1235ZM14.3474 13.1903L12.3506 13.3021V13.3021L14.3474 13.1903ZM14.4982 15.8811V17.8811H16.6133L16.495 15.7692L14.4982 15.8811ZM8.04144 15.8811L6.0451 16.0021L6.15904 17.8811H8.04144V15.8811ZM7.88397 13.2843L5.88764 13.4054L5.88764 13.4054L7.88397 13.2843ZM7.88333 13.197L9.8812 13.2892L9.95341 11.7245L8.45156 11.2794L7.88333 13.197ZM6.08941 12.4405L5.10312 14.1804L5.10313 14.1804L6.08941 12.4405ZM2.56155 8.08552L0.660992 8.70831L2.56155 8.08552ZM11.5247 4.44412C11.5247 4.62333 11.3794 4.7686 11.2002 4.7686L11.2002 8.7686C13.5885 8.7686 15.5247 6.83246 15.5247 4.44412L11.5247 4.44412ZM11.2002 4.11963C11.3794 4.11963 11.5247 4.26491 11.5247 4.44412L15.5247 4.44412C15.5247 2.05577 13.5885 0.119629 11.2002 0.119629V4.11963ZM10.8757 4.44412C10.8757 4.26491 11.021 4.11963 11.2002 4.11963V0.119629C8.81184 0.119629 6.8757 2.05577 6.8757 4.44412L10.8757 4.44412ZM11.2002 4.7686C11.021 4.7686 10.8757 4.62333 10.8757 4.44412L6.8757 4.44412C6.8757 6.83246 8.81184 8.7686 11.2002 8.7686L11.2002 4.7686ZM6.46801 6.80541C5.94253 5.20184 4.21661 4.32788 2.61305 4.85335L3.85864 8.65447C3.3629 8.81692 2.82934 8.54674 2.66689 8.051L6.46801 6.80541ZM8.11665 8.86427C7.33007 8.41838 6.77419 7.73977 6.46801 6.80541L2.66689 8.051C3.26853 9.887 4.45098 11.3843 6.14408 12.3441L8.11665 8.86427ZM12.0088 9.45526C10.1879 9.64382 8.93042 9.32556 8.11665 8.86427L6.14408 12.3441C7.82871 13.299 9.95848 13.689 12.4208 13.434L12.0088 9.45526ZM16.1367 6.81925C15.3896 8.22834 13.5291 9.29784 12.0088 9.45526L12.4208 13.434C15.0148 13.1654 18.1885 11.4884 19.6707 8.69309L16.1367 6.81925ZM20.2675 5.55118C18.7766 4.76066 16.9272 5.3284 16.1367 6.81925L19.6707 8.69309C19.4263 9.15398 18.8545 9.3295 18.3937 9.08511L20.2675 5.55118ZM21.5356 9.68194C22.3261 8.19109 21.7583 6.34169 20.2675 5.55118L18.3937 9.08511C17.9328 8.84073 17.7572 8.26899 18.0016 7.8081L21.5356 9.68194ZM14.9719 15.0214C17.4613 14.1937 20.0891 12.4099 21.5356 9.68194L18.0016 7.8081C17.1453 9.42313 15.4666 10.6417 13.71 11.2257L14.9719 15.0214ZM16.3443 13.0784C16.34 13.0009 16.3325 12.9242 16.3219 12.8484L12.36 13.3987C12.3555 13.3668 12.3524 13.3346 12.3506 13.3021L16.3443 13.0784ZM16.495 15.7692L16.3443 13.0784L12.3506 13.3021L12.5013 15.9929L16.495 15.7692ZM8.04144 17.8811L14.4982 17.8811V13.8811L8.04144 13.8811V17.8811ZM5.88764 13.4054L6.0451 16.0021L10.0378 15.76L9.88031 13.1633L5.88764 13.4054ZM5.88546 13.1048C5.88086 13.2044 5.88154 13.3047 5.88764 13.4054L9.88031 13.1633C9.88284 13.2051 9.88314 13.2471 9.8812 13.2892L5.88546 13.1048ZM5.10313 14.1804C5.79434 14.5722 6.53472 14.8833 7.3151 15.1146L8.45156 11.2794C7.94828 11.1303 7.49002 10.9355 7.0757 10.7006L5.10313 14.1804ZM0.660992 8.70831C1.41834 11.0195 2.93108 12.9491 5.10312 14.1804L7.0757 10.7006C5.81088 9.98361 4.92426 8.87305 4.46211 7.46272L0.660992 8.70831ZM2.61304 4.85335C1.00948 5.37883 0.135518 7.10475 0.660992 8.70831L4.46211 7.46272C4.62456 7.95846 4.35438 8.49202 3.85864 8.65447L2.61304 4.85335Z" fill="#7A9EB8" mask="url(#path-1-outside-1_2392_2248)"/>
+                                </svg>
+                                </div>
                                 <!-- Text -->
 								<span class="text-xs mb-2 transition-all duration-200">
 									Me
 								</span>
 							</span>
                     </Link>
-                </div>
             </div>
         </div>
     </footer>

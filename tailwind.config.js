@@ -18,12 +18,19 @@ module.exports = {
             },
 
             colors: {
+                't_white': {
+                    DEFAULT: '#EEF6FB',
+                    '100': '#FBFDFE',
+                    '150': '#F5F8FB',
+                    '200': '#EEF6FB',
+                },
                 't_green': {
                     DEFAULT: '#00FFBB',
                     '100': '#E2FDF6',
                     '200': '#B7FBE9',
                     '300': '#66FFD6',
                     '500': '#00FFBB',
+                    '600': '#00CF98',
                     '700': '#00BF8C',
                     '800': '#00A376',
                 },
