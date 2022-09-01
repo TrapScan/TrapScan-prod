@@ -22,6 +22,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "@material-tailwind/html": "^1.2.1",
         "element-plus": "^2.2.10",
         "flowbite": "^1.5.1",
         "laravel-echo": "^1.13.0",

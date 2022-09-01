@@ -55,7 +55,7 @@ export default {
 </script>
 
 <template>
-    <div class="min-h-screen h-full bg-mystic-500 dark:bg-mirage-600 dark:text-gray-300 ">
+    <div class="min-h-screen h-full bg-t_blue_gray-100 dark:bg-t_black-900 dark:text-gray-300 ">
         <nav class="bg-niagara-500 h-[64px] mb-8 shadow-2xl">
             <!-- Primary Navigation Menu -->
             <div class="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">

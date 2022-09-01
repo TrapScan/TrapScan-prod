@@ -1,6 +1,6 @@
 const preLoad = function () {
     return caches.open("offline").then(function (cache) {
-        // caching index and important routes
+        // caching index and important ddd
         return cache.addAll(filesToCache);
     });
 };
@@ -18,7 +18,7 @@ const checkResponse = function (request) {
     return new Promise(function (fulfill, reject) {
         fetch(request).then(function (response) {
             if (response.status !== 404) {
-                fulfill(response);
+                fulfill(response);dd
             } else {
                 reject();
             }

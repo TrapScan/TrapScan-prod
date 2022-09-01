@@ -11,12 +11,70 @@ module.exports = {
     ],
     darkMode: 'class',
     theme: {
-
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                'fira': ['Fira Sans', 'sans-serif']
             },
+
             colors: {
+                't_green': {
+                    DEFAULT: '#00FFBB',
+                    '100': '#E2FDF6',
+                    '200': '#B7FBE9',
+                    '300': '#66FFD6',
+                    '500': '#00FFBB',
+                    '700': '#00BF8C',
+                    '800': '#00A376',
+                },
+                't_black': {
+                    DEFAULT: '#152637',
+                    '750': '#202E3C',
+                    '800': '#152637',
+                    '900': '#0B1722',
+                    '950': '#060A0E',
+                },
+                't_blue_gray': {
+                    DEFAULT: '#60859F',
+                    '50': '#EFF3F5',
+                    '100': '#E3E9EE',
+                    '300': '#ABC2D2',
+                    '400': '#7A9EB8',
+                    '500': '#60859F',
+                    '700': '#2E526B',
+                    '800': '#1F3747',
+                },
+                't_purple': {
+                    DEFAULT: '#2F45C5',
+                    '50': '#EBEEFF',
+                    '100': '#CCD3FF',
+                    '200': '#8F9FFF',
+                    '300': '#526BFF',
+                    '500': '#2F45C5',
+                    '700': '#232F80',
+                    '800': '#161E50',
+                },
+                't_blue': {
+                    DEFAULT: '#286EA2',
+                    '50': '#E6F1F9',
+                    '200': '#BBD6FB',
+                    '300': '#9BCAED',
+                    '400': '#5CA2D6',
+                    '600': '#286EA2',
+                    '700': '#03407C',
+                    '800': '#052E57',
+                },
+                't_warms': {
+                    DEFAULT: '#D44944',
+                    '50': '#FEF5E7',
+                    '100': '#FBE1B6',
+                    '200': '#F1DE5A',
+                    '300': '#FFB947',
+                    '400': '#F88A07',
+                    '500': '#D44944',
+                    '600': '#BB302B',
+                },
+
                 'brand_green':'#0AB587',
                 'light_interface':'#fcfcfc',
                 'dark_interface':'#1B2937',

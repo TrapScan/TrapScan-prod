@@ -5,11 +5,14 @@ import {Link, useForm } from '@inertiajs/inertia-vue3';
 import {ref} from "vue";
 import Button from "@/Components/Button.vue";
 import Input from "@/Components/Input.vue";
+import Primary from "@/UI/Buttons/Primary.vue";
 
 defineProps({
     canResetPassword: Boolean,
     status: String,
 });
+
+const them = ref(localStorage.getItem('color-theme'))
 
 const form = useForm({
     email: '',
@@ -35,33 +38,37 @@ const submit_magic = () => {
 </script>
 
 <template>
-    <BreezeGuestLayout>
-        <div v-if="log_in_via_email === 0" >
+    <BreezeGuestLayout  v-if="log_in_via_email === 0">
             <div class="flex flex-wrap overflow-hidden px-4">
 
                 <div class="w-full overflow-hidden">
                     <div class="mb-10 ">
-                        <p class="text-dark montserrat text-2xl font-bold">How would you like to log in?</p>
+                        <p class="dark:text-t_blue-300 text-t_black-800 text-2xl font-bold font-fira">How would you like to log in?</p>
                     </div>
                 </div>
                 <div v-if="$page.props.flash.message" class="alert w-full my-5">
                     <el-alert :title="$page.props.flash.message" type="success" show-icon />
                 </div>
-                <a class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4" :href="route('social_auth','google')">
-                        <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
-                            <svg  class="my-auto" width="30" height="30" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="30" height="29" fill="url(#pattern0)"/>
-                                <defs>
-                                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                                        <use xlink:href="#image0_1531_3561" transform="translate(-0.00922619) scale(0.00863095 0.00892857)"/>
-                                    </pattern>
-                                    <image id="image0_1531_3561" width="118" height="112" xlink:href="data:image/png;base64,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"/>
-                                </defs>
-                            </svg>
+                <a class="w-full hover:scale-x-105 duration-1000 overflow-hidden items-center dark:bg-t_black-750 justify-center bg-white p-4 flex justify-between rounded-[6px] mb-4" :href="route('social_auth','google')">
+                        <div class="h-14 w-14 justify-center flex rounded-lg shadow-sm dark:bg-gray-900 bg-gray-100">
+                            <svg class="my-auto" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2375_2775)">
+                                <path d="M25.9861 13.2434C25.9861 12.1781 25.8977 11.4008 25.7062 10.5947H13.2588V15.4025H20.5652C20.4179 16.5974 19.6224 18.3967 17.8547 19.6058L17.83 19.7668L21.7656 22.7462L22.0383 22.7727C24.5424 20.5127 25.9861 17.1875 25.9861 13.2434Z" fill="#4285F4"/>
+                                <path d="M13.259 25.9106C16.8385 25.9106 19.8436 24.759 22.0385 22.7726L17.855 19.6056C16.7355 20.3686 15.2329 20.9012 13.259 20.9012C9.75315 20.9012 6.77758 18.6412 5.71687 15.5176L5.56139 15.5305L1.46905 18.6254L1.41553 18.7708C3.59565 23.0028 8.07379 25.9106 13.259 25.9106Z" fill="#34A853"/>
+                                <path d="M5.71691 15.5175C5.43704 14.7114 5.27506 13.8477 5.27506 12.9552C5.27506 12.0627 5.43704 11.199 5.70219 10.393L5.69478 10.2213L1.55115 7.07666L1.41558 7.13968C0.517045 8.89587 0.00146484 10.868 0.00146484 12.9552C0.00146484 15.0425 0.517045 17.0145 1.41558 18.7707L5.71691 15.5175Z" fill="#FBBC05"/>
+                                <path d="M13.259 5.00937C15.7485 5.00937 17.4277 6.06018 18.3853 6.93833L22.1269 3.36839C19.8289 1.28114 16.8385 0 13.259 0C8.07379 0 3.59565 2.90773 1.41553 7.13978L5.70214 10.3931C6.77758 7.26938 9.75315 5.00937 13.259 5.00937Z" fill="#EB4335"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2375_2775">
+                                    <rect width="26" height="26" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+
 
                         </div>
                         <div class="ml-3 py-2 w-8/12">
-                            <p class="ubuntu font-bold">Google Sign in</p>
+                            <p class="font-fira font-bold">Google Sign in</p>
                         </div>
                         <div class="ml-3 py-3">
                             <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,11 +76,15 @@ const submit_magic = () => {
                             </svg>
                         </div>
                 </a>
-                <a :href="route('social_auth','facebook')" class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4">
-                    <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
-                        <svg class="my-auto text-blue-700" width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" color="#000"><path fill="none" d="M0 0h24v24H0z"></path><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg>                    </div>
+                <a :href="route('social_auth','facebook')" class="w-full hover:scale-x-105 duration-1000 overflow-hidden items-center dark:bg-t_black-750 justify-center bg-white p-4 border-black flex justify-between rounded-[6px] mb-4">
+                    <div class="h-14 w-14 justify-center flex rounded-lg shadow-sm dark:bg-gray-900 bg-gray-100">
+                        <svg class="my-auto" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M26 13C26 20.1797 20.1797 26 13 26C5.8203 26 0 20.1797 0 13C0 5.8203 5.8203 0 13 0C20.1797 0 26 5.8203 26 13Z" fill="white"/>
+                            <path d="M15.061 25.8419C21.2613 24.8543 26 19.4827 26 13.0044C26 5.82467 20.1797 0.00437034 13 0.00437034C5.8203 0.00437034 0 5.82467 0 13.0044C0 19.4827 4.73872 24.8543 10.939 25.8419V16.8092H7.60976V13.0044H10.939V9.99218C10.939 7.6102 12.2073 5.22785 15.378 5.23608C16.9247 5.24009 16.8049 5.23608 18.7073 5.39461L18.6839 8.72388H16.3293C15.061 8.72388 15.061 9.83364 15.061 11.419V13.0044H18.5488L18.0732 16.8092H15.061V25.8419Z" fill="#1771E6"/>
+                        </svg>
+                    </div>
                     <div class="ml-3 py-2 w-8/12">
-                        <p class="ubuntu font-bold">Facebook Sign in</p>
+                        <p class="font-fira font-bold">Facebook Sign in</p>
                     </div>
                     <div class="ml-3 py-3">
                         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,12 +92,14 @@ const submit_magic = () => {
                         </svg>
                     </div>
                 </a>
-                <a :href="route('social_auth','apple')" class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4">
-                    <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
-                        <svg  class="my-auto dark:stroke-gray-50 dark:text-white" width="30" height="30" role="img" viewBox="0 0 24 24" fill="currentColor" color="#000" xmlns="http://www.w3.org/2000/svg"><title>Apple icon</title><path d="M7.078 23.55c-.473-.316-.893-.703-1.244-1.15-.383-.463-.738-.95-1.064-1.454-.766-1.12-1.365-2.345-1.78-3.636-.5-1.502-.743-2.94-.743-4.347 0-1.57.34-2.94 1.002-4.09.49-.9 1.22-1.653 2.1-2.182.85-.53 1.84-.82 2.84-.84.35 0 .73.05 1.13.15.29.08.64.21 1.07.37.55.21.85.34.95.37.32.12.59.17.8.17.16 0 .39-.05.645-.13.145-.05.42-.14.81-.31.386-.14.692-.26.935-.35.37-.11.728-.21 1.05-.26.39-.06.777-.08 1.148-.05.71.05 1.36.2 1.94.42 1.02.41 1.843 1.05 2.457 1.96-.26.16-.5.346-.725.55-.487.43-.9.94-1.23 1.505-.43.77-.65 1.64-.644 2.52.015 1.083.29 2.035.84 2.86.387.6.904 1.114 1.534 1.536.31.21.582.355.84.45-.12.375-.252.74-.405 1.1-.347.807-.76 1.58-1.25 2.31-.432.63-.772 1.1-1.03 1.41-.402.48-.79.84-1.18 1.097-.43.285-.935.436-1.452.436-.35.015-.7-.03-1.034-.127-.29-.095-.576-.202-.856-.323-.293-.134-.596-.248-.905-.34-.38-.1-.77-.148-1.164-.147-.4 0-.79.05-1.16.145-.31.088-.61.196-.907.325-.42.175-.695.29-.855.34-.324.096-.656.154-.99.175-.52 0-1.004-.15-1.486-.45zm6.854-18.46c-.68.34-1.326.484-1.973.436-.1-.646 0-1.31.27-2.037.24-.62.56-1.18 1-1.68.46-.52 1.01-.95 1.63-1.26.66-.34 1.29-.52 1.89-.55.08.68 0 1.35-.25 2.07-.228.64-.568 1.23-1 1.76-.435.52-.975.95-1.586 1.26z"></path></svg>
+                <a :href="route('social_auth','apple')" class="w-full hover:scale-x-105 duration-1000 overflow-hidden items-center dark:bg-t_black-750 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-[6px] mb-4">
+                    <div class="h-14 w-14 justify-center flex rounded-lg shadow-sm dark:bg-gray-900 bg-gray-100">
+                        <svg class="my-auto" width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="fill-gray-900 dark:fill-gray-300" d="M20.3318 8.8634C20.1822 8.9804 17.5404 10.4806 17.5404 13.8164C17.5404 17.6748 20.902 19.0398 21.0026 19.0736C20.9871 19.1568 20.4686 20.943 19.2302 22.763C18.126 24.3646 16.9729 25.9636 15.2186 25.9636C13.4643 25.9636 13.0128 24.9366 10.9876 24.9366C9.014 24.9366 8.31229 25.9974 6.70762 25.9974C5.10295 25.9974 3.98329 24.5154 2.69595 22.6954C1.20479 20.5582 0 17.238 0 14.0868C0 9.0324 3.26093 6.3518 6.47027 6.3518C8.17555 6.3518 9.59705 7.4802 10.6677 7.4802C11.6867 7.4802 13.2759 6.2842 15.216 6.2842C15.9512 6.2842 18.593 6.3518 20.3318 8.8634ZM14.295 4.1444C15.0973 3.185 15.6649 1.8538 15.6649 0.5226C15.6649 0.338 15.6494 0.1508 15.6158 0C14.3104 0.0494 12.7574 0.8762 11.8209 1.9708C11.0856 2.8132 10.3994 4.1444 10.3994 5.4938C10.3994 5.6966 10.4329 5.8994 10.4484 5.9644C10.531 5.98 10.6651 5.9982 10.7993 5.9982C11.9705 5.9982 13.4436 5.2078 14.295 4.1444Z" />
+                        </svg>
                     </div>
                     <div class="ml-3 py-2 w-8/12">
-                        <p class="ubuntu font-bold">Apple ID</p>
+                        <p class="font-fira font-bold">Apple ID</p>
                     </div>
                     <div class="ml-3 py-3">
                         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,17 +107,17 @@ const submit_magic = () => {
                         </svg>
                     </div>
                 </a>
-                <div class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center  bg-white p-4 border-black flex justify-between rounded-xl mb-4" @click="log_in_via_email = 2">
-                    <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
-                        <svg class="my-auto "  width="30" height="30" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24.5 4.49976L3.50049 7.99976L6.5 24.4998L14 23.4998L16.5 19.9998L20 17.4998L24 15.4998V12.9998L26 13.9998L24.5 4.49976Z" fill="white"/>
-                            <path d="M3.16647 7.50417C3.4 7.17276 3.7225 6.96938 4.12035 6.9042L23.4713 3.73412C23.8692 3.66893 24.2453 3.75257 24.5791 3.99633C24.9067 4.23847 25.1059 4.56767 25.1729 4.97664L26.5 14.5L25 13.5L24.1666 7.22272L16.4171 18.2592C16.3078 18.4145 16.1593 18.4995 15.9785 18.5292L15.9304 18.537C15.7493 18.5667 15.5815 18.5335 15.4284 18.4212L4.56243 10.4343L6.7548 23.8171C6.76281 23.866 6.84713 23.9261 6.90728 23.9163L15.4284 22.5L14.2036 24.0944L7.12639 25.2538C6.72855 25.319 6.3675 25.2302 6.03052 24.987C5.69388 24.7463 5.49391 24.4331 5.4286 24.0344L2.90419 8.62476C2.83719 8.21579 2.92825 7.8443 3.16647 7.50417ZM4.2502 8.5284L15.6919 16.9307L23.8544 5.31682L23.8346 5.19593C23.8249 5.13679 23.7387 5.06373 23.6904 5.07165L4.3395 8.24172C4.25517 8.25554 4.21484 8.31232 4.23043 8.40749L4.2502 8.5284Z" fill="#262626"/>
-                            <path d="M13.524 24.6527C13.6191 24.3572 13.7066 24.0061 14.1382 23.0464C14.579 22.0639 15.0718 21.1789 16.0361 19.9109C16.9916 18.6555 18.0396 17.5744 19.7042 16.4126C20.5324 15.8328 21.4167 15.3021 22.3589 14.8605L21.5916 11.9969C21.4928 11.6283 21.6006 11.326 21.9068 11.1055C22.224 10.8753 22.5253 10.8756 22.8251 11.0485L29.9589 15.1674C30.3897 15.4167 30.5172 15.889 30.267 16.3173L26.1409 23.4229C26.021 23.6272 25.8646 23.7502 25.6431 23.8095C25.5546 23.8332 25.447 23.8452 25.3171 23.8327C24.9302 23.7473 24.6853 23.5428 24.5984 23.2183L23.8505 20.4272L23.3043 20.5735C22.0784 20.902 20.8628 21.3864 19.6828 22.0031C17.8368 22.9704 16.3718 24.2172 14.9869 25.4459L14.9615 25.4696C14.7178 25.7409 14.2699 25.8271 13.9339 25.6504C13.5511 25.4491 13.4302 25.1067 13.5168 24.685L13.524 24.6527ZM22.8695 18.9511C23.5191 18.777 24.0109 18.6655 24.3464 18.6161C24.7581 18.5598 25.173 18.8065 25.2878 19.2349L25.7116 20.8164L28.4005 16.2029L23.7566 13.5203L24.188 15.1301C24.3028 15.5586 24.0965 15.9684 23.7117 16.1289C20.8818 17.3193 18.5788 19.1823 16.8085 21.7299C18.726 20.4395 20.7579 19.5169 22.8695 18.9511Z" fill="#0AB587"/>
+                <div class="w-full overflow-hidden hover:scale-x-105 duration-1000 items-center dark:bg-t_black-750 justify-center  bg-white p-4 border-black flex justify-between rounded-[6px] mb-4" @click="log_in_via_email = 2">
+                    <div class="h-14 w-14 justify-center flex rounded-lg shadow-sm dark:bg-gray-900 bg-gray-100">
+                        <svg  class="my-auto "  width="33" height="29" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.1904 4.10107L3.19092 7.60107L6.19043 24.1011L13.6904 23.1011L16.1904 19.6011L19.6904 17.1011L23.6904 15.1011V12.6011L25.6904 13.6011L24.1904 4.10107Z" fill="white"/>
+                            <path d="M2.8569 7.10525C3.09042 6.77383 3.41293 6.57045 3.81078 6.50527L23.1617 3.33519C23.5596 3.27 23.9357 3.35365 24.2696 3.59741C24.5971 3.83955 24.7963 4.16875 24.8633 4.57772L26.1904 14.1011L24.6904 13.1011L23.8571 6.82379L16.1075 17.8603C15.9983 18.0156 15.8498 18.1006 15.6689 18.1302L15.6208 18.1381C15.4398 18.1678 15.2719 18.1345 15.1188 18.0223L4.25286 10.0354L6.44523 23.4182C6.45324 23.4671 6.53756 23.5272 6.59771 23.5173L15.1188 22.1011L13.8941 23.6955L6.81682 24.8549C6.41898 24.92 6.05793 24.8313 5.72095 24.588C5.38431 24.3474 5.18434 24.0341 5.11903 23.6354L2.59462 8.22584C2.52762 7.81686 2.61868 7.44537 2.8569 7.10525ZM3.94062 8.12947L15.3823 16.5318L23.5448 4.9179L23.525 4.797C23.5153 4.73786 23.4291 4.6648 23.3808 4.67272L4.02993 7.8428C3.9456 7.85661 3.90527 7.91339 3.92086 8.00857L3.94062 8.12947Z" fill="#1B2937"/>
+                            <path d="M13.2144 24.2541C13.3095 23.9585 13.3971 23.6075 13.8286 22.6477C14.2695 21.6652 14.7622 20.7802 15.7265 19.5123C16.682 18.2568 17.7301 17.1757 19.3946 16.0139C20.2228 15.4341 21.1071 14.9034 22.0493 14.4618L21.282 11.5982C21.1833 11.2296 21.291 10.9273 21.5972 10.7068C21.9144 10.4766 22.2157 10.4769 22.5156 10.6498L29.6493 14.7687C30.0801 15.018 30.2076 15.4903 29.9574 15.9186L25.8313 23.0242C25.7115 23.2285 25.555 23.3515 25.3336 23.4108C25.245 23.4345 25.1375 23.4465 25.0075 23.434C24.6206 23.3486 24.3757 23.1441 24.2888 22.8196L23.5409 20.0285L22.9947 20.1748C21.7689 20.5033 20.5532 20.9877 19.3732 21.6044C17.5272 22.5717 16.0623 23.8185 14.6773 25.0472L14.6519 25.0709C14.4082 25.3422 13.9603 25.4284 13.6243 25.2517C13.2415 25.0504 13.1207 24.708 13.2072 24.2864L13.2144 24.2541ZM22.56 18.5524C23.2095 18.3783 23.7013 18.2668 24.0369 18.2174C24.4486 18.1611 24.8635 18.4078 24.9783 18.8363L25.402 20.4177L28.0909 15.8042L23.447 13.1216L23.8784 14.7314C23.9932 15.1599 23.787 15.5697 23.4022 15.7302C20.5722 16.9206 18.2693 18.7836 16.4989 21.3312C18.4164 20.0408 20.4483 19.1182 22.56 18.5524Z" fill="#0AB587"/>
                         </svg>
                     </div>
                     <div class="ml-3 py-2 w-8/12">
-                        <p class="ubuntu font-bold">Email link ✨</p>
-                        <p class="text-sm text-gray-400">No password required!</p>
+                        <p class="font-fira font-bold">Email link ✨</p>
+                        <p class="text-sm font-fira text-gray-400">No password required!</p>
                     </div>
                     <div class="ml-3 py-3">
                         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,16 +125,16 @@ const submit_magic = () => {
                         </svg>
                     </div>
                 </div>
-                <div class="w-full overflow-hidden items-center dark:bg-mirage-300 dark:border-white  justify-center bg-white p-4 border-black flex justify-between rounded-xl mb-4" @click="log_in_via_email = 1">
-                    <div class="h-14 w-14 justify-center flex border-2 rounded-2xl border-gray-300 shadow-sm w-2/12 dark:bg-mirage-500 dark:border-mirage-500">
-                        <svg class="my-auto dark:stroke-gray-50 " width="30" height="30" viewBox="0 0 32 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.88788 2.23274C7.66919 1.85294 7.17425 1.72634 6.79441 1.94501L4.79164 3.10742V0.794117C4.79164 0.356777 4.43483 0 3.99744 0C3.56006 0 3.20324 0.356777 3.20324 0.794117V3.10742L1.20047 1.94501C0.820636 1.72634 0.325699 1.85294 0.107006 2.23274C-0.111687 2.61253 0.0149245 3.10742 0.39476 3.32609L2.40904 4.5L0.39476 5.67391C0.0149245 5.89258 -0.111687 6.38747 0.107006 6.76726C0.325699 7.14706 0.820636 7.27366 1.20047 7.05499L3.20324 5.89258V8.20588C3.20324 8.64322 3.56006 9 3.99744 9C4.43483 9 4.79164 8.64322 4.79164 8.20588V5.89258L6.79441 7.05499C7.17425 7.27366 7.66919 7.14706 7.88788 6.76726C8.10657 6.38747 7.97996 5.89258 7.60012 5.67391L5.58584 4.5L7.60012 3.32609C7.97996 3.09591 8.11808 2.61253 7.88788 2.23274Z" fill="#262626"/>
-                            <path d="M19.8879 2.23274C19.6692 1.85294 19.1742 1.72634 18.7944 1.94501L16.7916 3.10742V0.794117C16.7916 0.356777 16.4348 0 15.9974 0C15.5601 0 15.2032 0.356777 15.2032 0.794117V3.10742L13.2005 1.94501C12.8206 1.72634 12.3257 1.85294 12.107 2.23274C11.8883 2.61253 12.0149 3.10742 12.3948 3.32609L14.409 4.5L12.3948 5.67391C12.0149 5.89258 11.8883 6.38747 12.107 6.76726C12.3257 7.14706 12.8206 7.27366 13.2005 7.05499L15.2032 5.89258V8.20588C15.2032 8.64322 15.5601 9 15.9974 9C16.4348 9 16.7916 8.64322 16.7916 8.20588V5.89258L18.7944 7.05499C19.1742 7.27366 19.6692 7.14706 19.8879 6.76726C20.1066 6.38747 19.98 5.89258 19.6001 5.67391L17.5858 4.5L19.6001 3.32609C19.98 3.09591 20.1181 2.61253 19.8879 2.23274Z" fill="#262626"/>
-                            <path d="M24.1071 6.76726C24.3259 7.14706 24.8212 7.27366 25.2012 7.05499L27.2053 5.89258V8.20588C27.2053 8.64322 27.5623 9 28 9C28.4377 9 28.7947 8.64322 28.7947 8.20588V5.89258L30.7988 7.05499C31.1788 7.27366 31.6741 7.14706 31.8929 6.76726C32.1118 6.38747 31.9851 5.89258 31.605 5.67391L29.5894 4.5L31.605 3.32609C31.9851 3.10742 32.1118 2.61253 31.8929 2.23274C31.6741 1.85294 31.1788 1.72634 30.7988 1.94501L28.7947 3.10742V0.794117C28.7947 0.356777 28.4377 0 28 0C27.5623 0 27.2053 0.356777 27.2053 0.794117V3.10742L25.2012 1.94501C24.8212 1.72634 24.3259 1.85294 24.1071 2.23274C23.8882 2.61253 24.0149 3.10742 24.395 3.32609L26.4106 4.5L24.395 5.67391C24.0149 5.89258 23.8882 6.38747 24.1071 6.76726Z" fill="#262626"/>
+                <div class="w-full overflow-hidden hover:scale-x-105 duration-1000 items-center dark:bg-t_black-750  justify-center bg-white p-4 border-black flex justify-between rounded-[6px] mb-4" @click="log_in_via_email = 1">
+                    <div class="h-14 w-14 justify-center flex rounded-lg shadow-sm dark:bg-gray-900 bg-gray-100">
+                        <svg class="my-auto "  width="32" height="9" viewBox="0 0 32 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="fill-gray-900 dark:fill-gray-300" d="M7.88788 2.23274C7.66919 1.85294 7.17425 1.72634 6.79441 1.94501L4.79164 3.10742V0.794117C4.79164 0.356777 4.43483 0 3.99744 0C3.56006 0 3.20324 0.356777 3.20324 0.794117V3.10742L1.20047 1.94501C0.820636 1.72634 0.325699 1.85294 0.107006 2.23274C-0.111687 2.61253 0.0149245 3.10742 0.39476 3.32609L2.40904 4.5L0.39476 5.67391C0.0149245 5.89258 -0.111687 6.38747 0.107006 6.76726C0.325699 7.14706 0.820636 7.27366 1.20047 7.05499L3.20324 5.89258V8.20588C3.20324 8.64322 3.56006 9 3.99744 9C4.43483 9 4.79164 8.64322 4.79164 8.20588V5.89258L6.79441 7.05499C7.17425 7.27366 7.66919 7.14706 7.88788 6.76726C8.10657 6.38747 7.97996 5.89258 7.60012 5.67391L5.58584 4.5L7.60012 3.32609C7.97996 3.09591 8.11808 2.61253 7.88788 2.23274Z" fill="#1B2937"/>
+                            <path class="fill-gray-900 dark:fill-gray-300"  d="M19.8879 2.23274C19.6692 1.85294 19.1742 1.72634 18.7944 1.94501L16.7916 3.10742V0.794117C16.7916 0.356777 16.4348 0 15.9974 0C15.5601 0 15.2032 0.356777 15.2032 0.794117V3.10742L13.2005 1.94501C12.8206 1.72634 12.3257 1.85294 12.107 2.23274C11.8883 2.61253 12.0149 3.10742 12.3948 3.32609L14.409 4.5L12.3948 5.67391C12.0149 5.89258 11.8883 6.38747 12.107 6.76726C12.3257 7.14706 12.8206 7.27366 13.2005 7.05499L15.2032 5.89258V8.20588C15.2032 8.64322 15.5601 9 15.9974 9C16.4348 9 16.7916 8.64322 16.7916 8.20588V5.89258L18.7944 7.05499C19.1742 7.27366 19.6692 7.14706 19.8879 6.76726C20.1066 6.38747 19.98 5.89258 19.6001 5.67391L17.5858 4.5L19.6001 3.32609C19.98 3.09591 20.1181 2.61253 19.8879 2.23274Z" fill="#1B2937"/>
+                            <path class="fill-gray-900 dark:fill-gray-300"  d="M24.1071 6.76726C24.3259 7.14706 24.8212 7.27366 25.2012 7.05499L27.2053 5.89258V8.20588C27.2053 8.64322 27.5623 9 28 9C28.4377 9 28.7947 8.64322 28.7947 8.20588V5.89258L30.7988 7.05499C31.1788 7.27366 31.6741 7.14706 31.8929 6.76726C32.1118 6.38747 31.9851 5.89258 31.605 5.67391L29.5894 4.5L31.605 3.32609C31.9851 3.10742 32.1118 2.61253 31.8929 2.23274C31.6741 1.85294 31.1788 1.72634 30.7988 1.94501L28.7947 3.10742V0.794117C28.7947 0.356777 28.4377 0 28 0C27.5623 0 27.2053 0.356777 27.2053 0.794117V3.10742L25.2012 1.94501C24.8212 1.72634 24.3259 1.85294 24.1071 2.23274C23.8882 2.61253 24.0149 3.10742 24.395 3.32609L26.4106 4.5L24.395 5.67391C24.0149 5.89258 23.8882 6.38747 24.1071 6.76726Z" fill="#1B2937"/>
                         </svg>
                     </div>
                     <div class="ml-3 py-2 w-8/12">
-                        <p class="ubuntu font-bold">Email with password</p>
+                        <p class="font-fira font-bold">Email with password</p>
                     </div>
                     <div class="ml-3 py-3">
                         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,116 +143,121 @@ const submit_magic = () => {
                     </div>
                 </div>
             </div>
-
-        </div>
-        <div v-if="log_in_via_email === 1">
-            <div class="p-3">
-                <div class="w-full overflow-hidden">
-                    <div class="mb-5">
-                        <p class="text-dark montserrat text-2xl font-bold flex items-center">
-                             <span @click="log_in_via_email = 0">
-                          <svg class="h-6 w-6 rotate-180 mr-2 " fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" >
-                            <path  d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
+    </BreezeGuestLayout>
+    <div v-if="log_in_via_email !== 0" class="min-h-screen h-full bg-mystic-500 dark:bg-mirage-500">
+        <nav class="bg-niagara-500 min-h-[64px] h-auto shadow-2xl">
+            <!-- Primary Navigation Menu -->
+            <div class="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 py-5">
+                    <div @click="log_in_via_email = 0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white dark:text-gray-900 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 v-if="log_in_via_email === 1" class="text-xl w-full text-white font-bold montserrat dark:text-gray-900 ">Email login</h1>
+                        <h1 v-if="log_in_via_email === 2" class="text-xl w-full text-white font-bold montserrat dark:text-gray-900 ">Email link login ✨</h1>
+                    </div>
+                    <div>
+                        <span @click="log_in_via_email = 0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white dark:text-gray-900 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
                         </span>
-                            Email login
-                        </p>
                     </div>
                 </div>
-                <div class="mt-2 w-11/12 mx-auto ">
-                    <form @submit.prevent="submit">
-                        <div class="flex flex-col mb-5">
-                            <BreezeValidationErrors class="mb-4" />
-                            <div v-if="status" class="mb-4 font-medium text-sm text-dark">
-                                {{ status }}
+            </div>
+
+        </nav>
+        <!-- Page Content -->
+        <main class="container mx-auto h-full max-w-lg mb-auto overflow-auto">
+            <div v-if="log_in_via_email === 1">
+                <div class="p-3">
+                    <div class="mt-2 w-11/12 mx-auto ">
+                        <form @submit.prevent="submit">
+                            <div class="flex flex-col mb-5">
+                                <BreezeValidationErrors class="mb-4" />
+                                <div v-if="status" class="mb-4 font-medium text-sm text-dark dark:text-gray-300 ">
+                                    {{ status }}
+                                </div>
                             </div>
-                        </div>
-                        <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Your email address</label>
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                            <label class="block font-fira text-2xs text-dark dark:text-gray-300 mb-2" for="grid-password">Your email address</label>
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
                               <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
                               <i class="fas fa-envelope text-gray-500"></i>
                               </span>
-                            <input placeholder="Email" v-model="form.email" required autofocus autocomplete="username" type="text" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Password</label>
-                            <Link class="ubuntu underline text-niagara-500" :href="route('password.request')">
-                                Forgot your password?
-                            </Link>
-                        </div>
-
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                <input placeholder="Email" v-model="form.email" required autofocus autocomplete="username" type="text" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+                            </div>
+                            <div class="flex justify-between mt-5">
+                                <label class="block font-fira text-2xs text-dark dark:text-gray-300 mb-2" for="grid-password">Password</label>
+                            </div>
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
                               <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
                               <i class="fas fa-lock text-gray-500"></i>
                               </span>
-                            <input  v-model="form.password" required autocomplete="current-password" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
-                        </div>
-                        <div class="flex">
-                            <div class="flex w-full mx-auto">
-                                <button type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-3 w-full transition duration-150 ease-in">
-                                    <span class="mr-2 uppercase">Log in</span>
-                                </button>
+                                <input  v-model="form.password" required autocomplete="current-password" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
                             </div>
-                        </div>
-                        <div class="flex mt-20 justify-center flex-wrap ">
-                            <h6 class="ubuntu text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
-                            <Link class="ubuntu text w-full-xl underline text-center text-niagara-500 font-bold" :href="route('register')">
-                                Register
-                            </Link>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div v-if="log_in_via_email === 2">
-            <div class="p-3">
-                <div class="w-full overflow-hidden">
-                    <div class="mb-5">
-                        <p class="text-dark montserrat text-2xl font-bold flex items-center">
-                             <span @click="log_in_via_email = 0">
-                          <svg class="h-6 w-6 rotate-180 mr-2 " fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" >
-                            <path  d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        </span>
-                            Email link login ✨
-                        </p>
+                            <div class="flex">
+                                <div class="flex w-full mx-auto mt-5">
+                                    <primary :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                        <span class="mr-2 uppercase">Log in</span>
+                                    </primary>
+                                </div>
+                            </div>
+                            <div class="flex mt-10 justify-center flex-wrap ">
+                                <h6 class="font-fira text-xl w-full text-center text-gray-400">Forgot your password?</h6>
+                                <Link class="font-fira underline text-niagara-500" :href="route('password.request')">
+                                    Reset password
+                                </Link>
+                            </div>
+                            <div class="flex mt-5 justify-center flex-wrap ">
+                                <h6 class="font-fira text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
+                                <Link class="font-fira text w-full-xl underline text-center text-niagara-500 font-bold" :href="route('register')">
+                                    Register
+                                </Link>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div v-if="$page.props.flash.message" class="alert w-full">
-                    <el-alert :title="$page.props.flash.message" type="success" show-icon />
-                </div>
-                <div class="mt-2 w-11/12 mx-auto ">
-                    <form @submit.prevent="submit_magic">
-                        <div class="flex flex-col mb-5">
-                            <BreezeValidationErrors class="mb-4" />
-                            <div v-if="status" class="mb-4 font-medium text-sm text-dark">
-                                {{ status }}
+            </div>
+            <div v-if="log_in_via_email === 2">
+                <div class="p-3">
+                    <div v-if="$page.props.flash.message" class="alert w-full">
+                        <el-alert :title="$page.props.flash.message" type="success" show-icon />
+                    </div>
+                    <div class="mt-2 w-11/12 mx-auto ">
+                        <form @submit.prevent="submit_magic">
+                            <div class="flex flex-col mb-5">
+                                <BreezeValidationErrors class="mb-4" />
+                                <div v-if="status" class="mb-4 font-medium text-sm text-dark">
+                                    {{ status }}
+                                </div>
                             </div>
-                        </div>
-                        <label class="block ubuntu text-2xs text-dark font-bold mb-2" for="grid-password">Your email address</label>
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                              <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                              <i class="fas fa-envelope text-gray-500"></i>
-                              </span>
-                            <input placeholder="Email" v-model="form_magic.email" required autofocus autocomplete="username" type="text" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
-                        </div>
-                        <div class="flex">
-                            <div class="flex w-full mx-auto">
-                                <button type="submit" :class="{ 'opacity-25': form_magic.processing }" :disabled="form_magic.processing" class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-3 w-full transition duration-150 ease-in">
-                                    <span class="mr-2 uppercase">SEND log in LINK </span>
-                                </button>
+                            <label class="block font-fira text-2xs text-dark dark:text-gray-300 mb-2" for="grid-password">Your email address</label>
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                                    <i class="fas fa-envelope text-gray-500"></i>
+                                </span>
+                                <input placeholder="Email" v-model="form_magic.email" required autofocus autocomplete="username" type="text" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
                             </div>
-                        </div>
-                        <div class="flex mt-20 justify-center flex-wrap ">
-                            <h6 class="ubuntu text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
-                            <Link class="ubuntu text w-full-xl underline text-center text-niagara-500 font-bold" :href="route('register')">
-                                Register
-                            </Link>
-                        </div>
-                    </form>
+                            <div class="flex">
+                                <div class="flex w-full mx-auto">
+                                    <primary :class="{ 'opacity-25': form_magic.processing }" :disabled="form_magic.processing">
+                                        <span class="mr-2 uppercase">SEND log in LINK </span>
+                                    </primary>
+                                </div>
+                            </div>
+                            <div class="flex mt-20 justify-center flex-wrap ">
+                                <h6 class="font-fira text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
+                                <Link class="font-fira text w-full-xl underline text-center text-niagara-500 font-bold" :href="route('register')">
+                                    Register
+                                </Link>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
 
-    </BreezeGuestLayout>
+    </div>
 </template>

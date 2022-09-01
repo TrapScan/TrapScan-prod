@@ -1,10 +1,23 @@
-<template>
-    <button class="
+
+
+
+<script setup>
+defineProps({
+    type: {
+        type: String,
+        default: 'submit',
+    },
+});
+</script>
+
+    <template>
+
+        <button :type="type" class="
     w-full
     rounded-full
-    bg-light_button
+    bg-t_purple-700
     text-text-dark
-    dark:bg-dark_button
+    dark:bg-t_purple-500
     py-4
     flex
     justify-center
@@ -14,16 +27,6 @@
     hover:bg-opacity-80
     uppercase
 ">
-        <slot name="default"/>
-    </button>
-</template>
-
-<script>
-export default {
-    name: "Primary"
-}
-</script>
-
-<style scoped>
-
-</style>
+            <slot />
+        </button>
+    </template>

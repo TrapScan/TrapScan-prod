@@ -52,10 +52,10 @@ export default {
 </script>
 
 <template>
-    <div class="min-h-screen bg-mystic-500 dark:bg-mirage-500 dark:text-gray-300 ">
-        <nav class="bg-niagara-500 h-[64px] mb-10 shadow-2xl">
+    <div class="min-h-screen bg-t_blue_gray-100  dark:bg-t_black-900 dark:text-gray-300 ">
+        <nav class="bg-t_green-700 bg-opacity-90 dark:bg-opacity-100 h-[64px] mb-10 shadow-2xl">
             <!-- Primary Navigation Menu -->
-            <div class="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-lg mx-auto px-4 opacity-100 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex ">
                         <!-- Logo -->
