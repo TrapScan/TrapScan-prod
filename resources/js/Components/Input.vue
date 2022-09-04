@@ -1,8 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-defineProps(['modelValue']);
-
+defineProps({
+    type: {
+        type: String,
+        default: 'text',
+    },
+    modelValue:String,
+    label:String,
+});
 defineEmits(['update:modelValue']);
 
 const input = ref(null);
@@ -15,5 +21,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <input class="border-gray-900 border-4 dark:border-white dark:bg-dark_input_bg w-full p-4 focus:border-dark_button dark:focus:border-dark_button rounded-md shadow-sm" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="input">
+    <div class="flex flex-wrap w-full mb-5">
+        <label class="w-full font-fira text-2xs text-t_black-800 dark:text-t_white-200 mb-2">
+            {{label}}
+        </label>
+        <input :type="type" class="border-t_blue_gray-700 border-[3px] dark:border-t_blue_gray-300 dark:bg-dark_input_bg w-full px-[16px] py-[13px] dark:text-t_white-200 font-fira focus:border-dark_button dark:focus:border-dark_button rounded-md shadow-sm" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="input">
+    </div>
 </template>

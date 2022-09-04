@@ -5,6 +5,7 @@ import {Link, useForm } from '@inertiajs/inertia-vue3';
 import {ref} from "vue";
 import Input from "@/Components/Input.vue";
 import Primary from "@/UI/Buttons/Primary.vue";
+import TsInput from "@/Components/Input.vue"
 
 defineProps({
     canResetPassword: Boolean,
@@ -143,80 +144,56 @@ const submit_magic = () => {
                 </div>
             </div>
     </BreezeGuestLayout>
-    <div v-if="log_in_via_email !== 0" class="min-h-screen h-full bg-mystic-500 dark:bg-mirage-500">
-        <nav class="bg-niagara-500 min-h-[64px] h-auto shadow-2xl">
+    <div v-if="log_in_via_email !== 0" class="min-h-screen h-full bg-t_blue_gray-100  dark:bg-t_black-900">
+        <nav class="bg-t_green-800 h-[44px] flex items-center justify-between flex-wrap w-full shadow-2xl px-4 mb-6">
             <!-- Primary Navigation Menu -->
-            <div class="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16 py-5">
-                    <div @click="log_in_via_email = 0">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white dark:text-gray-900 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 v-if="log_in_via_email === 1" class="text-xl w-full text-white font-bold montserrat dark:text-gray-900 ">Email login</h1>
-                        <h1 v-if="log_in_via_email === 2" class="text-xl w-full text-white font-bold montserrat dark:text-gray-900 ">Email link login ✨</h1>
-                    </div>
-                    <div>
-                        <span @click="log_in_via_email = 0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white dark:text-gray-900 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </span>
-                    </div>
-                </div>
+            <div @click="log_in_via_email = 0">
+                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.39316 12.0653C7.86179 11.5966 7.86179 10.8368 7.39316 10.3682L3.44168 6.41675L7.39316 2.46528C7.86179 1.99665 7.86179 1.23685 7.39316 0.76822C6.92453 0.299591 6.16473 0.299591 5.6961 0.76822L0.896099 5.56822C0.427469 6.03685 0.427469 6.79665 0.896099 7.26528L5.6961 12.0653C6.16473 12.5339 6.92453 12.5339 7.39316 12.0653Z" fill="white"/>
+                </svg>
+            </div>
+            <div>
+                <h1 v-if="log_in_via_email === 1" class="text-white font-bold ml-1 text-[16px] font-fira tracking-wide">Email login</h1>
+                <h1 v-if="log_in_via_email === 2" class="text-white font-bold ml-1 text-[16px] font-fira tracking-wide">Email link login ✨</h1>
+            </div>
+            <div  @click="log_in_via_email = 0">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.837327 0.709641C1.22785 0.319117 1.86102 0.319117 2.25154 0.709641L6.54443 5.00253L10.8373 0.709639C11.2279 0.319115 11.861 0.319115 12.2515 0.709639C12.6421 1.10016 12.6421 1.73333 12.2515 2.12385L7.95865 6.41675L12.2515 10.7096C12.6421 11.1002 12.6421 11.7333 12.2515 12.1239C11.861 12.5144 11.2279 12.5144 10.8373 12.1239L6.54443 7.83096L2.25154 12.1239C1.86102 12.5144 1.22785 12.5144 0.837329 12.1239C0.446804 11.7333 0.446804 11.1002 0.837329 10.7096L5.13022 6.41675L0.837327 2.12385C0.446803 1.73333 0.446803 1.10017 0.837327 0.709641Z" fill="white"/>
+                </svg>
             </div>
 
         </nav>
         <!-- Page Content -->
         <main class="container mx-auto h-full max-w-lg mb-auto overflow-auto">
             <div v-if="log_in_via_email === 1">
-                <div class="p-3">
-                    <div class="mt-2 w-11/12 mx-auto ">
-                        <form @submit.prevent="submit">
-                            <div class="flex flex-col mb-5">
-                                <BreezeValidationErrors class="mb-4" />
-                                <div v-if="status" class="mb-4 font-medium text-sm text-dark dark:text-gray-300 ">
-                                    {{ status }}
-                                </div>
+                <div class=" w-full px-5 ">
+                    <form @submit.prevent="submit">
+                        <div class="flex flex-col">
+                            <BreezeValidationErrors class="mb-4" />
+                        </div>
+                        <ts-input v-model="form.email" label="Your email address"/>
+                        <ts-input type="password" label="Password" v-model="form.password"/>
+
+                        <div class="flex">
+                            <div class="flex w-full mx-auto mt-5">
+                                <primary :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                    <span class="mr-2 uppercase">Log in</span>
+                                </primary>
                             </div>
-                            <label class="block font-fira text-2xs text-dark dark:text-gray-300 mb-2" for="grid-password">Your email address</label>
-                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                              <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                              <i class="fas fa-envelope text-gray-500"></i>
-                              </span>
-                                <input placeholder="Email" v-model="form.email" required autofocus autocomplete="username" type="text" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
-                            </div>
-                            <div class="flex justify-between mt-5">
-                                <label class="block font-fira text-2xs text-dark dark:text-gray-300 mb-2" for="grid-password">Password</label>
-                            </div>
-                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                              <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                              <i class="fas fa-lock text-gray-500"></i>
-                              </span>
-                                <input  v-model="form.password" required autocomplete="current-password" type="password" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
-                            </div>
-                            <div class="flex">
-                                <div class="flex w-full mx-auto mt-5">
-                                    <primary :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                        <span class="mr-2 uppercase">Log in</span>
-                                    </primary>
-                                </div>
-                            </div>
-                            <div class="flex mt-10 justify-center flex-wrap ">
-                                <h6 class="font-fira text-xl w-full text-center dark:text-gray-300 text-t_black-800">Forgot your password?</h6>
-                                <Link class="font-fira underline text-t_purple-500 font-bold" :href="route('password.request')">
-                                    Reset password
-                                </Link>
-                            </div>
-                            <div class="flex mt-5 justify-center flex-wrap ">
-                                <h6 class="font-fira text-xl w-full text-center dark:text-gray-300 text-t_black-800">Don’t have an account?</h6>
-                                <Link class="font-fira underline text-t_purple-500 font-bold" :href="route('register')">
-                                    Register
-                                </Link>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="flex mt-10 justify-center flex-wrap ">
+                            <h6 class="font-fira text-xl w-full text-center dark:text-t_white-200 text-t_black-800">Forgot your password?</h6>
+                            <Link class="font-fira underline text-t_purple-200 font-bold" :href="route('password.request')">
+                                Reset password
+                            </Link>
+                        </div>
+                        <div class="flex mt-5 justify-center flex-wrap ">
+                            <h6 class="font-fira text-xl w-full text-center dark:text-t_white-200 text-t_black-800">Don’t have an account?</h6>
+                            <Link class="font-fira underline text-t_purple-200 font-bold" :href="route('register')">
+                                Register
+                            </Link>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div v-if="log_in_via_email === 2">
