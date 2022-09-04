@@ -3,7 +3,6 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import {Link, useForm } from '@inertiajs/inertia-vue3';
 import {ref} from "vue";
-import Input from "@/Components/Input.vue";
 import Primary from "@/UI/Buttons/Primary.vue";
 import TsInput from "@/Components/Input.vue"
 
@@ -177,19 +176,19 @@ const submit_magic = () => {
                         <div class="flex">
                             <div class="flex w-full mx-auto mt-5">
                                 <primary :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                    <span class="mr-2 uppercase">Log in</span>
+                                   Log in
                                 </primary>
                             </div>
                         </div>
-                        <div class="flex mt-10 justify-center flex-wrap ">
+                        <div class="flex mt-6 justify-center flex-wrap ">
                             <h6 class="font-fira text-xl w-full text-center dark:text-t_white-200 text-t_black-800">Forgot your password?</h6>
-                            <Link class="font-fira underline text-t_purple-200 font-bold" :href="route('password.request')">
+                            <Link class="font-fira underline text-t_purple-200 font-medium text-[18px] leading-8" :href="route('password.request')">
                                 Reset password
                             </Link>
                         </div>
-                        <div class="flex mt-5 justify-center flex-wrap ">
+                        <div class="flex mt-6 justify-center flex-wrap ">
                             <h6 class="font-fira text-xl w-full text-center dark:text-t_white-200 text-t_black-800">Don’t have an account?</h6>
-                            <Link class="font-fira underline text-t_purple-200 font-bold" :href="route('register')">
+                            <Link class="font-fira underline text-t_purple-200 font-medium text-[18px] leading-8" :href="route('register')">
                                 Register
                             </Link>
                         </div>
@@ -210,13 +209,13 @@ const submit_magic = () => {
                             <div class="flex">
                                 <div class="flex w-full mx-auto">
                                     <primary :class="{ 'opacity-25': form_magic.processing }" :disabled="form_magic.processing">
-                                        <span class="mr-2 uppercase">SEND log in LINK </span>
+                                        SEND log in LINK
                                     </primary>
                                 </div>
                             </div>
-                            <div class="flex mt-20 justify-center flex-wrap ">
+                            <div class="flex  mt-6 justify-center flex-wrap ">
                                 <h6 class="font-fira text-xl w-full text-center dark:text-t_white-200 text-t_black-800">Don’t have an account?</h6>
-                                <Link class="font-fira underline text-t_purple-200 font-bold" :href="route('register')">
+                                <Link class="font-fira underline text-t_purple-200 font-medium text-[18px] leading-8" :href="route('register')">
                                     Register
                                 </Link>
                             </div>
