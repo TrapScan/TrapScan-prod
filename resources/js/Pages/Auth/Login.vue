@@ -43,7 +43,7 @@ const submit_magic = () => {
 
                 <div class="w-full overflow-hidden">
                     <div class="mb-10 ">
-                        <p class="dark:text-t_blue-300 text-t_black-800 text-2xl font-bold font-fira">How would you like to log in?</p>
+                        <p class="dark:text-t_purple-200 text-t_black-800 text-2xl font-bold font-fira">How would you like to log in?</p>
                     </div>
                 </div>
                 <div v-if="$page.props.flash.message" class="alert w-full my-5">
@@ -201,21 +201,12 @@ const submit_magic = () => {
                     <div v-if="$page.props.flash.message" class="alert w-full">
                         <el-alert :title="$page.props.flash.message" type="success" show-icon />
                     </div>
-                    <div class="mt-2 w-11/12 mx-auto ">
+                    <div class=" w-full px-5 ">
                         <form @submit.prevent="submit_magic">
-                            <div class="flex flex-col mb-5">
+                            <div class="flex flex-col">
                                 <BreezeValidationErrors class="mb-4" />
-                                <div v-if="status" class="mb-4 font-medium text-sm text-dark">
-                                    {{ status }}
-                                </div>
                             </div>
-                            <label class="block font-fira text-2xs text-dark dark:text-gray-300 mb-2" for="grid-password">Your email address</label>
-                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                                <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                                    <i class="fas fa-envelope text-gray-500"></i>
-                                </span>
-                                <input placeholder="Email" v-model="form_magic.email" required autofocus autocomplete="username" type="text" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
-                            </div>
+                            <ts-input v-model="form_magic.email" label="Your email address"/>
                             <div class="flex">
                                 <div class="flex w-full mx-auto">
                                     <primary :class="{ 'opacity-25': form_magic.processing }" :disabled="form_magic.processing">
@@ -224,8 +215,8 @@ const submit_magic = () => {
                                 </div>
                             </div>
                             <div class="flex mt-20 justify-center flex-wrap ">
-                                <h6 class="font-fira text-xl w-full text-center text-gray-400">Don’t have an account?</h6>
-                                <Link class="font-fira text w-full-xl underline text-center text-niagara-500 font-bold" :href="route('register')">
+                                <h6 class="font-fira text-xl w-full text-center dark:text-t_white-200 text-t_black-800">Don’t have an account?</h6>
+                                <Link class="font-fira underline text-t_purple-200 font-bold" :href="route('register')">
                                     Register
                                 </Link>
                             </div>
