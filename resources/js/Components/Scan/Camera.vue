@@ -64,12 +64,15 @@
 <script>
 import {useForm} from "@inertiajs/inertia-vue3";
 import ModalWindow from "@/Components/ModalWindow.vue";
-import { QrcodeStream } from 'vue3-qrcode-reader'
+//import { QrcodeStream } from 'vue3-qrcode-reader'
+import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
 
 export default {
     components:{
         ModalWindow,
-        QrcodeStream
+        QrcodeStream,
+        QrcodeDropZone,
+        QrcodeCapture
     },
     name: "Camera",
     data () {

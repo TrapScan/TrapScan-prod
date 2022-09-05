@@ -31,6 +31,7 @@
         "pusher-js": "^7.3.0",
         "qr-scanner": "^1.4.1",
         "vue-barcode-reader": "^1.0.2",
+        "vue-qrcode-reader": "^3.1.0",
         "vue3-qrcode-reader": "^0.0.1"
     }
 }
