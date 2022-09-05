@@ -2,18 +2,21 @@
     <button class="
     w-full
     rounded-full
-    bg-light_tertiary_button
-    text-light_button
-    dark:bg-dark_tertiary_button
-    dark:text-text-dark
-    py-4
+    bg-t_white-150
+    text-t_purple-700
+    dark:bg-t_black-800
+    dark:text-t_white-150
+    py-[8px]
+    px-[32px]
     flex
     justify-center
     items-center
-    font-bold
+    font-extrabold
+    text-[13px]
     montserrat
     hover:bg-opacity-80
     uppercase
+    h-[50px]
 ">
         <slot name="default"/>
     </button>
