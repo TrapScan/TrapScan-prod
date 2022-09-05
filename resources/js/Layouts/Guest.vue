@@ -74,7 +74,7 @@ export default {
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <span class="text-black font-bold ml-1 text-[16px] font-fira">
+                            <span class="text-black font-bold ml-1 text-[16px] montserrat">
                                 TrapScan
                             </span>
                         </div>
