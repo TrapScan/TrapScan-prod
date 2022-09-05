@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-wrap mt-5 px-4 ">
+    <div class="flex flex-wrap mt-5 px-4">
         <h6 class="font-bold montserrat text-xl text-dark dark:text-white">
             Trap.NZ synchronisation
         </h6>
@@ -35,9 +35,9 @@
             </div>
         </modal-window>
 
-        <div class="flex flex-wrap bg-white w-full mt-3 px-4 py-3">
+        <div class="flex flex-wrap w-full mt-3 px-4 py-3">
             <div @click="show = !show" class="flex justify-between items-center w-full">
-                <div class="montserrat text-bay-of-many-500 text-lg">
+                <div class="font-fira font-medium text-t_purple-300 text-[18px]">
                     How this button works
                 </div>
                 <div>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="show" class="w-full bg-white w-full px-4 py-3">
+        <div v-if="show" class="w-full w-full px-4 py-3">
             <p >
                 If new traps are added to the above Trap.NZ project, pressing this will import them into TrapScan so that QR cards can be mapped to them. This button will also update any traps that have changed in Trap.NZ such as name and location changes.
                 <img class="emoji flex inline-flex" alt="warning" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png"> This can only be used once per hour
@@ -89,10 +89,10 @@
     <h6 class="w-full font-bold montserrat text-xl text-dark dark:text-white  px-4 border-t-2 border-gray-400">
 
     </h6>
-    <div class=" w-full px-8 mt-5 flex flex-wrap">
-        <button @click="visible = !visible" type="button" class="flex montserrat items-center font-bold justify-center focus:outline-none text-bay-of-many-500 text-md sm:text-base bg-mystic-600 rounded-full py-3 w-full transition duration-150 ease-in">
-            <span class="uppercase">leave project</span>
-        </button>
+    <div class=" w-full px-8 mt-5 flex flex-wrap justify-center">
+        <a @click="visible = !visible" type="button" class="font-fira font-bold  text-t_purple-300 text-md">
+            <span class="uppercase underline">leave project</span>
+        </a>
     </div>
     <modal-window :showing="visible">
         <h1 class="mb-3 text-xl montserrat text-bay-of-many-500 font-bold">Are you sure you want to leave {{project.name ?? ''}}?</h1>
