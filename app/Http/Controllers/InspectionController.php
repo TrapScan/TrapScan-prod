@@ -139,19 +139,21 @@ class InspectionController extends Controller
 
     public function save(Request $request)
     {
-        $validated_data = $request->validate([
-            'QR_ID' => 'required',
-            'code' => 'required',
-            'date_format' => 'required',
-            'species_caught' => 'required',
-            'status' => 'required',
-            'bait_type'=>'nullable|string',
-            'rebaited' => 'required',
-            'trap_condition' => 'required',
-            'notes' => 'nullable|string',
-            'words' => 'required',
-            'upload_to_nz' => 'required'
-        ]);
+        $validated_data = $request->all();
+//            $request->validate([
+//                'QR_ID' => 'string',
+//                'code' => 'string',
+//                'date_format' => 'string',
+//                'species_caught' => 'string',
+//                'status' => 'string',
+//                'bait_type'=>'nullable|string',
+//                'rebaited' => 'string',
+//                'trap_condition' => 'string',
+//                'notes' => 'nullable|string',
+//                'words' => 'string',
+//                'upload_to_nz' => 'string'
+//            ]);
+
         $trap = Trap::where('qr_id', $validated_data['QR_ID'])->first();
         if (!$trap) {
             session()->flash('message', 'Error: Trap ' . $validated_data['QR_ID'] . ' does not exist');
@@ -190,7 +192,7 @@ class InspectionController extends Controller
             }
 
             if($inspection->upload_to_nz) {
-                UploadToTrapNZ::dispatch($inspection);
+                //UploadToTrapNZ::dispatch($inspection);
             }
 
             if($inspection->trap_condition === 'Needs maintenance') {
