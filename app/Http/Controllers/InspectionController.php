@@ -192,7 +192,7 @@ class InspectionController extends Controller
             }
 
             if($inspection->upload_to_nz) {
-                //UploadToTrapNZ::dispatch($inspection);
+                UploadToTrapNZ::dispatch($inspection);
             }
 
             if($inspection->trap_condition === 'Needs maintenance') {
