@@ -1,16 +1,13 @@
 <template>
-    <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-24">
-        <textarea v-model="val" placeholder="Inspection Note" cols="90" rows="6" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+    <div class="flex flex-wrap overflow-hidden mx-[24px]">
+        <ts-label value="Notes"/>
+        <ts-text-area v-model="val"/>
 
         <div class="flex w-full mx-auto mt-4">
-            <button @click='selected(0)' class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
-                <span class="mr-2 uppercase">submit inspection</span>
-            </button>
+            <primary @click='selected(0)' >submit inspection</primary>
         </div>
         <div class="flex w-full mx-auto mt-4">
-            <button @click='selected(6)' class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-lg sm:text-base border-2  border-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
-                <span class="mr-2 uppercase text-bay-of-many-500">back to summary screen</span>
-            </button>
+            <secondary @click='selected(6)'>view summary first</secondary>
         </div>
 
     </div>
@@ -22,9 +19,15 @@ import Note from "@/Components/SVG/Note.vue";
 import Pen from "@/Components/SVG/Pen.vue";
 import ArrowNext from "@/Components/SVG/ArrowNext.vue";
 import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import Secondary from "@/UI/Buttons/Secondary.vue";
+import Primary from "@/UI/Buttons/Primary.vue";
+import TsTextArea from "@/Components/Textarea.vue"
+import TsLabel from "@/Components/Label.vue"
+
+
 export default {
     name: "AddNote",
-    components: {TextVal, ArrowNext, Pen, Note, ArrowUp},
+    components: {TextVal, ArrowNext, Pen, Note, ArrowUp, Primary, Secondary, TsTextArea,TsLabel},
     props:{
         text:String
     },

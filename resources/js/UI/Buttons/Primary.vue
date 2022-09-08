@@ -1,6 +1,3 @@
-
-
-
 <script setup>
 defineProps({
     type: {

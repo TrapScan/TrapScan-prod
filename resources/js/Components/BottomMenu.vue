@@ -2,6 +2,8 @@
     <footer class="w-full
             fixed bottom-0
             flex
+            max-w-lg
+            mx-auto
            ">
         <div class="px-3 pt-3 w-full bg-white w-full dark:bg-t_black-900">
             <div class="flex flex-wrap w-full justify-between items-center">

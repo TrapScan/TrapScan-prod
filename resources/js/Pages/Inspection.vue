@@ -2,32 +2,38 @@
     <Show>
         <template #header>
             <div @click="back">
-                <svg v-if="step !== 1"  xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                <svg  v-if="step !== 1" width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.39316 12.0653C7.86179 11.5966 7.86179 10.8368 7.39316 10.3682L3.44168 6.41675L7.39316 2.46528C7.86179 1.99665 7.86179 1.23685 7.39316 0.76822C6.92453 0.299591 6.16473 0.299591 5.6961 0.76822L0.896099 5.56822C0.427469 6.03685 0.427469 6.79665 0.896099 7.26528L5.6961 12.0653C6.16473 12.5339 6.92453 12.5339 7.39316 12.0653Z" fill="white"/>
                 </svg>
+
             </div>
             <div>
-                <h1 class="text-xl w-full text-white font-bold montserrat">{{trap_data.qr_id}}</h1>
+                <h1 class="text-white font-bold ml-1 text-[16px] font-fira tracking-wide">{{trap_data.qr_id}}</h1>
             </div>
             <div>
                 <Link :href="route('scan')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.837327 0.709641C1.22785 0.319117 1.86102 0.319117 2.25154 0.709641L6.54443 5.00253L10.8373 0.709639C11.2279 0.319115 11.861 0.319115 12.2515 0.709639C12.6421 1.10016 12.6421 1.73333 12.2515 2.12385L7.95865 6.41675L12.2515 10.7096C12.6421 11.1002 12.6421 11.7333 12.2515 12.1239C11.861 12.5144 11.2279 12.5144 10.8373 12.1239L6.54443 7.83096L2.25154 12.1239C1.86102 12.5144 1.22785 12.5144 0.837329 12.1239C0.446804 11.7333 0.446804 11.1002 0.837329 10.7096L5.13022 6.41675L0.837327 2.12385C0.446803 1.73333 0.446803 1.10017 0.837327 0.709641Z" fill="white"/>
                     </svg>
                 </Link>
             </div>
         </template>
-        <template v-if="!unmapped">
-            <div v-if="step === 1" class="px-4 pt-4 pb-2 w-full border-b-4 border-niagara-500 flex justify-center items-end">
-                <h6 class="font-italic text-gray-500 " v-if="trap_data.last_checked">
-                    Last checked <span class="font-bold">{{trap_data.last_checked}}</span>
+        <template v-if="step === 1" #last>
+            <div v-if="step === 1" class="bg-t_white-200 w-full flex justify-center items-end py-[6px]">
+                <h6 class="italic text-t_black-800 montserrat text-[12px] " v-if="trap_data.last_checked">
+                    Last checked <span class=" font-bold">{{trap_data.last_checked}}</span>
                 </h6>
             </div>
-            <div class="p-4 w-full mt-5" v-if="step === 7 || step === 8">
-                <h1 class="text-2xl pl-4 w-full dark:text-white text-black font-bold montserrat">{{step === 7 ? 'Add a note to this inspection' : 'Edit inspection'}}</h1>
+        </template>
+        <template v-if="!unmapped">
+
+            <div class="w-full mx-[24px]" v-if="step === 7 || step === 8">
+                <h1 class="text-[24px] mb-[36px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold" v-if="step === 8">Edit scan</h1>
+                <span v-else></span>
             </div>
-            <div class="p-4 w-full mt-5" v-else>
-                <h1 class="text-2xl pl-4 w-full dark:text-white text-black font-bold montserrat border-l-4 border-mystic-800">{{form.words}}</h1>
+            <div class="w-full mx-[24px]" v-else>
+                <h1 class="text-[18px] text-t_black-800 dark:text-t_white-200 italic font-fira" v-if="step === 5 || step === 6">{{form.words}}</h1>
+                <h1 class="text-[24px] mb-[36px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold" v-else>{{form.words}}</h1>
             </div>
             <step-one @selected="setStepOne"  @remap="remap" :qrs="qrs" :coordinator="coordinator" v-if="step === 1"/>
             <step-two @selected="setStepTwo" v-if="step === 2"/>

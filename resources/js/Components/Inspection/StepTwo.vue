@@ -1,21 +1,25 @@
 <template>
-    <div class="flex flex-col h-full gap-y-3 mt-24 px-4 mb-5">
-        <div @click='selected(0)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><good/></template> Bait is still good</text-val>
-            <arrow-next/>
-        </div>
-        <div @click='selected(1)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><danger/></template> Bait was old</text-val>
-            <arrow-next/>
-        </div>
-        <div @click='selected(2)' class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><circle-dash /></template> Bait was taken</text-val>
-            <arrow-next/>
-        </div>
-        <div @click='selected(3)' class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><lines/></template> Trap was sprung</text-val>
-            <arrow-next/>
-        </div>
+    <div class="flex flex-wrap overflow-hidden mx-[24px]">
+        <panel  @click='selected(0)' text="Bait is still good">
+            <template #svg>
+                <good/>
+            </template>
+        </panel>
+        <panel  @click='selected(1)' text=" Bait was old">
+            <template #svg>
+                <danger/>
+            </template>
+        </panel>
+        <panel  @click='selected(2)' text="Bait was taken">
+            <template #svg>
+                <circle-dash />
+            </template>
+        </panel>
+        <panel  @click='selected(3)' text="Trap was sprung">
+            <template #svg>
+                <lines/>
+            </template>
+        </panel>
     </div>
 </template>
 
@@ -25,11 +29,11 @@ import Danger from "@/Components/SVG/Danger.vue";
 import Circle from "@/Components/SVG/CircleDash.vue";
 import CircleDash from "@/Components/SVG/CircleDash.vue";
 import Lines from "@/Components/SVG/Lines.vue";
-import ArrowNext from "@/Components/SVG/ArrowNext.vue";
-import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import Panel from "@/Components/Panel.vue"
+
 export default {
     name: "StepTwo",
-    components: {Lines, CircleDash, Circle, Danger, Good, ArrowNext, TextVal},
+    components: {Lines, CircleDash, Circle, Danger, Good, Panel},
     data() {
         return {
             values:[

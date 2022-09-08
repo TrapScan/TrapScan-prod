@@ -1,55 +1,52 @@
 <template>
-    <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-24">
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="first_name" class="block mb-2 text-xl font-medium text-dark dark:text-gray-300">QR ID</label>
-            <input v-model="form.QR_ID" disabled type="text" id="large-input" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <div class="flex flex-wrap overflow-hidden mx-[24px]">
+        <div class="relative flex w-full flex-wrap items-stretch">
+            <ts-input v-model="form.QR_ID" label="QR ID" :disabled="true"/>
         </div>
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="first_name" class="block mb-2 text-xl font-medium text-dark dark:text-gray-300">Inspection date</label>
-            <input v-model="form.date_format" type="datetime-local" id="large-input" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div class="relative flex w-full flex-wrap items-stretch ">
+            <ts-input v-model="form.date_format" label="Inspection date" type="datetime-local"/>
         </div>
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Status</label>
-            <select v-model="form.status" id="large" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div class="relative flex w-full flex-wrap items-stretch mb-5">
+            <ts-label value="Status"/>
+            <select v-model="form.status" id="large" :class="select_class">
                 <option v-for="st in status" :key="st" :value="st">{{st}}</option>
             </select>
         </div>
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Species caught</label>
-            <select v-model="form.species_caught" id="large" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div class="relative flex w-full flex-wrap items-stretch mb-5">
+            <ts-label value="Species caught"/>
+            <select v-model="form.species_caught" id="large" :class="select_class">
                 <option v-for="st in species" :key="st" :value="st">{{st}}</option>
                 <option v-for="st in extraSpecies" :key="st" :value="st">{{st}}</option>
             </select>
         </div>
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Rebaited</label>
-            <select v-model="form.rebaited" id="large" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div class="relative flex w-full flex-wrap items-stretch mb-5">
+            <ts-label value="Rebaited"/>
+            <select v-model="form.rebaited" id="large" :class="select_class">
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
         </div>
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Bait type</label>
-            <select v-model="form.bait_type" id="large" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div class="relative flex w-full flex-wrap items-stretch mb-5">
+            <ts-label value="Bait type"/>
+            <select v-model="form.bait_type" id="large" :class="select_class">
                 <option v-for="st in bait" :key="st" :value="st">{{st}}</option>
                 <option v-for="st in extraBait" :key="st" :value="st">{{st}}</option>
             </select>
         </div>
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Trap condition</label>
-            <select v-model="form.trap_condition" id="large" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div class="relative flex w-full flex-wrap items-stretch mb-5">
+            <ts-label value="Trap condition"/>
+            <select v-model="form.trap_condition" id="large" :class="select_class">
                 <option v-for="st in trap_condition" :key="st" :value="st">{{st}}</option>
             </select>
         </div>
-        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <label for="large" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Note</label>
-            <textarea v-model="form.notes" placeholder="Inspection Note" cols="90" rows="6" class="block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+        <div class="relative flex w-full flex-wrap items-stretch mb-5">
+            <ts-label value="Note"/>
+            <ts-text-area v-model="form.notes"/>
+
         </div>
 
         <div class="flex w-full mx-auto">
-            <button @click='selected(0)' class="flex mt-2 items-center font-bold justify-center focus:outline-none text-white text-sm sm:text-base bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
-                <span class="mr-2 uppercase">SUBMIT INSPECTION</span>
-            </button>
+            <primary @click='selected(0)'>SUBMIT INSPECTION</primary>
         </div>
     </div>
 </template>
@@ -60,16 +57,22 @@ import Note from "@/Components/SVG/Note.vue";
 import Pen from "@/Components/SVG/Pen.vue";
 import ArrowNext from "@/Components/SVG/ArrowNext.vue";
 import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import Primary from "@/UI/Buttons/Primary.vue";
+import TsTextArea from "@/Components/Textarea.vue"
+import TsLabel from "@/Components/Label.vue"
+import TsInput from "@/Components/Input.vue"
+
 
 export default {
     name: "EditForm",
-    components: {TextVal, ArrowNext, Pen, Note, ArrowUp},
+    components: {TextVal, ArrowNext, Pen, Note, ArrowUp, TsInput, TsLabel, TsTextArea, Primary},
     props:{
         text:String,
         values:Object
     },
     data() {
         return {
+            select_class:'border-t_blue_gray-700 border-[3px] dark:border-t_blue_gray-300 dark:bg-dark_input_bg w-full px-[16px] py-[13px] dark:text-t_white-200 font-fira focus:border-dark_button dark:focus:border-dark_button rounded-md shadow-sm',
             form:{
                 QR_ID: this.values.QR_ID,
                 date_format: this.values.date_format,

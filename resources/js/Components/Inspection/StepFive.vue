@@ -1,10 +1,10 @@
 <template>
-    <span class="px-4 pt-10 pb-5 text-xl font-bold text-lg ">So I rebaited the trap with…</span>
+    <span class="w-full px-6  mb-[36px] text-[24px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold">So I rebaited the trap with…</span>
     <div class="grid grid-cols-2 gap-3 mt-4 px-4 mb-5" v-if="!show_all">
         <div v-for="(sp, index) in bait" :key="index" @click="selected({ rebaited: 'Yes', bait_type: sp, words: `so I rebaited it with ${sp}`, step:6 })"
-             class="grid grid-cols-1 col-1 w-full mx-auto border rounded-xl dark:border-white border-gray-900 px-5 py-1.5
-             justify-items-center bg-white dark:bg-mirage-400 ">
-                <span class="ubuntu text-xl w-full font-bold justify-self-start">{{sp}}</span>
+             class="grid grid-cols-1 col-1 w-full mx-auto rounded-[4px] dark:bg-t_black-800 px-[10px] py-[8px]
+             justify-items-center bg-white">
+            <span class="justify-self-start text-[18px] font-fira font-medium dark:text-t_white-200">{{sp}}</span>
                 <chocolate class="w-full" v-if="sp === 'Chocolate'"/>
                 <peanut-butter class="w-full" v-if="sp=== 'Peanut Butter'"/>
                 <whole-egg class="w-full" v-if="sp=== 'Whole egg'"/>
@@ -13,50 +13,35 @@
 
         </div>
         <div @click='show_all = true'
-             class="grid grid-cols-1 gap-3 col-1 w-full mx-auto border rounded-xl dark:border-white border-gray-900 px-5 py-1.5
-             justify-items-center bg-white dark:bg-mirage-400">
-            <span class="ubuntu text-xl font-bold">Something else</span>
+             class="grid grid-cols-1 col-1 w-full mx-auto rounded-[4px] dark:bg-t_black-800 px-[10px] py-[8px]
+             justify-items-center bg-white">
+            <span class="text-[18px] font-fira font-medium dark:text-t_white-200">Something else</span>
             <somthing-else/>
         </div>
     </div>
-    <div class="flex flex-col h-full gap-y-3  px-4 mb-5" v-if="show_all">
-        <div v-for="(sp, index) in extraBait" :key="index" @click="selected({ rebaited: 'Yes', bait_type: sp, words: `so I rebaited it with ${sp}` , step:6 })"
-             class="flex w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val>
-                <template #icon>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 rotate-180 text-jelly-bean-500 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </template>
-                {{sp}}
-            </text-val>
-            <arrow-next/>
-        </div>
-        <div class="flex w-6/12 mx-auto">
-            <button @click="show_all = false"  class="flex mt-2 items-center justify-center focus:outline-none text-bay-of-many-500 dark:text-mystic-100 dark:border-mystic-100 font-bold text-sm sm:text-base border-2 border-bay-of-many-500 hover:bg-bay-of-many-500 hover:text-white rounded-2xl py-2 w-full transition duration-150 ease-in">
-                <span class="uppercase">Show Less Items</span>
-            </button>
+    <div class="flex flex-wrap overflow-hidden mx-[24px]" v-if="show_all">
+        <panel v-for="(sp, index) in extraBait" :key="index" @click="selected({ rebaited: 'Yes', bait_type: sp, words: `so I rebaited it with ${sp}` , step:6 })" :text="sp"/>
+        <div class="mb-3 mx-auto">
+            <Tertiary @click="show_all = false" >Show Less Items</Tertiary>
         </div>
     </div>
     <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-5">
-        <div @click="selected({rebaited: 'No', words: `and the bait was still good so I didn't rebait it.`, step:6  })" class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><good/></template> Bait is still good</text-val>
-            <arrow-next/>
-        </div>
-        <div @click="selected({rebaited: 'No', bait_type: 'None', words: 'and I\'m just letting you know.', upload_to_nz: false, step:6  })" class="flex items-center w-full mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><man-wit-box class="-mt-1"/></template>
-                Just letting you know
-                <p class="text-sm font-normal font-weight-light ">that the trap caught something and/or it needs rebaiting.</p>
-            </text-val>
-            <arrow-next/>
-        </div>
-
+        <panel @click="selected({rebaited: 'No', words: `and the bait was still good so I didn't rebait it.`, step:6  })"  text="Bait is still good">
+            <template #svg>
+                <good/>
+            </template>
+        </panel>
+        <panel @click="selected({rebaited: 'No', bait_type: 'None', words: 'and I\'m just letting you know.', upload_to_nz: false, step:6  })" text="Just letting you know" small_text="that the trap caught something and/or it needs rebaiting.">
+            <template #svg>
+                <man-wit-box class="-mt-1"/>
+            </template>
+        </panel>
     </div>
 </template>
 
 <script>
-import ArrowNext from "@/Components/SVG/ArrowNext.vue";
-import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import Panel from "@/Components/Panel.vue";
+import Tertiary from "@/UI/Buttons/Tertiary.vue";
 import SomthingElse from "@/Components/SVG/SomthingElse.vue";
 import Chocolate from "@/Components/SVG/Foods/Chocolate.vue";
 import PeanutButter from "@/Components/SVG/Foods/PeanutButter.vue";
@@ -75,8 +60,8 @@ export default {
         WholeEgg,
         PeanutButter,
         Chocolate,
-        TextVal,
-        ArrowNext,
+        Panel,
+        Tertiary,
         SomthingElse
 
     },

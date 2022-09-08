@@ -1,21 +1,26 @@
 <template>
-    <div class="flex flex-col h-full gap-y-3 mt-24 px-4 mb-5">
-        <div @click='selected(0)' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><empty-svg/></template> It was empty</text-val>
-            <arrow-next/>
-        </div>
-        <div @click='selected(1)' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><in-it/></template> Something was in it</text-val>
-            <arrow-next/>
-        </div>
-        <div @click='selected(2)' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><wrong/></template> Something's wrong</text-val>
-            <arrow-next/>
-        </div>
-        <div v-if="coordinator" @click='dialogVisible = !dialogVisible' class="flex w-full items-center mx-auto border rounded-xl dark:border-white border-gray-900 p-5 justify-between bg-white dark:bg-mirage-400">
-            <text-val><template #icon><wrong/></template> Re-map QR</text-val>
-            <arrow-next/>
-        </div>
+    <div class="flex flex-wrap overflow-hidden mx-[24px]">
+        <panel  @click='selected(0)' text="It was empty">
+            <template #svg>
+                <empty-svg/>
+            </template>
+        </panel>
+        <panel @click='selected(1)' text="Something was in it">
+            <template #svg>
+                <in-it/>
+            </template>
+        </panel>
+        <panel  @click='selected(2)' text="Something's wrong">
+            <template #svg>
+                <wrong/>
+            </template>
+        </panel>
+        <panel  v-if="coordinator" @click='dialogVisible = !dialogVisible' text="Re-map QR">
+            <template #svg>
+                <remap/>
+            </template>
+        </panel>
+
     </div>
     <el-dialog
         v-model="dialogVisible"
@@ -48,8 +53,9 @@
 import EmptySvg from "@/Components/SVG/EmptySvg.vue";
 import InIt from "@/Components/SVG/InIt.vue";
 import Wrong from "@/Components/SVG/Wrong.vue";
-import ArrowNext from "@/Components/SVG/ArrowNext.vue";
-import TextVal from "@/Components/Inspection/Other/TextVal.vue";
+import Remap from "@/Components/SVG/Remap.vue";
+import Panel from "@/Components/Panel.vue"
+
 export default {
     props:{
         qrs:Object,
@@ -57,11 +63,11 @@ export default {
     },
     name: "StepOne",
     components:{
-        TextVal,
-        ArrowNext,
+        Panel,
         Wrong,
         InIt,
         EmptySvg,
+        Remap,
     },
     data() {
         return {
