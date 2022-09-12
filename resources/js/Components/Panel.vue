@@ -12,7 +12,8 @@ defineProps({
 </script>
 
 <template>
-    <div class="w-full hover:scale-x-105 duration-1000 overflow-hidden items-center dark:bg-t_black-750 justify-center bg-white px-[16px] py-[12px] border-black h-[72px] flex justify-between rounded-[6px] mb-4">
+    <div :class="{'mb-[24px] h-[80px]':$slots.svg && small_text !== null, 'mb-[24px] h-[72px]': $slots.svg && small_text === null, 'mb-[12px] h-[48px]': !$slots.svg && small_text === null}"
+         class="w-full hover:scale-x-105 duration-1000 overflow-hidden items-center dark:bg-t_black-800 justify-center bg-white px-[16px] py-[16px] border-black  flex justify-between rounded-[6px]">
         <div class="h-[44px] w-[44px] justify-center flex items-center rounded-lg shadow-sm dark:bg-gray-900 bg-gray-100" v-if="$slots.svg">
             <slot name="svg"/>
         </div>

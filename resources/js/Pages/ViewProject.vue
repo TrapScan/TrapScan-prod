@@ -38,7 +38,7 @@
                 You are an admin
             </div>
             <div v-if="user_in_pr && !coordinator" class=" w-full ml-4 mt-10 flex flex-wrap">
-                <a @click="visible = !visible" type="button" class="font-fira font-bold text-t_purple-300 text-md">
+                <a @click="visible = !visible" type="button" class="font-fira font-bold text-t_purple-200 text-md">
                     <span class="uppercase underline">leave project</span>
                 </a>
             </div>

@@ -1,6 +1,6 @@
 <template>
     <span class="w-full px-6  mb-[36px] text-[24px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold">So I rebaited the trap with…</span>
-    <div class="grid grid-cols-2 gap-3 mt-4 px-4 mb-5" v-if="!show_all">
+    <div class="grid grid-cols-2 gap-3 mt-4 px-4" v-if="!show_all">
         <div v-for="(sp, index) in bait" :key="index" @click="selected({ rebaited: 'Yes', bait_type: sp, words: `so I rebaited it with ${sp}`, step:6 })"
              class="grid grid-cols-1 col-1 w-full mx-auto rounded-[4px] dark:bg-t_black-800 px-[10px] py-[8px]
              justify-items-center bg-white">
@@ -25,7 +25,7 @@
             <Tertiary @click="show_all = false" >Show Less Items</Tertiary>
         </div>
     </div>
-    <div class="flex flex-col h-full gap-y-3 mt-5 px-4 mb-5">
+    <div class="flex flex-col h-full mt-[24px] px-4 ">
         <panel @click="selected({rebaited: 'No', words: `and the bait was still good so I didn't rebait it.`, step:6  })"  text="Bait is still good">
             <template #svg>
                 <good/>

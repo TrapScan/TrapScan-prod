@@ -37,7 +37,7 @@
 
         <div class="flex flex-wrap w-full mt-3 px-4 py-3">
             <div @click="show = !show" class="flex justify-between items-center w-full">
-                <div class="font-fira font-medium text-t_purple-300 text-[18px]">
+                <div class="font-fira font-medium text-t_purple-200 text-[18px]">
                     How this button works
                 </div>
                 <div>
@@ -90,7 +90,7 @@
 
     </h6>
     <div class=" w-full px-8 mt-5 flex flex-wrap justify-center">
-        <a @click="visible = !visible" type="button" class="font-fira font-bold  text-t_purple-300 text-md">
+        <a @click="visible = !visible" type="button" class="font-fira font-bold  text-t_purple-200 text-md">
             <span class="uppercase underline">leave project</span>
         </a>
     </div>

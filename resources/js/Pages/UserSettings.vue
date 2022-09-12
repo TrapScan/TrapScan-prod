@@ -3,8 +3,8 @@
         <div class="flex flex-wrap p-4">
             <div class="w-full bg-gray-100 dark:bg-mirage-400 dark:text-white rounded-xl p-4 flex flex-col">
                 <div class="flex flex-wrap mb-3 border-b-2 pb-3">
-                    <h1 class="mt-6 mb-2 w-full text-3xl montserrat font-bold font-weight-bold text-bay-of-many-500 dark:text-white">My proffile</h1>
-                <p class="w-full text-black text-lg ubuntu ">{{$page.props.auth.user.name}}</p>
+                    <h1 class="mt-6 mb-2 w-full text-3xl montserrat font-bold font-weight-bold text-bay-of-many-500 dark:text-white">My profile</h1>
+                <p class="w-full text-black text-lg ubuntu dark:text-t_white-200">{{$page.props.auth.user.name}}</p>
                 <p class="w-full text-gray-400">{{$page.props.auth.user.email}}</p>
                 </div>
 
@@ -18,9 +18,9 @@
                         </div>
                 </label>
                 </div>
-                <div class="flex justify-between mb-3 mt-5">
-                    <Link :href="route('logout')" method="post" class="flex montserrat items-center font-bold justify-center focus:outline-none text-bay-of-many-500 text-md sm:text-base bg-mystic-500 rounded-full py-3 w-full transition duration-150 ease-in">
-                        <span class="uppercase montserrat font-bold ">Log Out</span>
+                <div class=" w-full px-8 mt-5 flex flex-wrap justify-center">
+                    <Link :href="route('logout')" method="post" type="button" class="font-fira font-bold  text-t_purple-200 text-md">
+                        <span class="uppercase underline">Log out</span>
                     </Link>
                 </div>
             </div>

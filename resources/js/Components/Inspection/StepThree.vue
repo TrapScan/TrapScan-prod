@@ -2,18 +2,18 @@
     <div class="grid grid-cols-2 gap-3 mx-[24px]" v-if="!show_all">
         <div v-for="(sp, index) in species" :key="index" @click='selected({ species_caught: sp, words: `${sp}, `, step: 5 })'
              class="grid grid-cols-1 col-1 w-full mx-auto rounded-[4px] dark:bg-t_black-800 px-[10px] py-[8px]
-             justify-items-center bg-white">
+             justify-items-center bg-white relative">
             <span class="justify-self-start text-[18px] font-fira font-medium dark:text-t_white-200">{{sp}}</span>
-            <rat  v-if="sp === 'Rat'"/>
-            <mouse v-if="sp === 'Mouse'"/>
-            <stoat v-if="sp === 'Stoat'"/>
-            <weasel class="mt-8" v-if="sp === 'Weasel'"/>
+            <rat class="-mt-[15px]"  v-if="sp === 'Rat'"/>
+            <mouse  v-if="sp === 'Mouse'"/>
+            <stoat class="absolute mt-4" v-if="sp === 'Stoat'"/>
+            <weasel  v-if="sp === 'Weasel'"/>
             <hedgehog v-if="sp === 'Hedgehog'"/>
         </div>
         <div @click='show_all = true'
              class="grid grid-cols-1 col-1 w-full mx-auto rounded-[4px] dark:bg-t_black-800 px-[10px] py-[8px]
              justify-items-center bg-white">
-            <span class="text-[18px] font-fira font-medium dark:text-t_white-200">Something else</span>
+            <span class="text-[18px] font-fira font-medium dark:text-t_white-200 leading-[120%]">Something else</span>
             <somthing-else/>
         </div>
     </div>
