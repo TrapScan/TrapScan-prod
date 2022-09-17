@@ -66,14 +66,14 @@
 <script>
 import {useForm} from "@inertiajs/inertia-vue3";
 import ModalWindow from "@/Components/ModalWindow.vue";
-import { QrcodeStream } from 'vue3-qrcode-reader';
+// import { QrcodeStream } from 'vue3-qrcode-reader';
 import NoCamera from "@/Components/SVG/NoCamera.vue";
 import Tertiary from "@/UI/Buttons/Tertiary.vue";
 
 export default {
     components:{
         ModalWindow,
-        QrcodeStream,
+        //QrcodeStream,
         NoCamera,
         Tertiary
     },
