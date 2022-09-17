@@ -1,2 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as r,b as o,e as s}from"./app.3ce61da7.js";const a={name:"Tertiary"},n={class:"w-full rounded-full bg-t_white-150 text-t_purple-800 dark:bg-t_black-800 dark:text-t_white-200 py-[8px] px-[32px] flex justify-center items-center font-extrabold text-[13px] montserrat hover:bg-opacity-80 uppercase h-[50px]"};function p(t,c,l,_,i,f){return r(),o("button",n,[s(t.$slots,"default")])}const u=e(a,[["render",p]]);export{u as T};
-//# sourceMappingURL=Tertiary.4e47db41.js.map

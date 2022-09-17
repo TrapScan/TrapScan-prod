@@ -1,6 +1,6 @@
 /bootstrap/ssr
 /node_modules
-
+/public/build
 /public/hot
 /public/storage
 /public/qrcodes
@@ -16,3 +16,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/public/build/
