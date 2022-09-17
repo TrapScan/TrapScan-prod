@@ -7,10 +7,7 @@ import viteCompression from 'vite-plugin-compression';
 export default defineConfig({
     plugins: [
         viteCompression(),
-        laravel({
-            input: 'resources/js/app.js',
-            refresh: true,
-        }),
+        laravel(['resources/js/app.js']),
         vue({
             template: {
                 transformAssetUrls: {
@@ -23,17 +20,13 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve('resources/js'),
-            ziggy: path.resolve('vendor/tightenco/ziggy/src/js'),
         },
         css: {
             devSourcemap: true,
         },
     },
     build: {
-        chunkSizeWarningLimit: 1600,
         sourcemap: true,
-        rollupOptions: {
-            external: 'ziggy'
-        }
     },
 });
+
