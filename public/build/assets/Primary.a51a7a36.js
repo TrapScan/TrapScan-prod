@@ -1,0 +1,2 @@
+import{o as r,b as p,e as o}from"./app.3ce61da7.js";const s=["type"],n={__name:"Primary",props:{type:{type:String,default:"submit"}},setup(t){return(e,a)=>(r(),p("button",{type:t.type,class:"w-full rounded-full bg-t_purple-700 text-t_white-200 dark:bg-t_purple-500 py-[8px] px-[32px] flex justify-center items-center font-extrabold text-[13px] montserrat hover:bg-opacity-80 uppercase h-[50px]"},[o(e.$slots,"default")],8,s))}};export{n as _};
+//# sourceMappingURL=Primary.a51a7a36.js.map

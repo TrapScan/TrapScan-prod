@@ -1,0 +1,2 @@
+import{o as a,c as o,w as e,a as t}from"./app.3ce61da7.js";import{B as s}from"./Authenticated.70716a03.js";import"./_plugin-vue_export-helper.cdc0426e.js";const r=t("h2",{class:"font-semibold text-xl text-gray-800 leading-tight"}," Dashboard ",-1),c=t("div",{class:"py-12"},[t("div",{class:"container mx-auto max-w-lg bg-spring-wood-500"})],-1),p={__name:"Index",setup(n){return(i,d)=>(a(),o(s,null,{header:e(()=>[r]),default:e(()=>[c]),_:1}))}};export{p as default};
+//# sourceMappingURL=Index.bd8016b3.js.map

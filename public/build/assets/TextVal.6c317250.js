@@ -1,0 +1,2 @@
+import{_ as n}from"./_plugin-vue_export-helper.cdc0426e.js";import{o,b as c,a as t,e as s}from"./app.3ce61da7.js";const r={},a={class:"flex ubuntu place-content-center items-center"},l={class:"flex justify-center py-1.5 align-content-center w-16 h-5 dark:bg-mirage-500 bg-gray-200 rounded-xl h-11"},d={class:"ml-3 ubuntu dark:text-white font-bold text-xl"};function i(e,_){return o(),c("div",a,[t("div",l,[s(e.$slots,"icon")]),t("span",d,[s(e.$slots,"default")])])}const m=n(r,[["render",i]]);export{m as T};
+//# sourceMappingURL=TextVal.6c317250.js.map
