@@ -10,7 +10,13 @@ class QR extends Model
 
     protected $fillable = [
         'qr_code',
-        'trap_id'
+        'trap_id',
+        'given_to'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
+        'updated_at' => 'datetime:Y-m-d',
     ];
 
     public function trap() {

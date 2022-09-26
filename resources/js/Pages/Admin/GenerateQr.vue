@@ -20,6 +20,7 @@
                     <th class="pb-4 pt-6 px-6">ID</th>
                     <th class="pb-4 pt-6 px-6">QR Code</th>
                     <th class="pb-4 pt-6 px-6">Created At</th>
+                    <th class="pb-4 pt-6 px-6">Given To</th>
                 </tr>
                 <tr v-for="qr in qrs.data" :key="qr.id" class="hover:bg-gray-100 dark:hover:bg-mirage-400 focus-within:bg-gray-100">
                     <td class="border-t">
@@ -36,6 +37,11 @@
                     <td class="border-t">
                         <span class="flex items-center px-6 py-4" >
                             {{ qr.created_at}}
+                        </span>
+                    </td>
+                    <td class="border-t">
+                        <span class="flex items-center px-6 py-4" >
+                            {{ qr.given_to}}
                         </span>
                     </td>
                 </tr>
