@@ -55,7 +55,7 @@ class AdminController extends Controller
 
         return Inertia::render('Admin/GenerateQr',[
             'qrs' => QR::whereNull('trap_id')
-                ->orderBy('qr_code')
+                ->orderBy('created_at', 'desc')
                 ->filter($request->only('search'))
                 ->paginate(10)
                 ->withQueryString(),
