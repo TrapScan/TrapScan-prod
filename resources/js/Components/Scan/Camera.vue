@@ -117,12 +117,16 @@ export default {
             } finally {
                 // hide loading indicator
                 this.loading = false
-
             }
         },
         onDecode(decodedString) {
-            this.form.qr_id = decodedString;
-            this.submit_form()
+            const split = decodedString.split('/')
+            if(split.length === 5 && split[0] === 'http:' || split[0] === 'https:' && (split[2] === 'localhost' || split[2] === 'trapscan.app') && split[3] === 'scan') {
+                this.form.qr_id = split[4]
+                this.submit_form()
+            } else {
+                this.$page.props.flash.message = 'Not a TrapScan QR or incorrectly formatted'
+            }
         }
     }
 }
