@@ -106,11 +106,12 @@ export default {
             },
             newQR: useForm({
                 nz_id:null,
-                qr_id:null
+                qr_id:null,
+                type:null
             })
         }
     },
-    watch: {
+    watch: { 
         form: {
             deep: true,
             handler: throttle(function () {
