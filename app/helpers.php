@@ -112,7 +112,7 @@ if (!function_exists('getUniqueTrapId')) {
             ];
             $id = str_pad(rand(0, pow(10, 4)-1), 4, '0', STR_PAD_LEFT);
             $word = $mouri_words[array_rand($mouri_words, 1)];
-            $candidate = $word . '-' . $id;
+            $candidate = $word . '.' . $id;
             if(! QR::where('qr_code', $candidate)->exists()) {
                 return $candidate;
             }
