@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'admin'=> (\Auth::check() ? \Auth::user()->hasRole('admin') : false),
             'flash' => [
                 'message' => fn () => $request->session()->get('message')
             ],
