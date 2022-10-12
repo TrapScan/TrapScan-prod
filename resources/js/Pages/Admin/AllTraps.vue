@@ -114,7 +114,7 @@ export default {
         form: {
             deep: true,
             handler: throttle(function () {
-                this.$inertia.get(route('admin.unmapped_traps'), pickBy(this.form), { preserveState: true })
+                this.$inertia.get(route('admin.all_traps'), pickBy(this.form), { preserveState: true })
             }, 150),
         },
     },
