@@ -8,7 +8,7 @@
 
             </div>
             <div>
-                <h1 class="text-white font-bold ml-1 text-[16px] font-fira tracking-wide">{{trap_data.qr_id}}</h1>
+                <h1 class="text-white font-bold ml-1 text-[16px] montserrat tracking-wide tracking-[.05em]">{{trap_data.qr_id.charAt(0).toUpperCase() + trap_data.qr_id.slice(1).toLowerCase()}}</h1>
             </div>
             <div>
                 <Link :href="route('scan')">
@@ -38,7 +38,7 @@
             </div>
             <div class="w-full mx-[24px]" v-else>
                 <h1 class="text-[18px] text-t_black-800 dark:text-t_white-200 italic font-fira" v-if="step === 5 || step === 6">{{form.words}}</h1>
-                <h1 class="text-[24px] mb-[36px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold" v-else>{{form.words}}</h1>
+                <h1 class="text-[24px] mb-[36px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold tracking-[.04em]" v-else>{{form.words}}</h1>
             </div>
             <step-one @selected="setStepOne"  @remap="remap" :qrs="qrs" :coordinator="coordinator" v-if="step === 1"/>
             <step-two @selected="setStepTwo" v-if="step === 2"/>

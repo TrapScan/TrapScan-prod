@@ -23,7 +23,7 @@ export default {
 
 <template>
     <div class="min-h-screen h-full bg-t_blue_gray-100  dark:bg-t_black-900 ">
-        <nav class="bg-t_green-800 h-[44px] flex items-center justify-between flex-wrap w-full shadow-2xl px-4">
+        <nav class="bg-t_green-800 h-[44px] flex items-center justify-between flex-wrap w-full shadow-2xl px-4 py-[8px]">
             <!-- Primary Navigation Menu -->
             <slot name="header"></slot>
         </nav>
