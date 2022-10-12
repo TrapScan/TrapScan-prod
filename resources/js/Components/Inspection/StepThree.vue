@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-2 gap-3 mx-[24px]" v-if="!show_all">
+    <div class="grid grid-cols-2 gap-3 mt-4 px-4 w-full" v-if="!show_all">
         <div v-for="(sp, index) in species" :key="index" @click='selected({ species_caught: sp, words: `${sp}, `, step: 5 })'
              class="grid grid-cols-1 col-1 w-full mx-auto rounded-[4px] dark:bg-t_black-800 px-[10px] py-[8px]
              justify-items-center bg-white relative">
