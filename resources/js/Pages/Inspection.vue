@@ -21,7 +21,7 @@
         <template v-if="step === 1" #last>
             <div v-if="step === 1 && $page.props.admin || coordinator" class="dark:bg-t_white-200 bg-t_black-800 w-full flex justify-center items-end py-[6px]">
                 <h6 class="italic text-t_white-200 dark:text-t_black-800 montserrat text-[12px] " v-if="trap_data.last_checked">
-                    Trap.NZ ID <span class=" font-bold">{{trap_data.nz_trap_id}}</span>
+                    Trap.NZ ID <span class=" font-bold">{{trap_data.name}}</span>
                 </h6>
             </div>
             <div v-if="step === 1" class=" dark:bg-t_black-800 bg-t_white-200 w-full flex justify-center items-end py-[6px]">
