@@ -98,12 +98,12 @@ Route::get('/auth/{provider}/callback', function ($provider) {
                     'avatar' => $user->getAvatar() ?? null
                 ]);
                 Auth::login($createUser);
-                return redirect(env('SPA_URL'));
+                return redirect('/scan');
             }
         }
         // User exists, log them in
         Auth::login($existingUser);
-        return redirect(env('SPA_URL'));
+        return redirect('/scan');
     }
     return back()->withErrors([
         'provider' => 'This provider is not supported.'
@@ -141,12 +141,12 @@ Route::post('/auth/{provider}/callback', function (Request $request, $provider) 
                     'avatar' => $user->getAvatar() ?? null
                 ]);
                 Auth::login($createUser);
-                return redirect(env('SPA_URL'));
+                return redirect('/scan');
             }
         }
         // User exists, log them in
         Auth::login($existingUser);
-        return redirect(env('SPA_URL'));
+        return redirect('/scan');
     }
     return back()->withErrors([
         'provider' => 'This provider is not supported.'
