@@ -67,13 +67,13 @@ const submit_magic = () => {
                         </template>
                     </panel>
                 </a>
-                <a :href="route('social_auth','apple')" class="w-full">
+                <!-- <a :href="route('social_auth','apple')" class="w-full">
                     <panel text="Apple ID">
                         <template #svg>
                             <apple/>
                         </template>
                     </panel>
-                </a>
+                </a> -->
                 <panel text="Email link ✨" small_text="No password required!" @click="log_in_via_email = 2">
                     <template #svg>
                         <svg  class="my-auto "  width="33" height="29" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg">
