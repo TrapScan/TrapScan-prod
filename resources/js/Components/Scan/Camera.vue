@@ -123,16 +123,18 @@ export default {
             console.log(decodedString)
             const split = decodedString.split('/')
             console.log(split)
-            if (split.length === 3) {
-                this.form.qr_id = split[2]
+            this.form.qr_id = split.at(-1)
                 this.submit_form()
-            }
-            if(split.length === 5 && split[0] === 'http:' || split[0] === 'https:' && (split[2] === 'localhost' || split[2] === 'trapscan.app') && split[3] === 'scan') {
-                this.form.qr_id = split[4]
-                this.submit_form()
-            } else {
-                this.$page.props.flash.message = 'Not a TrapScan QR or incorrectly formatted'
-            }
+            // if (split.length === 3) {
+            //     this.form.qr_id = split.at(-1)
+            //     this.submit_form()
+            // }
+            // if(split.length === 5 && split[0] === 'http:' || split[0] === 'https:' && (split[2] === 'localhost' || split[2] === 'trapscan.app') && split[3] === 'scan') {
+            //     this.form.qr_id = split[4]
+            //     this.submit_form()
+            // } else {
+            //     this.$page.props.flash.message = 'Not a TrapScan QR or incorrectly formatted'
+            // }
         }
     }
 }
