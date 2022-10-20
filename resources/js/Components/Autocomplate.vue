@@ -11,7 +11,7 @@
                 ref="searchBox"
             />
         </div>
-        <aside class="absolute z-10 flex flex-col items-start w-64 bg-white border rounded-md shadow-md mt-1"
+        <aside class="absolute z-10 flex flex-col items-start w-100 bg-white border rounded-md shadow-md mt-1"
                role="menu" aria-labelledby="menu-heading" v-if="filteredList.length > 0 && showSearchItems == true">
             <ul class="flex flex-col w-full">
                 <li

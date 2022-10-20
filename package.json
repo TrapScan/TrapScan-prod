@@ -30,7 +30,6 @@
         "prettier-plugin-tailwindcss": "^0.1.13",
         "pusher-js": "^7.3.0",
         "vite-plugin-compression": "^0.5.1",
-        "vue-tailwindcss-typeahead": "^1.0.1",
         "vue3-qrcode-reader": "^0.0.1"
     }
 }

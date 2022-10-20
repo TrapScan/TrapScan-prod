@@ -28,14 +28,22 @@
         width="90%"
     >
         <div class="flex justify-center">
-            <el-select v-model="val" filterable placeholder="Select" class="w-full">
-                <el-option
-                    v-for="item in qrs"
-                    :key="item.qr_code"
-                    :label="item.qr_code"
-                    :value="item.qr_code"
-                />
-            </el-select>
+            <Autocomplate
+                :lists="qrs"
+                @selected="selectedData"
+                :clearInputWhenClicked="false"
+                :inputClass="[
+                    'block',
+                    'p-4',
+                    'mb-4',
+                    'w-full',
+                    'text-md',
+                    'text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                  ]"
+                placeholder="Please write a qr name"
+            >
+
+            </Autocomplate>
         </div>
 
         <template #footer>
@@ -55,6 +63,7 @@ import InIt from "@/Components/SVG/InIt.vue";
 import Wrong from "@/Components/SVG/Wrong.vue";
 import Remap from "@/Components/SVG/Remap.vue";
 import Panel from "@/Components/Panel.vue"
+import Autocomplate from "@/Components/Autocomplate.vue";
 
 export default {
     props:{
@@ -68,6 +77,7 @@ export default {
         InIt,
         EmptySvg,
         Remap,
+        Autocomplate
     },
     data() {
         return {
@@ -94,6 +104,10 @@ export default {
         }
     },
     methods:{
+        selectedData(value) {
+            this.val = value.id;
+            console.log(value);
+        },
         selected (val){
             this.$emit('selected',this.values[val])
         },

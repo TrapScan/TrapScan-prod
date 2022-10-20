@@ -1220,22 +1220,10 @@ vite@^3.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-click-outside@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/vue-click-outside/-/vue-click-outside-1.1.0.tgz#48b7680b518923e701643cccb3e165854aad99eb"
-  integrity sha512-pNyvAA9mRXJwPHlHJyjMb4IONSc7khS5lxGcMyE2EIKgNMAO279PWM9Hyq0d5J4FkiSRdmFLwnbjDd5UtPizHQ==
-
 vue-demi@*:
   version "0.13.5"
   resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.13.5.tgz"
   integrity sha512-tO3K2bML3AwiHmVHeKCq6HLef2st4zBXIV5aEkoJl6HZ+gJWxWv2O8wLH8qrA3SX3lDoTDHNghLX1xZg83MXvw==
-
-vue-tailwindcss-typeahead@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vue-tailwindcss-typeahead/-/vue-tailwindcss-typeahead-1.0.1.tgz#bf861b65a1ac4c35579365aad904f6a14af95428"
-  integrity sha512-KpBicrkvztfCzcjZJ5mvl8rfSGY4WVC9XxH5J2hVu3M4bj7O24RyvvI5DDIqroLaMykTjNrNJK69JLLo5Bauuw==
-  dependencies:
-    vue-click-outside "^1.1.0"
 
 vue3-qrcode-reader@^0.0.1:
   version "0.0.1"

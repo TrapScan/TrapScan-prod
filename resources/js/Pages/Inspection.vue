@@ -40,7 +40,7 @@
                 <h1 class="text-[18px] text-t_black-800 dark:text-t_white-200 italic font-fira" v-if="step === 5 || step === 6">{{form.words}}</h1>
                 <h1 class="text-[24px] mb-[36px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold tracking-[.04em]" v-else>{{form.words}}</h1>
             </div>
-            <step-one @selected="setStepOne"  @remap="remap" :qrs="qrs" :coordinator="coordinator" v-if="step === 1"/>
+            <step-one @selected="setStepOne"  @remap="remap" :qrs="for_qr" :coordinator="coordinator" v-if="step === 1"/>
             <step-two @selected="setStepTwo" v-if="step === 2"/>
             <step-three @selected="setStepThree" v-if="step === 3"/>
             <step-four @selected="setStepFour" v-if="step === 4"/>
@@ -55,7 +55,6 @@
              <Autocomplate
                  :lists="for_find"
                  @selected="selectedData"
-                 :ignoredList="newQR.nz_id"
                  :clearInputWhenClicked="false"
                  :inputClass="[
                     'block',
@@ -65,7 +64,7 @@
                     'text-md',
                     'text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                   ]"
-                 placeholder="Please write a country name"
+                 placeholder="Please write a trap name"
              >
 
              </Autocomplate>
@@ -125,7 +124,7 @@ export default {
         coordinator: Boolean,
         projects: Object,
         for_find: Object,
-        qrs: Object,
+        for_qr: Object,
     },
     data() {
         return {
@@ -160,7 +159,7 @@ export default {
     },
     methods:{
         selectedData(value) {
-            this.selectedItem = value;
+            this.newQR.nz_id = value.id;
             console.log(value);
         },
         back(){
