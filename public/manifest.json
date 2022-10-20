@@ -1,7 +1,7 @@
 {
     "name": "TrapScan",
     "short_name": "TrapScan",
-    "start_url": "/index.php",
+    "start_url": "/",
     "background_color": "#0AB587",
     "description": "TrapScan",
     "display": "fullscreen",
