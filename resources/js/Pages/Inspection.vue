@@ -52,11 +52,24 @@
         <template v-else>
             <div class="flex flex-wrap justify-center p-4">
                 <label for="small" class="mt-12 block mb-2 text-2xl font-bold text-gray-900 dark:text-gray-400">Map Code</label>
-                <select v-model="newQR.nz_id" id="small" class=" block p-4 mb-4 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option v-for="item in projects" :value="item.nz_trap_id">
-                           {{ item.name }} - {{ item.project.name }}
-                    </option>
-                </select>
+             <Autocomplate
+                 :lists="for_find"
+                 @selected="selectedData"
+                 :ignoredList="newQR.nz_id"
+                 :clearInputWhenClicked="false"
+                 :inputClass="[
+                    'block',
+                    'p-4',
+                    'mb-4',
+                    'w-full',
+                    'text-md',
+                    'text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                  ]"
+                 placeholder="Please write a country name"
+             >
+
+             </Autocomplate>
+
                 <button type="button" @click="submit(1)" class="flex items-center justify-center focus:outline-none text-white text-lg bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
                     Map QR
                 </button>
@@ -79,6 +92,7 @@ import StepFour from "@/Components/Inspection/StepFour.vue";
 import AddNote from "@/Components/Inspection/AddNote.vue";
 import EditForm from "@/Components/Inspection/EditForm.vue";
 import {ElMessage} from "element-plus";
+import Autocomplate from "@/Components/Autocomplate.vue";
 const dateOb = new Date()
 
 const day = ('0' + dateOb.getDate()).slice(-2)
@@ -101,7 +115,8 @@ export default {
         StepTwo,
         StepOne,
         Show,
-        Link
+        Link,
+        Autocomplate
     },
     name: "Inspection",
     props:{
@@ -109,6 +124,7 @@ export default {
         unmapped: Boolean,
         coordinator: Boolean,
         projects: Object,
+        for_find: Object,
         qrs: Object,
     },
     data() {
@@ -143,6 +159,10 @@ export default {
         }
     },
     methods:{
+        selectedData(value) {
+            this.selectedItem = value;
+            console.log(value);
+        },
         back(){
             this.step = this.prev_step.pop();
             if (this.prev_step.length === 0){

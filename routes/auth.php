@@ -128,7 +128,7 @@ Route::post('/auth/{provider}/callback', function (Request $request, $provider) 
         if(! $existingUser) {
             $createUser = User::create([
                 'name' => $user->getName(),
-                'email' => $user->getEmail(),
+                'email' => $user->getEmail() ,
                 'password' => Hash::make(61),
                 'settings' => User::DEFAULT_SETTINGS
             ]);

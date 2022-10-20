@@ -78,19 +78,26 @@ class InspectionController extends Controller
             $unmapped = true;
         }
 
-            $projects = $request->user()->isInProject();
-            $ids = collect();
-            foreach ($projects as $pr){
-                $ids->push($pr->id);
-            }
-            $pr = Trap::select('id', 'project_id', 'nz_trap_id', 'name', 'coordinates', 'qr_id')
-                ->whereIn('project_id',$ids)
-                ->noCode()->with('project')->get();
-
+        $projects = $request->user()->isInProject();
+        $ids = collect();
+        foreach ($projects as $pr){
+            $ids->push($pr->id);
+        }
+        $pr = Trap::select('id', 'project_id', 'nz_trap_id', 'name', 'coordinates', 'qr_id')
+            ->whereIn('project_id',$ids)
+            ->noCode()->with('project')->get();
+        $for_find = collect();
+        foreach ($pr as $p) {
+            $for_find->push([
+                'id' => $p->nz_trap_id,
+                'name' => $p->name.' - '.$p->project->name,
+            ]);
+        }
         return Inertia::render('Inspection',[
             'trap_data' => $trap,
             'unmapped' => $unmapped,
             'projects' => $pr,
+            'for_find' => $for_find,
             'coordinator' => $coordinator,
             'qrs' => QR::whereNull('trap_id')
                 ->orderBy('qr_code')

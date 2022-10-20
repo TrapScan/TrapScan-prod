@@ -115,7 +115,7 @@ export default {
                     this.error = "browser seems to be lacking features"
                 }
             } finally {
-                // hide loading indicator
+                // hide loading indicator 
                 this.loading = false
             }
         },
@@ -124,7 +124,7 @@ export default {
             const split = decodedString.split('/')
             console.log(split)
             this.form.qr_id = split.at(-1)
-                this.submit_form()
+            this.submit_form()
             // if (split.length === 3) {
             //     this.form.qr_id = split.at(-1)
             //     this.submit_form()
