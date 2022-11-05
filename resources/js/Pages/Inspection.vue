@@ -96,7 +96,7 @@
     </template>
     <template v-else>
       <div class="flex flex-wrap p-4 w-full">
-        <Searchable title="This QR card needs to be installed to activate it" :options="projects" :onSelect="selectTrap"></Searchable>
+        <QRRemap :qrCode="trap_data.qr_id" title="This QR card needs to be installed to activate it" :options="projects" :onSelect="selectTrap"></QRRemap>
       </div>
     </template>
   </Show>
@@ -114,7 +114,7 @@ import StepFive from "@/Components/Inspection/StepFive.vue";
 import StepFour from "@/Components/Inspection/StepFour.vue";
 import AddNote from "@/Components/Inspection/AddNote.vue";
 import EditForm from "@/Components/Inspection/EditForm.vue";
-import Searchable from "@/Components/Inspection/Searchable.vue";
+import QRRemap from "@/Components/Inspection/QRRemap.vue";
 import { ElMessage } from "element-plus";
 const dateOb = new Date();
 
@@ -129,7 +129,7 @@ const dateS = year + "-" + month + "-" + day;
 const timeS = hours + ":" + minutes + ":" + seconds;
 export default {
   components: {
-    Searchable,
+    QRRemap,
     EditForm,
     AddNote,
     StepFour,
