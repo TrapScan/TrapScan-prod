@@ -201,8 +201,6 @@ class UploadToTrapNZ implements ShouldQueue
         switch ($species) {
             case "None":
                 return 82;
-            case "Unspecified":
-                return 103;
             case "Bird":
                 return 29;
             case "Cat":
@@ -250,7 +248,7 @@ class UploadToTrapNZ implements ShouldQueue
             case "Weasel":
                 return 21;
             default:
-                return 'Undefined';
+                return 103;
         }
     }
 
