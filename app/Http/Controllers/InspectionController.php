@@ -234,7 +234,7 @@ class InspectionController extends Controller
         $last_inspection = $trap->inspections()->latest()->limit(2)->get();
         if($last_inspection) {
             $last = $last_inspection->last();
-            $trap->last_checked = $last->updated_at->diffForHumans();
+            $trap->last_checked = $last->updated_at->diffForHumans() ?? '';
             $trap->last_checked_by = $last->user->name ?? 'Anonymous';
         }
         if($trap->inspections()->where('species_caught', '!=', 'None')->exists()) {
