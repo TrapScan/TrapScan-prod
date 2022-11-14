@@ -207,9 +207,9 @@ class InspectionController extends Controller
                 SendCatchNotificationToCoordinators::dispatch($inspection);
             }
 
-//            if($inspection->upload_to_nz) {
-//                UploadToTrapNZ::dispatch($inspection);
-//            }
+            if($inspection->upload_to_nz) {
+                UploadToTrapNZ::dispatch($inspection);
+            }
 
             if($inspection->trap_condition === 'Needs maintenance') {
                 SendTrapIssueNotificationToCoordinators::dispatch($inspection);
@@ -234,7 +234,7 @@ class InspectionController extends Controller
         $last_inspection = $trap->inspections()->latest()->limit(2)->get();
         if($last_inspection) {
             $last = $last_inspection->last();
-            $trap->last_checked = $last->updated_at->diffForHumans() ?? '';
+            $trap->last_checked = $last->updated_at->diffForHumans() ?? 'now';
             $trap->last_checked_by = $last->user->name ?? 'Anonymous';
         }
         if($trap->inspections()->where('species_caught', '!=', 'None')->exists()) {
