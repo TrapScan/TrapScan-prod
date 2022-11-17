@@ -24,6 +24,7 @@
     "dependencies": {
         "@material-tailwind/html": "^1.2.1",
         "element-plus": "^2.2.10",
+        "flowbite": "^1.5.4",
         "laravel-echo": "^1.13.0",
         "path": "^0.12.7",
         "prettier": "^2.7.1",

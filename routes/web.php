@@ -40,6 +40,18 @@ Route::get('/scan', function () {
     return Inertia::render('Main');
 })->middleware(['auth', 'verified'])->name('scan');
 
+Route::get('/find_by_qr', function () {
+    return Inertia::render('FindByQr');
+})->middleware(['auth', 'verified'])->name('find_by_qr');
+
+Route::get('/install_new_qr/{trap_id}', function ($trap_id) {
+    return Inertia::render('RemapQR',['trap_id' => $trap_id,'type' => 'install_new_qr']);
+})->middleware(['auth', 'verified'])->name('install_new_qr');
+
+Route::get('/install_qr/{trap_id}', function ($trap_id) {
+    return Inertia::render('RemapQR',['trap_id' => $trap_id,'type' => 'install_qr','user' => \Auth::id()]);
+})->middleware(['auth', 'verified'])->name('install_qr');
+
 Route::get('/scan/{qr_id?}',[InspectionController::class,'index'])
     ->name('inspection.index');
 

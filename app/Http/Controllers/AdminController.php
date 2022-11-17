@@ -81,8 +81,7 @@ class AdminController extends Controller
     public function map_trap(Request $request){
         $validated_data = $request->validate([
             'qr_id' => 'required|exists:qr,qr_code',
-            'nz_id' => 'required|exists:traps,nz_trap_id',
-            'type'=>'string|nullable'
+            'nz_id' => 'required|exists:traps,nz_trap_id'
         ]);
         $qr = QR::where('qr_code', $validated_data['qr_id'])->first();
         $trap = Trap::where('nz_trap_id', $validated_data['nz_id'])->first();
@@ -98,10 +97,7 @@ class AdminController extends Controller
             $oldQR->trap_id = null;
             $oldQR->update();
         }
-        if ($validated_data['type'] == null)
-            return back();
-        else
-            return redirect(route('inspection.index',$trap->qr_id));
+        return redirect(route('inspection.index',$trap->qr_id));
     }
 
     public function all_traps(Request $request){

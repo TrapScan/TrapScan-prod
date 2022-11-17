@@ -3,7 +3,7 @@
         <div class="relative h-screen w-full" v-if="error === null" >
             <qrcode-stream @init="onInit" @decode="onDecode" :torch="torch"/>
             <div class="absolute bottom-24 left-1/2 -translate-x-1/2">
-                    <button @click="visible = true" type="button" class="bg-t_black-950 bg-opacity-60 w-full rounded-full px-[32px] py-[8px]">
+                    <button @click="find_by_id" type="button" class="bg-t_black-950 bg-opacity-60 w-full rounded-full px-[32px] py-[8px]">
                         <span class="uppercase montserrat text-[13px] font-bold text-white text-opacity-100">Enter ID instead</span>
                     </button>
             </div>
@@ -25,7 +25,7 @@
                 <no-camera/>
             </div>
             <div class="w-8/12 mt-20">
-                <tertiary @click="visible = true">Enter ID instead</tertiary>
+                <tertiary @click="find_by_id">Enter ID instead</tertiary>
             </div>
         </div>
 
@@ -69,6 +69,7 @@ import ModalWindow from "@/Components/ModalWindow.vue";
 import { QrcodeStream } from 'vue3-qrcode-reader';
 import NoCamera from "@/Components/SVG/NoCamera.vue";
 import Tertiary from "@/UI/Buttons/Tertiary.vue";
+import {Inertia} from "@inertiajs/inertia";
 
 export default {
     components:{
@@ -135,6 +136,9 @@ export default {
             // } else {
             //     this.$page.props.flash.message = 'Not a TrapScan QR or incorrectly formatted'
             // }
+        },
+        find_by_id(){
+            this.$inertia.get(route('find_by_qr'))
         }
     }
 }

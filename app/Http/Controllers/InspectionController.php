@@ -74,8 +74,7 @@ class InspectionController extends Controller
             $project = Project::find($trap->project_id);
             $coordinator = $request->user()->isCoordinatorOf($project);
         } else {
-            $trap = ['qr_id' => $qr->qr_code];
-            $unmapped = true;
+            return redirect(route('install_qr',$qr->qr_code));
         }
 
         $projects = $request->user()->isInProject();
@@ -106,7 +105,6 @@ class InspectionController extends Controller
 
         return Inertia::render('Inspection',[
             'trap_data' => $trap,
-            'unmapped' => $unmapped,
             'projects' => $pr,
             'for_find' => $for_find,
             'coordinator' => $coordinator,

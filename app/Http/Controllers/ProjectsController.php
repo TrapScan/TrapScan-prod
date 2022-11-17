@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Jobs\UpdateTraps;
 use App\Models\Project;
+use App\Models\QR;
+use App\Models\Trap;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Intervention\Image\Facades\Image;
@@ -96,5 +99,44 @@ class ProjectsController extends Controller
                 $font->size(22);
             });
         return $template->response('png');
+    }
+
+    public function qr(Request $request): JsonResponse{
+        if ($request->qr_id == null)
+            return response()->json();
+        return response()->json(QR::where('qr_code', 'LIKE','%'.$request->qr_id.'%')->get());
+    }
+
+    public function qr_free(Request $request): JsonResponse{
+        if ($request->qr_id == null)
+            return response()->json();
+        return response()->json(
+            QR::whereNull('trap_id')
+            ->where('qr_code', 'LIKE','%'.$request->qr_id.'%')
+            ->get()
+        );
+    }
+
+    public function traps(Request $request): JsonResponse{
+        if ($request->qr_id == null)
+            return response()->json();
+        $user = User::find($request->user);
+        $projects = $user->isInProject();
+        $ids = collect();
+        foreach ($projects as $pr){
+            $ids->push($pr->id);
+        }
+        $pr = Trap::select('id', 'project_id', 'nz_trap_id', 'name', 'coordinates', 'qr_id')
+            ->whereIn('project_id',$ids)
+            ->where('name', 'LIKE','%'.$request->qr_id.'%')
+            ->noCode()->with('project')->get();
+        $for_find = collect();
+        foreach ($pr as $p) {
+            $for_find->push([
+                'id' => $p->nz_trap_id,
+                'name' => $p->name.' - '.$p->project->name,
+            ]);
+        }
+        return response()->json($for_find);
     }
 }

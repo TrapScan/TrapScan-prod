@@ -30,8 +30,6 @@
                 </h6>
             </div>
         </template>
-        <template v-if="!unmapped">
-
             <div class="w-full mx-[24px]" v-if="step === 7 || step === 8">
                 <h1 class="text-[24px] mb-[36px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold" v-if="step === 8">Edit scan</h1>
                 <span v-else></span>
@@ -40,7 +38,7 @@
                 <h1 class="text-[18px] text-t_black-800 dark:text-t_white-200 italic font-fira" v-if="step === 5 || step === 6">{{form.words}}</h1>
                 <h1 class="text-[24px] mb-[36px] text-t_black-800 dark:text-t_white-200 font-fira font-semibold tracking-[.04em]" v-else>{{form.words}}</h1>
             </div>
-            <step-one @selected="setStepOne"  @remap="remap" :qrs="for_qr" :coordinator="coordinator" v-if="step === 1"/>
+            <step-one @selected="setStepOne" :coordinator="coordinator" :trap_id="trap_data.nz_trap_id" v-if="step === 1"/>
             <step-two @selected="setStepTwo" v-if="step === 2"/>
             <step-three @selected="setStepThree" v-if="step === 3"/>
             <step-four @selected="setStepFour" v-if="step === 4"/>
@@ -48,33 +46,6 @@
             <step-six @selected="setStepSix" v-if="step === 6"/>
             <add-note @selected="setNote" :text="form.notes" v-if="step === 7"/>
             <edit-form @selected="setEdit" :values="form" v-if="step === 8"/>
-        </template>
-        <template v-else>
-            <div class="flex flex-wrap justify-center p-4">
-                <label for="small" class="mt-12 block mb-2 text-2xl font-bold text-gray-900 dark:text-gray-400">Map Code</label>
-             <Autocomplate
-                 :lists="for_find"
-                 @selected="selectedData"
-                 :clearInputWhenClicked="false"
-                 :inputClass="[
-                    'block',
-                    'p-4',
-                    'mb-4',
-                    'w-full',
-                    'text-md',
-                    'text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                  ]"
-                 placeholder="Please write a trap name"
-             >
-
-             </Autocomplate>
-
-                <button type="button" @click="submit(1)" class="flex items-center justify-center focus:outline-none text-white text-lg bg-bay-of-many-500 hover:bg-bay-of-many-600 rounded-full py-4 w-full transition duration-150 ease-in">
-                    Map QR
-                </button>
-            </div>
-        </template>
-
     </Show>
 </template>
 
@@ -90,8 +61,6 @@ import StepFive from "@/Components/Inspection/StepFive.vue";
 import StepFour from "@/Components/Inspection/StepFour.vue";
 import AddNote from "@/Components/Inspection/AddNote.vue";
 import EditForm from "@/Components/Inspection/EditForm.vue";
-import {ElMessage} from "element-plus";
-import Autocomplate from "@/Components/Autocomplate.vue";
 const dateOb = new Date()
 
 const day = ('0' + dateOb.getDate()).slice(-2)
@@ -115,25 +84,16 @@ export default {
         StepOne,
         Show,
         Link,
-        Autocomplate
     },
     name: "Inspection",
     props:{
         trap_data:Object,
-        unmapped: Boolean,
         coordinator: Boolean,
         projects: Object,
-        for_find: Object,
-        for_qr: Object,
     },
     data() {
         return {
             step:1,
-            newQR: useForm({
-                qr_id:null,
-                nz_id:null,
-                type:'redir'
-            }),
             prev_step:[1],
             prev_word_1:null,
             prev_word_2:null,
@@ -160,7 +120,6 @@ export default {
     methods:{
         selectedData(value) {
             this.newQR.nz_id = value.id;
-            console.log(value);
         },
         back(){
             this.step = this.prev_step.pop();
@@ -258,28 +217,6 @@ export default {
         },
         submitInspection(){
             this.form.post(route('inspection.save'))
-        },
-        remap(val){
-          this.newQR.qr_id = val
-          this.submit(2)
-        },
-        submit(type) {
-            if (type === 1){
-                this.newQR.qr_id = this.trap_data.qr_id
-            }else{
-                this.newQR.nz_id = this.trap_data.nz_trap_id
-            }
-            this.newQR.post(route('inspection.map_trap'),{
-                preserveScroll: true,
-                preserveState: true,
-                onSuccess:() => {
-                    ElMessage({
-                        message: 'Congrats, trap mapped.',
-                        type: 'success',
-                    })
-
-                }
-            })
         },
     }
 }
