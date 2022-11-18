@@ -29,7 +29,7 @@ onMounted(() => {
                 :value="modelValue"
                 @input="$emit('update:modelValue', $event.target.value)"
                 ref="input"
-                v-on:keyup.enter="$emit('selected', this.list[0].qr_code ?? this.list[0].id)"
+                @keyup.enter="$emit('selected', this.list[0].qr_code ?? this.list[0].id)"
             />
         </div>
         <div class="bg-[#F0F5F9] px-2 py-2 rounded-[4px]" >

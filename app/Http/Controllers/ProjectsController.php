@@ -104,7 +104,7 @@ class ProjectsController extends Controller
     public function qr(Request $request): JsonResponse{
         if ($request->qr_id == null)
             return response()->json();
-        return response()->json(QR::where('qr_code', 'LIKE','%'.$request->qr_id.'%')->get());
+        return response()->json(QR::where('qr_code', 'LIKE','%'.$request->qr_id.'%')->limit(20)->get());
     }
 
     public function qr_free(Request $request): JsonResponse{
@@ -113,6 +113,7 @@ class ProjectsController extends Controller
         return response()->json(
             QR::whereNull('trap_id')
             ->where('qr_code', 'LIKE','%'.$request->qr_id.'%')
+                ->limit(20)
             ->get()
         );
     }
@@ -129,7 +130,7 @@ class ProjectsController extends Controller
         $pr = Trap::select('id', 'project_id', 'nz_trap_id', 'name', 'coordinates', 'qr_id')
             ->whereIn('project_id',$ids)
             ->where('name', 'LIKE','%'.$request->qr_id.'%')
-            ->noCode()->with('project')->get();
+            ->noCode()->with('project')->limit(20)->get();
         $for_find = collect();
         foreach ($pr as $p) {
             $for_find->push([
