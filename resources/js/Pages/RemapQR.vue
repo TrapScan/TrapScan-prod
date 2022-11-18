@@ -61,7 +61,9 @@ export default {
     },
     watch: {
         search_text(newQuestion, oldQuestion) {
-            this.find_collection();
+            if (newQuestion.length > 1) {
+                this.collection = []
+            }
         }
     },
     methods: {

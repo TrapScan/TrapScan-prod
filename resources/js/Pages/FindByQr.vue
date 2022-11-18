@@ -46,7 +46,9 @@ export default {
     watch: {
         // whenever question changes, this function will run
         search_text(newQuestion, oldQuestion) {
-            this.find_collection();
+            if (newQuestion.length > 1) {
+                this.collection = []
+            }
         }
     },
     methods: {
