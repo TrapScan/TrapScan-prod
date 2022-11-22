@@ -101,6 +101,7 @@ export default {
 
         },
         select(value){
+            console.log(value)
             if (this.type === 'install_new_qr'){
                 this.newQR.qr_id = value
             }else{

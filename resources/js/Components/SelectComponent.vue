@@ -41,7 +41,7 @@ onMounted(() => {
                 <div v-for="(item, index) in list" :key="modelValue">
                     <div class="flex flex-wrap w-full h-[18px] font-fira text-[15px] font-[400] text-t_blue_gray-700 dark:text-t_white-200 tracking-[.05em] my-[16px]">{{item.name}}</div>
                     <div v-for="(children, childrenindex) in item.children" :key="childrenindex.id"
-                         @click="$emit('selected', children.qr_code ?? item.id)"
+                         @click="$emit('selected', children.id)"
                          class="
                              hover:border-2 hover:border-t_purple-300 dark:hover:border-t_purple-700
                              mb-2 h-[44px] p-[10px] w-full overflow-hidden
