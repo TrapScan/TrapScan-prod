@@ -7,8 +7,8 @@
                 </svg>
             </div>
             <div>
-                <h1 v-if="type === install_new_qr" class="text-white font-bold ml-1 text-[16px] montserrat tracking-wide tracking-[.05em]">Install QR for Trap</h1>
-                <h1 v-else class="text-white font-bold ml-1 text-[16px] montserrat tracking-wide tracking-[.05em]">Map QR</h1>
+                <h1 v-if="type === 'install_new_qr'" class="text-white font-bold ml-1 text-[16px] montserrat tracking-wide tracking-[.05em]">Install QR for Trap</h1>
+                <h1 v-else class="text-white font-bold ml-1 text-[16px] montserrat uppercase tracking-wide tracking-[.05em]">{{trap_id}}</h1>
             </div>
             <div @click="back">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,8 +16,20 @@
                 </svg>
             </div>
         </template>
-        <div class="px-[14px] w-full">
-            <select-component v-model="search_text" :list="collection" :key="search_text" @selected="select"/>
+        <div class="px-[14px] w-full flex flex-wrap">
+            <div class="w-full" v-if="type !== 'install_new_qr'">
+                <h1 class="text-[18px] px-3 text-t_black-800 font-[400] dark:text-t_white-200 font-fira" >
+                    This QR card needs to be linked to a  Trap to activate it
+                </h1>
+                <span  class="w-full px-3 text-[24px] mb-[24px] font-bold text-t_black-800 mt-3 dark:text-t_white-200 font-fira font-semibold">
+                    Select a Trap
+                </span>
+            </div>
+              <div class="w-full">
+                <select-component v-if="type === 'install_qr'" type="true" v-model="search_text" :list="collection" :key="search_text" @selected="select"/>
+                <select-component v-else v-model="search_text" :list="collection" :key="search_text" @selected="select"/>
+            </div>
+
         </div>
     </Show>
 </template>

@@ -123,20 +123,29 @@ class ProjectsController extends Controller
             return response()->json();
         $user = User::find($request->user);
         $projects = $user->isInProject();
-        $ids = collect();
-        foreach ($projects as $pr){
-            $ids->push($pr->id);
-        }
-        $pr = Trap::select('id', 'project_id', 'nz_trap_id', 'name', 'coordinates', 'qr_id')
-            ->whereIn('project_id',$ids)
-            ->where('name', 'LIKE','%'.$request->qr_id.'%')
-            ->noCode()->with('project')->limit(20)->get();
         $for_find = collect();
-        foreach ($pr as $p) {
-            $for_find->push([
-                'id' => $p->nz_trap_id,
-                'name' => $p->name.' - '.$p->project->name,
-            ]);
+        foreach ($projects as $pr){
+            $temp = Trap::select('id', 'project_id', 'nz_trap_id', 'name', 'coordinates', 'qr_id')
+                ->where('project_id',$pr->id)
+                ->where('name', 'LIKE','%'.$request->qr_id.'%')
+                ->noCode()->with('project')->limit(10)->get();
+            if ($temp->count() > 0){
+                $ids = collect();
+
+                foreach ($temp as $p) {
+                    $ids->push([
+                        'id' => $p->nz_trap_id,
+                        'name' => $p->name,
+                    ]);
+                }
+                $for_find->push([
+                    'name' => $pr->name,
+                    'children' => $ids
+                ]);
+                $ids = null;
+
+            }
+
         }
         return response()->json($for_find);
     }
