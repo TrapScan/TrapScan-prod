@@ -29,11 +29,11 @@ onMounted(() => {
 
             </div>
             <input
-                class="outline-0 dark:bg-dark_input_bg w-full pl-10 pr-[12px] py-[8px] dark:text-t_white-200 font-fira focus:border-dark_button rounded-t-[0.375em]"
+                class="outline-0 dark:bg-dark_input_bg w-full pl-10 pr-[12px] py-[8px] dark:text-t_white-200 font-fira focus:border-t_blue_gray-300 focus:dark:border-dark_button rounded-t-[0.375em]"
                 :value="modelValue"
                 @input="$emit('update:modelValue', $event.target.value)"
                 ref="input"
-                @keyup.enter="$emit('selected', this.list[0].qr_code ?? this.list[0].id)"
+                v-on:keyup.enter="$emit('selected', this.list[0].qr_code ?? this.list[0].id)"
             />
         </div>
         <div class="bg-t_white-150 dark:bg-t_black-850 px-2 py-2 rounded-b-[4px] " v-if="type">
@@ -54,7 +54,7 @@ onMounted(() => {
 
                         </div>
                         <div class="ml-1 w-9/12">
-                            <p class="montserrat text-[16px] font-bold dark:text-t_white-200 tracking-[.05em] ">{{children.qr_code ?? children.name}}</p>
+                            <p class="font-fira text-[16px] font-bold dark:text-t_white-200 tracking-[.05em] ">{{children.qr_code ?? children.name}}</p>
                         </div>
                         <div class="ml-3 py-3">
                             <arrow-next/>

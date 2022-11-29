@@ -8,7 +8,8 @@
             </div>
             <div>
                 <h1 v-if="type === 'install_new_qr'" class="text-white font-bold ml-1 text-[16px] montserrat tracking-wide tracking-[.05em]">Install QR for Trap</h1>
-                <h1 v-else class="text-white font-bold ml-1 text-[16px] montserrat uppercase tracking-wide tracking-[.05em]">{{trap_id}}</h1>
+                <h1 v-else class="text-white font-bold ml-1 text-[16px] montserrat capitalize tracking-wide tracking-[.05em]">{{trap_id}}</h1>
+
             </div>
             <div @click="back">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
