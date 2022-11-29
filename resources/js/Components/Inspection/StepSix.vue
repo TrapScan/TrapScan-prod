@@ -1,7 +1,7 @@
 <template>
     <span class="w-full px-6 text-[24px] mb-[36px] text-t_black-800 mt-3 dark:text-t_white-200 font-fira font-semibold">Is this correct?</span>
     <div class="flex flex-wrap overflow-hidden mx-[24px]">
-        <panel  @click='selected(0)' text="Yes, submit inspection" small_text="Submit scan">
+        <panel  @click='selected(0)' text="Yes" >
             <template #svg>
                 <good/>
             </template>
@@ -11,7 +11,7 @@
                 <edit/>
             </template>
         </panel>
-        <panel  @click='selected(8)' text="No, let me edit">
+        <panel  @click='selected(8)' text="No" small_text="Let me edit">
             <template #svg>
                 <no/>
             </template>

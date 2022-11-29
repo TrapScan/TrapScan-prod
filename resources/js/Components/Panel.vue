@@ -18,7 +18,7 @@ defineProps({
             <slot name="svg"/>
         </div>
         <div class="ml-1 w-9/12">
-            <p class="font-fira font-medium dark:text-t_white-200 tracking-[.05em]">{{text}}</p>
+            <p class="font-fira font-medium dark:text-t_white-200 tracking-[.02em]">{{text}}</p>
             <p class="text-sm font-fira text-gray-400" v-if="small_text !== null">{{small_text}}</p>
         </div>
         <div class="ml-3 py-3">
