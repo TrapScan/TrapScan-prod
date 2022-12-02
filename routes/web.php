@@ -44,9 +44,7 @@ Route::get('/find_by_qr', function () {
     return Inertia::render('FindByQr');
 })->middleware(['auth', 'verified'])->name('find_by_qr');
 
-Route::get('/install_new_qr/{trap_id}', function ($trap_id) {
-    return Inertia::render('RemapQR',['trap_id' => $trap_id,'type' => 'install_new_qr']);
-})->middleware(['auth', 'verified'])->name('install_new_qr');
+
 
 Route::get('/install_qr/{trap_id}', function ($trap_id) {
     return Inertia::render('RemapQR',['trap_id' => $trap_id,'type' => 'install_qr','user' => \Auth::id()]);
@@ -66,7 +64,12 @@ Route::get('/about', function () {
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'inspection'],function() {
     Route::get('/inspection_add',[InspectionController::class,'inspection_add'])->name('inspection.inspection_add');
     Route::post('/save',[InspectionController::class, 'save'])->name('inspection.save');
-    Route::post('/map_trap',[AdminController::class, 'map_trap'])->name('inspection.map_trap');
+    Route::post('/map_trap',[ProjectsController::class, 'map_trap'])->name('inspection.map_trap');
+    Route::get('/map_trap', function(){
+        return back();
+    });
+    Route::get('/remove_qr/{trap_id}', [ProjectsController::class, 'remove_qr'])->middleware(['auth', 'verified'])->name('remove_qr');
+    Route::get('/remove_qr_confirmed/{trap_id}', [ProjectsController::class, 'remove_qr_confirmed'])->middleware(['auth', 'verified'])->name('remove_qr_confirmed');
 });
 
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'user'],  function() {

@@ -7,9 +7,7 @@
                 </svg>
             </div>
             <div>
-                <h1 v-if="type === 'install_new_qr'" class="text-white font-bold ml-1 text-[16px] montserrat tracking-wide tracking-[.05em]">Install QR for Trap</h1>
-                <h1 v-else class="text-white font-bold ml-1 text-[16px] montserrat capitalize tracking-wide tracking-[.05em]">{{trap_id}}</h1>
-
+                <h1 class="text-white font-bold ml-1 text-[16px] montserrat capitalize tracking-wide tracking-[.05em]">{{trap_id}}</h1>
             </div>
             <div @click="back">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +16,7 @@
             </div>
         </template>
         <div class="px-[14px] w-full flex flex-wrap">
-            <div class="w-full" v-if="type !== 'install_new_qr'">
+            <div class="w-full" >
                 <h1 class="text-[18px] px-3 text-t_black-800 font-[400] dark:text-t_white-200 font-fira" >
                     This QR card needs to be linked to a  Trap to activate it
                 </h1>
@@ -28,7 +26,7 @@
             </div>
               <div class="w-full">
                 <select-component v-if="type === 'install_qr'" type="true" v-model="search_text" :list="collection" :key="search_text" @selected="select"/>
-                <select-component v-else v-model="search_text" :list="collection" :key="search_text" @selected="select"/>
+<!--                <select-component v-else v-model="search_text" :list="collection" :key="search_text" @selected="select"/>-->
             </div>
 
         </div>
@@ -66,11 +64,7 @@ export default {
         }
     },
     mounted() {
-        if (this.type === 'install_new_qr'){
-            this.newQR.nz_id = this.trap_id
-        }else{
-            this.newQR.qr_id = this.trap_id
-        }
+        this.newQR.qr_id = this.trap_id
     },
     watch: {
         search_text(newQuestion, oldQuestion) {
@@ -81,43 +75,33 @@ export default {
     },
     methods: {
         back(){
-            if (this.type === 'install_new_qr'){
-                this.$inertia.visit(this.route('scan'));
-            }else{
-                this.$inertia.visit(this.route('scan'));
-            }
+            this.$inertia.visit(this.route('scan'));
         },
         find_collection(){
-            if (this.type === 'install_new_qr'){
-                axios.get('/api/get_qr_free?qr_id='+this.search_text)
-                    .then(response => {
-                        this.collection = response.data
-                    })
-            }else{
+            // if (this.type === 'install_new_qr'){
+            //     axios.get('/api/get_qr_free?qr_id='+this.search_text)
+            //         .then(response => {
+            //             this.collection = response.data
+            //         })
+            // }else{
                 axios.get('/api/get_traps?qr_id='+this.search_text+'&user='+this.user)
                     .then(response => {
                         this.collection = response.data
                     })
-            }
+            //}
 
         },
         select(value){
-            console.log(value)
-            if (this.type === 'install_new_qr'){
-                this.newQR.qr_id = value
-            }else{
+            // if (this.type === 'install_new_qr'){
+            //     this.newQR.qr_id = value
+            // }else{
                 this.newQR.nz_id = value
-            }
+            //}
 
             this.newQR.post(route('inspection.map_trap'),{
                 preserveScroll: true,
                 preserveState: true,
                 onSuccess:() => {
-                    ElMessage({
-                        message: 'Congrats, trap mapped.',
-                        type: 'success',
-                    })
-
                 }
             })
         }

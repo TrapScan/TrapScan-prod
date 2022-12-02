@@ -15,7 +15,7 @@
                 <wrong/>
             </template>
         </panel>
-        <panel  v-if="coordinator" @click='remap()' text="Re-map QR">
+        <panel  v-if="coordinator" @click='remap()' text="Uninstall QR" small_text="Remove the trap linked to this QR ID">
             <template #svg>
                 <remap/>
             </template>
@@ -78,7 +78,7 @@ export default {
             this.$emit('selected',this.values[val])
         },
         remap(){
-            this.$inertia.get(route('install_new_qr',this.trap_id))
+            this.$inertia.get(route('remove_qr',this.trap_id))
         }
     }
 }
