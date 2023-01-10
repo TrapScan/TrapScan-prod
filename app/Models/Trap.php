@@ -19,7 +19,8 @@ class Trap extends Model
         'user_id',
         'coordinates',
         'name',
-        'notes'
+        'notes',
+        'private'
     ];
 
     protected $casts = [

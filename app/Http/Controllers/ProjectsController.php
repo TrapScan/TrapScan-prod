@@ -165,7 +165,6 @@ class ProjectsController extends Controller
         $trap = Trap::where('nz_trap_id', $validated_data['nz_id'])->first();
         $oldQR = QR::where('qr_code', $trap->qr_id)->first();
         $confirm = $request->get('confirmed') ?? 0;
-        Log::alert($confirm);
         if ($trap->qr_id != null && $confirm == 0 ){
             return Inertia::render('RemapQRConfirm',[
                 'qr'=>$qr,

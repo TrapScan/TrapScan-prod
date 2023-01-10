@@ -42,6 +42,8 @@ class UpdateTraps implements ShouldQueue
             $data = file_get_contents("https://io.trap.nz/geo/trapnz-projects/wfs/O2ZNGAUpOJ5cHNZPx7wF6RaNort9J72jzlnCNLvOQGQ/".$this->project_nz_id."?service=WFS&version=1.0.0&request=GetFeature&typeName=trapnz-projects:default-project-trap-records&outputFormat=json");
             $json = json_decode($data, true);
 
+            //https://io.trap.nz/geo/trapnz-projects/wfs/O2ZNGAUpOJ5cHNZPx7wF6RaNort9J72jzlnCNLvOQGQ/636175?service=WFS&version=1.0.0&request=GetFeature&typeName=trapnz-projects:my-projects-traps&outputFormat=json
+
             $collection = collect();
             foreach($json['features'] as $item){
                 $collection->push((object)[
@@ -62,7 +64,8 @@ class UpdateTraps implements ShouldQueue
                             'nz_trap_id' => $item->trap_id,
                             'project_id' => $this->project_id,
                             'name' => $item->trap_code,
-                            'coordinates' => $item->coordinates
+                            'coordinates' => $item->coordinates,
+                            'private' => 1
                         ]);
                         $count_add += 1;
                     }

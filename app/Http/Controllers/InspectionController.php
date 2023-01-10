@@ -20,12 +20,19 @@ class InspectionController extends Controller
 
     public function anon_index(Request $request){
         $qr = QR::where('qr_code', $request->qr_id)->first();
+
         if(!$qr) {
             session()->flash('message','Trap not found');
             return redirect(route('index'));
         }
+        $user = auth()->user();
+
         if($qr->trap_id) {
             $trap = Trap::find($qr->trap_id);
+            if ($trap->private == 1 && $user == null){
+                session()->put('url.intended',route('inspection.index',$request->qr_id));
+                return redirect(route('login'));
+            }
             $last_inspection = $trap->inspections()->latest()->limit(1)->first();
             if($last_inspection) {
                 $trap->last_checked = $last_inspection->updated_at->diffForHumans();
